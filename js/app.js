@@ -14,6 +14,8 @@ var mainState = {
 
       this.car.anchor.setTo(-0.2, 0.5);
 
+     this.car.body.collideWorldBounds = true;
+
       cursors = game.input.keyboard.createCursorKeys();
   },
 
@@ -22,6 +24,14 @@ var mainState = {
 
     if(cursors.right.isDown){
       this.car.body.velocity.x = 150;
+    }
+
+    else if (cursors.left.isDown){
+      this.car.body.velocity.x = -150;
+    }
+
+    else if (cursors.right.isDown && this.car.body.y < this.window) {
+      this.car.body.velocity.x = 0;
     }
   },
 
