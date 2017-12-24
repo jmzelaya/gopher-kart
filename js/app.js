@@ -2,6 +2,7 @@ var mainState = {
   preload: function () {
       game.load.image('car', '../assets/gopher-small-new.png');
       game.load.image('railBot', '../assets/bottom-rail.png');
+      game.stage.smoothed = false;
   },
 
   create: function () {
@@ -11,7 +12,7 @@ var mainState = {
       //2nd num indicates the starting y tilePosition
       //3rd num indicates the x (length) of repetition
       //4th num indicates the y (height) of repetition
-      this.railBot = game.add.tileSprite(0,363,600,0, 'railBot');
+      this.railBot = game.add.tileSprite(0, 385, 600, 0, 'railBot');
 
       game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -46,7 +47,7 @@ var mainState = {
 
 };
 
-var game = new Phaser.Game(600, 432);
+var game = new Phaser.Game(600, 432, Phaser.AUTO, 'ld29', null, false, false);
 
 game.state.add('main', mainState);
 
