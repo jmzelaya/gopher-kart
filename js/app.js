@@ -1,13 +1,17 @@
 var mainState = {
   preload: function () {
-      game.load.image('car', '../assets/gopher.png');
-      game.load.image('railBot', '../assets/bottom-rail-repeat.png');
+      game.load.image('car', '../assets/gopher-small-new.png');
+      game.load.image('railBot', '../assets/bottom-rail.png');
   },
 
   create: function () {
       game.stage.backgroundColor = '#72c5cf';
 
-      this.railBot = game.add.tileSprite(0,0,500,500, 'railBot');
+      //1st num indicates the starting x tilePosition
+      //2nd num indicates the starting y tilePosition
+      //3rd num indicates the x (length) of repetition
+      //4th num indicates the y (height) of repetition
+      this.railBot = game.add.tileSprite(0,363,600,0, 'railBot');
 
       game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -28,11 +32,11 @@ var mainState = {
     this.car.body.velocity.x = 0;
 
     if(cursors.right.isDown){
-      this.car.body.velocity.x = 150;
+      this.car.body.velocity.x = 300;
     }
 
     else if (cursors.left.isDown){
-      this.car.body.velocity.x = -150;
+      this.car.body.velocity.x = -300;
     }
 
     else if (cursors.right.isDown && this.car.body.y < this.window) {
