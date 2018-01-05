@@ -1,7 +1,8 @@
 var mainState = {
   preload: function () {
-      game.load.image('car', '../assets/gopher-small-new.png');
+      game.load.image('car', '../assets/gopher.png');
       game.load.image('railBot', '../assets/bottom-rail.png');
+      game.load.image('road', '../assets/road-tile.png');
       game.stage.smoothed = false;
   },
 
@@ -25,6 +26,10 @@ var mainState = {
       this.car.body.collideWorldBounds = true;
 
       cursors = game.input.keyboard.createCursorKeys();
+
+      this.timer = game.time.events.loop(1500, this.addRowOfRoads, this);
+
+      this.road = game.add.group();
   },
 
   update: function () {
@@ -44,6 +49,31 @@ var mainState = {
       this.car.body.velocity.x = 0;
     }
   },
+
+  addOneRoad: function(x, y){
+    var road = game.add.sprite(x, y, 'road');
+
+    this.road.add(road);
+
+    game.physics.arcade.enable(road);
+
+    road.body.velocity.x = -200;
+
+    road.checkWorldBounds = true;
+    road.outOfBoundsKill = true;
+  },
+
+  addRowOfRoads: function(){
+    var hole = Math.floor(Math.random() * 5) + 1;
+
+    for(var i = 0; i < 8; i++)
+    //If i is NOT equal to hole (defined above)
+    //AND i is NOT equal to hole plus 1
+    if(i != hole && i != hole + 1)
+      //Then add a pipe at this location
+      //                    vvvvvvvvv
+      this.addOneRoad(600, i * 60 + 10);
+  }
 
 };
 
