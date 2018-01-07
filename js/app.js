@@ -27,7 +27,7 @@ var mainState = {
 
       cursors = game.input.keyboard.createCursorKeys();
 
-      this.timer = game.time.events.loop(1500, this.addRowOfRoads, this);
+      this.timer = game.time.events.loop(100, this.addRowOfRoads, this);
 
       this.road = game.add.group();
   },
@@ -57,22 +57,14 @@ var mainState = {
 
     game.physics.arcade.enable(road);
 
-    road.body.velocity.x = -200;
+    road.body.velocity.x = -300;
 
     road.checkWorldBounds = true;
     road.outOfBoundsKill = true;
   },
 
   addRowOfRoads: function(){
-    var hole = Math.floor(Math.random() * 5) + 1;
-
-    for(var i = 0; i < 8; i++)
-    //If i is NOT equal to hole (defined above)
-    //AND i is NOT equal to hole plus 1
-    if(i != hole && i != hole + 1)
-      //Then add a pipe at this location
-      //                    vvvvvvvvv
-      this.addOneRoad(600, i * 60 + 10);
+      this.addOneRoad(600, 220);
   }
 
 };
