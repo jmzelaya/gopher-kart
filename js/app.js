@@ -1,6 +1,6 @@
 var mainState = {
   preload: function () {
-      game.load.image('car', '../assets/gopher.png');
+      game.load.spritesheet('car', '../assets/gopher-drive-loop.png', 63, 59, 2);
       game.load.image('railBot', '../assets/bottom-rail.png');
       game.load.image('road', '../assets/road-tile.png');
       game.stage.smoothed = false;
@@ -17,17 +17,23 @@ var mainState = {
 
       game.physics.startSystem(Phaser.Physics.ARCADE);
 
-      this.car = game.add.sprite(30, 280, 'car');
+      this.car = game.add.sprite(30, 280, "car");
+
+      this.car.animations.add('drive', [0,1], 8, true);
+
+      this.car.animations.play('drive');
+
+      // this.car = game.add.sprite(30, 280, 'car');
 
       this.physics.arcade.enable(this.car);
 
-      this.car.anchor.setTo(-0.2, 0.5);
+      // this.car.anchor.setTo(-0.2, 0.5);
 
       this.car.body.collideWorldBounds = true;
 
       cursors = game.input.keyboard.createCursorKeys();
 
-      this.timer = game.time.events.loop(100, this.addRowOfRoads, this);
+      // this.timer = game.time.events.loop(100, this.addRowOfRoads, this);
 
       this.road = game.add.group();
   },
@@ -65,7 +71,7 @@ var mainState = {
 
   addRowOfRoads: function(){
       this.addOneRoad(600, 220);
-  }
+  },
 
 };
 
