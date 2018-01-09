@@ -33,7 +33,7 @@ var mainState = {
 
       cursors = game.input.keyboard.createCursorKeys();
 
-      // this.timer = game.time.events.loop(100, this.addRowOfRoads, this);
+      this.timer = game.time.events.loop(100, this.addRowOfRoads, this);
 
       this.road = game.add.group();
   },
@@ -44,7 +44,7 @@ var mainState = {
     this.car.body.velocity.x = 0;
 
     if(cursors.right.isDown){
-      this.car.body.velocity.x = 300;
+      this.car.body.velocity.x = 100;
     }
 
     else if (cursors.left.isDown){
