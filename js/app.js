@@ -33,7 +33,7 @@ var mainState = {
 
       cursors = game.input.keyboard.createCursorKeys();
 
-      this.timer = game.time.events.loop(100, this.addRowOfRoads, this);
+      // this.timer = game.time.events.loop(100, this.addRowOfRoads, this);
 
       this.road = game.add.group();
   },
