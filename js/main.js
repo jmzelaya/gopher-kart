@@ -1,13 +1,13 @@
 var game;
 
-game = new
-  Phaser.Game(600, 432, Phaser.Auto, null, false, false);
-//
-// game.add.state("StateTitle");
-// game.add.state("StateMain");
-// game.add.state("StateOver");
-game.add.state("MainState");
-
-//👋🏼 Make sure to change over to StateTitle when
-//Title screen is complete :))
-game.state.start("MainState");
+window.onload = function(){
+  if(screen.width>900){
+    game = new Phaser.Game(480, 640, Phaser.AUTO, "ph_game");
+  }
+  else{
+    game = new
+    Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, "ph_game");
+  }
+  game.state.add("StateMain", StateMain);
+  game.state.start("StateMain");
+};

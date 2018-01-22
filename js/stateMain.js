@@ -1,19 +1,19 @@
-// var MainState = {
-//
-//   preload: function () {
-//
-//   },
-//
-//   create: function () {
-//
-//
-//   },
-//
-//   update: function (){
-//
-//
-//   },
-//
-//
-//
-// };//END MainState
+var StateMain = {
+
+  preload: function () {
+
+  },
+
+  create: function () {
+    console.log("Ready!");
+
+  },
+
+  update: function (){
+
+
+  },
+
+
+
+};//END StateMain
