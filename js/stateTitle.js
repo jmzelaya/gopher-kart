@@ -1,15 +1,17 @@
 var StateTitle = {
   preload: function(){
-     game.load.image("background", "assets/landscape.png");
+     game.load.image("city", "assets/city-scape.png");
      //background fill color : #e9fffe
   },
 
   create: function (){
-     this.background = game.add.tileSprite();
+     this.city = game.add.tileSprite(0, 0, 600, 600, "city");
+     // this.background.autoScroll(400, 10);
 
   },
 
   update: function (){
+    this.city.tilePosition.x -= 5;
 
   },
 
