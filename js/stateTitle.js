@@ -5,7 +5,7 @@ var StateTitle = {
   },
 
   create: function (){
-     this.city = game.add.tileSprite(0, 0, 600, 100, "city");
+     this.city = game.add.tileSprite(0, 550, 600, 90, "city");
      // this.background.autoScroll(400, 10);
 
   },
