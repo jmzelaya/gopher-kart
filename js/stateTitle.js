@@ -2,6 +2,7 @@ var StateTitle = {
   preload: function(){
      game.load.image("city", "assets/city-scape.png");
      //background fill color : #e9fffe
+     game.stage.backgroundColor = 0xe9fffe;
   },
 
   create: function (){
