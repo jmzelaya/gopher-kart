@@ -19,7 +19,7 @@ var StateTitle = {
       13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28], 12, true);
      this.logo.animations.play("menu");
      //Define and add game buttons
-     this.startBtn = game.add.button(game.world.centerX, game.world.height-50,
+     this.startBtn = game.add.button(285, game.world.height-50,
       "buttons", this.startGame, this, 1, 0, 1);
      this.startBtn.anchor.set(0.5, 0.5);
      //Enable input
