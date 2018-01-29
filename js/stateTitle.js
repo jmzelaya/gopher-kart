@@ -6,8 +6,9 @@ var StateTitle = {
      //Need to add buttons for:
      //1. Start game
      //2. Tutorial??
+     game.load.spritesheet("buttons", "assets/buttons-sprite.png", 111, 24, 4);
 
-     //Need: "best played in landscape view image"
+     //Need: "best played in landscape-view image for mobile"
   },
 
   create: function (){
@@ -18,13 +19,17 @@ var StateTitle = {
       13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28], 12, true);
      this.logo.animations.play("menu");
      //Define and add game buttons
+     this.startBtn = game.add.button(game.world.centerX, game.world.height-50,
+      "buttons", this.startGame, this, 1, 0, 1);
+     this.startBtn.anchor.set(0.5, 0.5);
      //Enable input
      //Call setListeners();
 
   },
 
-  //Add startGame function
-  //game.state.start("StateMain");
+  startGame: function (){
+    game.state.start("StateChoice");
+  },
 
   //Define setListeners function
   //Add listeners for correct and incorrect screen orientation

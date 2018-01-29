@@ -1,4 +1,5 @@
 var game;
+var character;
 
 window.onload = function(){
   if(screen.width>900){
@@ -11,6 +12,8 @@ window.onload = function(){
   game.state.add("StateTitle", StateTitle);
   game.state.add("StateMain", StateMain);
   game.state.add("StateChoice", StateChoice);
+  // game.state.add("mainState", mainState);
+
 
   game.state.start("StateTitle");
 };
