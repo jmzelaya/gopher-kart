@@ -5,7 +5,6 @@ var StateMain = {
   },
 
   create: function () {
-    console.log("Ready!");
 
   },
 
@@ -15,5 +14,5 @@ var StateMain = {
   },
 
 
-  
+
 };//END StateMain
