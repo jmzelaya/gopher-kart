@@ -9,6 +9,8 @@ var StateChoice = {
     // console.log("Choose your Gopher!");
     this.racerBlue = game.add.sprite(game.world.centerX, game.world.centerY, "racerBlue");
     this.racerBlue.anchor.set(0.5, 0.5);
+    this.racerBlue.animations.add("idle", [0, 1], 12, true);
+    this.racerBlue.animations.play("idle");
   },
 
   update: function () {
