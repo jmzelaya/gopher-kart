@@ -6,7 +6,7 @@ var StateMain = {
     //Add rail
     //Add background
     //Add other racers
-    //Add obstacles
+    //Add obstacles 
   },
 
   create: function () {

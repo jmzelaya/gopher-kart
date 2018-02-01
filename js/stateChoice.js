@@ -28,7 +28,17 @@ var StateChoice = {
     this.racerPurple.animations.play("idle");
 
     //Add "buttons" for choosing racer
-    //Add "confirmation" button
+    //Make "choose THIS racer" button
+      //Erick plans to make a "power on" button
+      //It should turn on color and play animations
+      //Accessing one of the racer buttons should also "turn on" the confirm this racer button
+      //and start the game
+      //Due to similar functions in many of the buttons
+      //Create a function that gets called within the button
+        //Should turn on animation change the color, etc.
+        //....OR put all of the color gophers in 1 spritesheet
+        //Having so many is memory heavy and repeatative.
+
   },
 
   update: function () {
