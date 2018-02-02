@@ -20,9 +20,9 @@ var StateChoice = {
     this.racerBlue.animations.add("idle", [0, 1], 12, true);
     this.racerBlue.animations.play("idle");
 
-    this.startBtn = game.add.button(game.world.centerX, game.world.centerY+50,
-     "buttons", this.startGame, this, 1, 0, 1);
-    this.startBtn.anchor.set(0.5, 0.5);
+    this.startBlue = game.add.button(game.world.centerX, game.world.centerY+50,
+     "buttons", this.startBlue, this, 1, 0, 1);
+    this.startBlue.anchor.set(0.5, 0.5);
 
     //Pink Gopher
     this.racerPink = game.add.sprite(game.world.centerX-150, game.world.centerY, "racerPink");
@@ -30,9 +30,9 @@ var StateChoice = {
     this.racerPink.animations.add("idle", [0, 1], 12, true);
     this.racerPink.animations.play("idle");
 
-    this.startBtn = game.add.button(game.world.centerX-150, game.world.centerY+50,
-     "buttons", this.startGame, this, 1, 0, 1);
-    this.startBtn.anchor.set(0.5, 0.5);
+    this.startPink = game.add.button(game.world.centerX-150, game.world.centerY+50,
+     "buttons", this.startPink, this, 1, 0, 1);
+    this.startPink.anchor.set(0.5, 0.5);
 
     //Purple Gopher
     this.racerPurple = game.add.sprite(game.world.centerX+150, game.world.centerY, "racerPurple");
@@ -40,9 +40,17 @@ var StateChoice = {
     this.racerPurple.animations.add("idle", [0, 1], 12, true);
     this.racerPurple.animations.play("idle");
 
-    this.startBtn = game.add.button(game.world.centerX+150, game.world.centerY+50,
-     "buttons", this.startGame, this, 1, 0, 1);
-    this.startBtn.anchor.set(0.5, 0.5);
+    this.startPurple = game.add.button(game.world.centerX+150, game.world.centerY+50,
+     "buttons", this.startPurple, this, 1, 0, 1);
+    this.startPurple.anchor.set(0.5, 0.5);
+
+
+
+
+    //Confirmation button
+    this.startConfirm = game.add.button(game.world.centerX, game.world.height-50,
+     "buttons", this.startConfirm, this, 1, 0, 1);
+    this.startConfirm.anchor.set(0.5, 0.5);
 
     //Add "buttons" for choosing racer
     //Make "choose THIS racer" button
