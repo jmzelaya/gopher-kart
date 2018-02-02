@@ -10,6 +10,7 @@ var StateMain = {
   },
 
   create: function () {
+    console.log("You chose the " + character + " racer!");
     //Load "character" from the stateChoice;
     setTimeout(function () {
       for(var i = 3; i > 0; i --){
@@ -20,6 +21,7 @@ var StateMain = {
   },
 
   update: function (){
+
 
   },
 

@@ -67,18 +67,18 @@ var StateChoice = {
   },
 
   startBlue: function () {
-    this.character = "blue";
-    console.log(this.character);
+    character = "blue";
+    console.log(character);
   },
 
   startPink: function () {
-    this.character = "pink";
-    console.log(this.character);
+    character = "pink";
+    console.log(character);
   },
 
   startPurple: function () {
-    this.character = "purple";
-    console.log(this.character);
+    character = "purple";
+    console.log(character);
   },
 
   startConfirm: function () {
