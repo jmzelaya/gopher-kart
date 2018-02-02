@@ -81,12 +81,13 @@ var StateChoice = {
     console.log(this.character);
   },
 
-  confirmStart: function () {
-
+  startConfirm: function () {
+    game.state.start("StateMain");
   },
 
   //choose racer should call THAT color racer's function
   //Pass THAT "character" value to Confirm button
+  //Maybe access object number that refers to the series of frames for THAT gopher
 
   //Should NOT e able to press confirmation button prior to choosing a racer
   //If unable to do that  -->
