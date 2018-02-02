@@ -66,6 +66,18 @@ var StateChoice = {
 
   },
 
+  startBlue: function () {
+    console.log("You've chosen Blue!");
+  },
+
+  startPink: function () {
+    console.log("You've chosen Pink!");
+  },
+
+  startPurple: function () {
+    console.log("You've chosen Purple!");
+  },
+
   update: function () {
 
   },
