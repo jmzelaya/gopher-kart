@@ -67,16 +67,30 @@ var StateChoice = {
   },
 
   startBlue: function () {
-    console.log("You've chosen Blue!");
+    this.character = "blue";
+    console.log(this.character);
   },
 
   startPink: function () {
-    console.log("You've chosen Pink!");
+    this.character = "pink";
+    console.log(this.character);
   },
 
   startPurple: function () {
-    console.log("You've chosen Purple!");
+    this.character = "purple";
+    console.log(this.character);
   },
+
+  confirmStart: function () {
+
+  },
+
+  //choose racer should call THAT color racer's function
+  //Pass THAT "character" value to Confirm button
+
+  //Should NOT e able to press confirmation button prior to choosing a racer
+  //If unable to do that  -->
+    //If "character" is empty show message --> "You haven't picked a racer!"
 
   update: function () {
 
