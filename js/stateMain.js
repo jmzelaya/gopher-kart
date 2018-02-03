@@ -7,6 +7,10 @@ var StateMain = {
     //Add background
     //Add other racers
     //Add obstacles
+
+    //Conditional or Case/Switch to
+    //preload the correct spriteSheet
+    //depending on what the "character" var is
   },
 
   create: function () {
