@@ -20,21 +20,21 @@ var StateMain = {
 
   create: function () {
     if(character == "blue"){
-      this.racerBlue = game.add.sprite(30, 280, "racerBlue");
+      this.racerBlue = game.add.sprite(50, 280, "racerBlue");
       this.racerBlue.anchor.set(0.5, 0.5);
       this.racerBlue.animations.add("idle", [0, 1], 12, true);
       this.racerBlue.animations.play("idle");
     }
 
     else if (character == "pink") {
-      this.racerPink = game.add.sprite(30, 280, "racerPink");
+      this.racerPink = game.add.sprite(50, 280, "racerPink");
       this.racerPink.anchor.set(0.5, 0.5);
       this.racerPink.animations.add("idle", [0, 1], 12, true);
       this.racerPink.animations.play("idle");
     }
 
     else{
-      this.racerPurple = game.add.sprite(30, 280, "racerPurple");
+      this.racerPurple = game.add.sprite(50, 280, "racerPurple");
       this.racerPurple.anchor.set(0.5, 0.5);
       this.racerPurple.animations.add("idle", [0, 1], 12, true);
       this.racerPurple.animations.play("idle");
