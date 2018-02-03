@@ -1,7 +1,8 @@
 var StateMain = {
 
   preload: function () {
-    //Add racer spritesheet(s)
+    //Add racer spritesheet(s) - Later put into 1 :)
+    //...maybe put into global variables? To remove repitition...
     game.load.spritesheet("racerBlue", "assets/gopher-blue.png", 63, 60, 7);
     game.load.spritesheet("racerPink", "assets/gopher-pink.png", 63, 60, 7);
     game.load.spritesheet("racerPurple", "assets/gopher-purple.png", 63, 60, 7);
@@ -11,11 +12,6 @@ var StateMain = {
     //Add other racers
     //Add obstacles
 
-
-    //**Move this into create after 1 full spritesheet :D
-    //Conditional or Case/Switch to
-    //preload the correct spriteSheet
-    //depending on what the "character" var is
   },
 
   create: function () {
