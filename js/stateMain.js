@@ -8,6 +8,8 @@ var StateMain = {
     //Add other racers
     //Add obstacles
 
+
+    //**Move this into create after 1 full spritesheet :D
     //Conditional or Case/Switch to
     //preload the correct spriteSheet
     //depending on what the "character" var is

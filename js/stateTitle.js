@@ -2,7 +2,7 @@ var StateTitle = {
   preload: function(){
      game.load.image("city", "assets/city-scape.png");
      game.stage.backgroundColor = 0xe9fffe;
-     game.load.spritesheet("logo", "assets/menu-animation-flags.png", 576, 333, 28);
+     game.load.spritesheet("logo", "assets/menu-animation.png", 576, 334, 28);
      //Need to add buttons for:
      //1. Start game
      //2. Tutorial??
