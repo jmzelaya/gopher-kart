@@ -26,11 +26,10 @@ var StateMain = {
     this.titleSong.play('', 0, 1, true);
 
     //VARS
-    this.lane = 0;
+    var road = game.add.tileSprite(0, 250, 600, 159, "road");
+    var topRail = game.add.tileSprite(0, 230, 600, 29, "topRail");
+    var bottomRail = game.add.tileSprite(0, 405, 600, 29, "bottomRail");
 
-    this.road = game.add.tileSprite(0, 250, 600, 159, "road");
-    this.topRail = game.add.tileSprite(0, 230, 600, 29, "topRail");
-    this.bottomRail = game.add.tileSprite(0, 405, 600, 29, "bottomRail");
 
     if(character == "blue"){
       this.racerBlue = game.add.sprite(50, 320, "racerBlue");
@@ -61,6 +60,9 @@ var StateMain = {
         console.log(i);
       }
       console.log("GO!");
+      road.autoScroll(-200, 0);
+      topRail.autoScroll(-200, 0);
+      bottomRail.autoScroll(-200, 0);
     }, 1500);
 
     /*
@@ -81,9 +83,9 @@ var StateMain = {
   },
 
   update: function (){
-    this.road.tilePosition.x -= 2;
-    this.topRail.tilePosition.x -=2;
-    this.bottomRail.tilePosition.x -=2;
+    // this.road.tilePosition.x -= 2;
+    // this.topRail.tilePosition.x -=2;
+    // this.bottomRail.tilePosition.x -=2;
 
 
 
