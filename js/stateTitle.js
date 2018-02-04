@@ -12,6 +12,7 @@ var StateTitle = {
   },
 
   create: function (){
+
      this.city = game.add.tileSprite(0, 342, 600, 90, "city");
      this.logo = game.add.sprite(game.world.centerX, game.world.height-250, "logo");
      this.logo.anchor.set(0.5, 0.5);

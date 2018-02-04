@@ -5,7 +5,7 @@ var StateChoice = {
     game.load.spritesheet("racerBlue", "assets/gopher-blue.png", 63, 60, 7);
     game.load.spritesheet("racerPink", "assets/gopher-pink.png", 63, 60, 7);
     game.load.spritesheet("racerPurple", "assets/gopher-purple.png", 63, 60, 7);
-
+    game.load.image("background", "assets/character-select-background.png");
 
     //sample test button
     game.load.spritesheet("buttons", "assets/buttons-sprite.png", 111, 24, 4);
@@ -52,6 +52,7 @@ var StateChoice = {
      "buttons", this.startConfirm, this, 1, 0, 1);
     this.startConfirm.anchor.set(0.5, 0.5);
 
+    this.background = game.add.image(0, 0, "background");
 
   },
 

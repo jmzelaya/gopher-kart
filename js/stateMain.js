@@ -1,12 +1,14 @@
 var StateMain = {
 
   preload: function () {
+    game.stage.backgroundColor = 0xe9fffe;
     //Add racer spritesheet(s) - Later put into 1 :)
     //...maybe put into global variables? To remove repitition...
     game.load.spritesheet("racerBlue", "assets/gopher-blue.png", 63, 60, 7);
     game.load.spritesheet("racerPink", "assets/gopher-pink.png", 63, 60, 7);
     game.load.spritesheet("racerPurple", "assets/gopher-purple.png", 63, 60, 7);
     //Add road
+    game.load.image("road", "assets/road-tile.png");
     //Add rail
     //Add background
     //Add other racers
@@ -15,6 +17,12 @@ var StateMain = {
   },
 
   create: function () {
+    //VARS
+    this.lane = 0;
+
+    this.road = game.add.tileSprite(0, 274, 600, 159, "road");
+
+
     if(character == "blue"){
       this.racerBlue = game.add.sprite(50, 280, "racerBlue");
       this.racerBlue.anchor.set(0.5, 0.5);
@@ -45,9 +53,11 @@ var StateMain = {
       }
       console.log("GO!");
     }, 1500);
+
   },
 
   update: function (){
+    this.road.tilePosition.x -= 2;
 
 
   },
