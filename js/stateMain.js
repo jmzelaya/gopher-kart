@@ -63,12 +63,29 @@ var StateMain = {
       console.log("GO!");
     }, 1500);
 
+    /*
+    This are the beginning workings
+    of adding random racers OR
+    a new obstacle to the screen
+    */
+    setInterval(function () {
+      var randomGen = Math.floor(Math.random() * 20);
+      if(randomGen % 2 === 0){
+        // this.racerPink = game.add.sprite(50, 350, "racerPink");
+        console.log("New racer added!");
+      }
+      else{
+        console.log("New obstacle added!");
+      }
+    }, 5500);
   },
 
   update: function (){
     this.road.tilePosition.x -= 2;
     this.topRail.tilePosition.x -=2;
     this.bottomRail.tilePosition.x -=2;
+
+
 
 
   },
