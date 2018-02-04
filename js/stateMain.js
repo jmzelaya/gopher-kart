@@ -1,15 +1,20 @@
 var StateMain = {
 
   preload: function () {
+    game.load.audio("title", "assets/music/More-Crazy-Races.mp3");
+
     game.stage.backgroundColor = 0xe9fffe;
     //Add racer spritesheet(s) - Later put into 1 :)
     //...maybe put into global variables? To remove repitition...
     game.load.spritesheet("racerBlue", "assets/gopher-blue.png", 63, 60, 7);
     game.load.spritesheet("racerPink", "assets/gopher-pink.png", 63, 60, 7);
     game.load.spritesheet("racerPurple", "assets/gopher-purple.png", 63, 60, 7);
-    //Add road
+    //Road
     game.load.image("road", "assets/road-tile.png");
-    //Add rail
+    //Top rail
+    game.load.image("topRail", "assets/top-rail.png");
+    //Bottom rail
+    game.load.image("bottomRail", "assets/bottom-rail.png");
     //Add background
     //Add other racers
     //Add obstacles
@@ -17,28 +22,32 @@ var StateMain = {
   },
 
   create: function () {
+    this.titleSong = game.add.audio("title");
+    this.titleSong.play('', 0, 1, true);
+
     //VARS
     this.lane = 0;
 
-    this.road = game.add.tileSprite(0, 274, 600, 159, "road");
-
+    this.road = game.add.tileSprite(0, 250, 600, 159, "road");
+    this.topRail = game.add.tileSprite(0, 230, 600, 29, "topRail");
+    this.bottomRail = game.add.tileSprite(0, 405, 600, 29, "bottomRail");
 
     if(character == "blue"){
-      this.racerBlue = game.add.sprite(50, 280, "racerBlue");
+      this.racerBlue = game.add.sprite(50, 320, "racerBlue");
       this.racerBlue.anchor.set(0.5, 0.5);
       this.racerBlue.animations.add("idle", [0, 1], 12, true);
       this.racerBlue.animations.play("idle");
     }
 
     else if (character == "pink") {
-      this.racerPink = game.add.sprite(50, 280, "racerPink");
+      this.racerPink = game.add.sprite(50, 320, "racerPink");
       this.racerPink.anchor.set(0.5, 0.5);
       this.racerPink.animations.add("idle", [0, 1], 12, true);
       this.racerPink.animations.play("idle");
     }
 
     else{
-      this.racerPurple = game.add.sprite(50, 280, "racerPurple");
+      this.racerPurple = game.add.sprite(50, 320, "racerPurple");
       this.racerPurple.anchor.set(0.5, 0.5);
       this.racerPurple.animations.add("idle", [0, 1], 12, true);
       this.racerPurple.animations.play("idle");
@@ -58,6 +67,8 @@ var StateMain = {
 
   update: function (){
     this.road.tilePosition.x -= 2;
+    this.topRail.tilePosition.x -=2;
+    this.bottomRail.tilePosition.x -=2;
 
 
   },

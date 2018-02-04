@@ -86,6 +86,7 @@ var StateChoice = {
     if(character === undefined){
       console.log("You must choose a gopher!");
     } else {
+    this.selectSong.stop();
     game.state.start("StateMain");
     }
   },
