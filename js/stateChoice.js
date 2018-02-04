@@ -1,5 +1,7 @@
 var StateChoice = {
   preload: function () {
+    game.load.audio("select", "assets/music/Good-Morning-Doctor-Weird.mp3");
+
     //Spritesheets for the 3 colored Gophers
     //Later put into 1 spritesheet
     game.load.spritesheet("racerBlue", "assets/gopher-blue.png", 63, 60, 7);
@@ -8,15 +10,19 @@ var StateChoice = {
     game.load.image("background", "assets/character-select-background.png");
 
     //sample test button
-    // game.load.spritesheet("buttons", "assets/buttons-sprite.png", 111, 24, 4);
+    game.load.spritesheet("confirmButton", "assets/buttons-sprite.png", 111, 24, 4);
 
     game.load.image("buttons", "assets/red-button.png");
 
   },
 
   create: function () {
-    this.background = game.add.image(0, 0, "background");
+    //Music
+    this.selectSong = game.add.audio("select");
+    //Watched youtube video, need to check docs for .play params
+    this.selectSong.play('', 0, 1, true);
 
+    this.background = game.add.image(0, 0, "background");
 
     //Blue Gopher
     this.racerBlue = game.add.sprite(game.world.centerX, game.world.centerY+40, "racerBlue");
@@ -54,7 +60,7 @@ var StateChoice = {
 
     //Confirmation button
     this.startConfirm = game.add.button(game.world.centerX, game.world.height-50,
-     "buttons", this.startConfirm, this, 1, 0, 1);
+     "confirmButton", this.startConfirm, this, 1, 0, 1);
     this.startConfirm.anchor.set(0.5, 0.5);
 
   },
@@ -86,6 +92,7 @@ var StateChoice = {
 
 
   update: function () {
+
 
   },
 

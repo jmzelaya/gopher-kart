@@ -1,5 +1,7 @@
 var StateTitle = {
   preload: function(){
+     game.load.audio("title", "assets/music/More-Crazy-Races.mp3");
+
      game.load.image("city", "assets/city-scape.png");
      game.stage.backgroundColor = 0xe9fffe;
      game.load.spritesheet("logo", "assets/menu-animation.png", 576, 334, 28);
@@ -12,6 +14,8 @@ var StateTitle = {
   },
 
   create: function (){
+     this.titleSong = game.add.audio("title");
+     this.titleSong.play('', 0, 1, true);
 
      this.city = game.add.tileSprite(0, 342, 600, 90, "city");
      this.logo = game.add.sprite(game.world.centerX, game.world.height-250, "logo");
@@ -29,6 +33,7 @@ var StateTitle = {
   },
 
   startGame: function (){
+    this.titleSong.stop();
     game.state.start("StateChoice");
   },
 
