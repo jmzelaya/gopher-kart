@@ -4,7 +4,7 @@ var StateChoice = {
     //Later put into 1 spritesheet
     game.load.spritesheet("racerBlue", "assets/gopher-blue.png", 63, 60, 7);
     game.load.spritesheet("racerPink", "assets/gopher-pink.png", 63, 60, 7);
-    game.load.spritesheet("racerPurple", "assets/gopher-purple.png", 63, 60, 7);
+    game.load.spritesheet("racerPurple", "assets/purple-gopher-drive.png", 64, 60, 2);
     game.load.image("background", "assets/character-select-background.png");
 
     //sample test button
