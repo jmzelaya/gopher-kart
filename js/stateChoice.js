@@ -1,5 +1,6 @@
 var StateChoice = {
   preload: function () {
+    //Music and Sounds
     game.load.audio("select", "assets/music/Good-Morning-Doctor-Weird.mp3");
 
     //Spritesheets for the 3 colored Gophers
@@ -22,26 +23,27 @@ var StateChoice = {
     //Watched youtube video, need to check docs for .play params
     this.selectSong.play('', 0, 1, true);
 
+
     this.background = game.add.image(0, 0, "background");
 
     //Blue Gopher
-    this.racerBlue = game.add.sprite(game.world.centerX, game.world.centerY+40, "racerBlue");
+    this.racerBlue = game.add.sprite(game.world.centerX-150, game.world.centerY+40, "racerBlue");
     this.racerBlue.anchor.set(0.5, 0.5);
     this.racerBlue.animations.add("idle", [0, 1], 12, true);
     this.racerBlue.animations.play("idle");
     //Choose Blue
-    this.startBlue = game.add.button(game.world.centerX, game.world.centerY+105,
+    this.startBlue = game.add.button(game.world.centerX-150, game.world.centerY+105,
      "buttons", this.startBlue, this, 1, 0, 1);
     this.startBlue.anchor.set(0.5, 0.5);
 
 
     //Pink Gopher
-    this.racerPink = game.add.sprite(game.world.centerX-150, game.world.centerY+40, "racerPink");
+    this.racerPink = game.add.sprite(game.world.centerX, game.world.centerY+40, "racerPink");
     this.racerPink.anchor.set(0.5, 0.5);
     this.racerPink.animations.add("idle", [0, 1], 12, true);
     this.racerPink.animations.play("idle");
     //Choose Pink
-    this.startPink = game.add.button(game.world.centerX-150, game.world.centerY+105,
+    this.startPink = game.add.button(game.world.centerX, game.world.centerY+105,
      "buttons", this.startPink, this, 1, 0, 1);
     this.startPink.anchor.set(0.5, 0.5);
 
@@ -84,6 +86,10 @@ var StateChoice = {
 
   startConfirm: function () {
     if(character === undefined){
+      this.sampleText = game.add.text(game.world.centerX, 30, "You must choose a gopher!");
+      this.sampleText.fill = "ffffff";
+      this.sampleText.fontSize = 32;
+      this.sampleText.anchor.set(0.5, 0.5);
       console.log("You must choose a gopher!");
     } else {
     this.selectSong.stop();

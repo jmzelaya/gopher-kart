@@ -22,15 +22,21 @@ var StateMain = {
   },
 
   create: function () {
+    //Music
     this.titleSong = game.add.audio("title");
     this.titleSong.play('', 0, 1, true);
 
+    //Physics
+    game.physics.startSystem(Phaser.Physics.Arcade);
+    game.physics.arcade.enable(character);
+
     //VARS
+    //Maybe add the parts of the road and rails to a group?
     var road = game.add.tileSprite(0, 250, 600, 159, "road");
     var topRail = game.add.tileSprite(0, 230, 600, 29, "topRail");
     var bottomRail = game.add.tileSprite(0, 405, 600, 29, "bottomRail");
 
-
+    //Conditional to add correct gopher to screen
     if(character == "blue"){
       this.racerBlue = game.add.sprite(50, 320, "racerBlue");
       this.racerBlue.anchor.set(0.5, 0.5);
@@ -54,16 +60,18 @@ var StateMain = {
 
 
     console.log("You chose the " + character + " racer!");
-    //Load "character" from the stateChoice;
+
+    //Puts a delay on the scrolling of the road and rails
     setTimeout(function () {
       for(var i = 3; i > 0; i --){
         console.log(i);
       }
       console.log("GO!");
+      //Start scrolling
       road.autoScroll(-200, 0);
       topRail.autoScroll(-200, 0);
       bottomRail.autoScroll(-200, 0);
-    }, 1500);
+    }, 3000);
 
     /*
     This are the beginning workings
@@ -79,7 +87,7 @@ var StateMain = {
       else{
         console.log("New obstacle added!");
       }
-    }, 5500);
+    }, 3500);
   },
 
   update: function (){
