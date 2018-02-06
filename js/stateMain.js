@@ -19,18 +19,31 @@ var StateMain = {
     //Add other racers
     //Add obstacles
 
+    //Countdown Spritesheet
+    game.load.image("countdown", "assets/count-down.png");
+
   },
 
   create: function () {
-    //Music
+    //MUSIC
     this.titleSong = game.add.audio("title");
     this.titleSong.play('', 0, 1, true);
 
-    this.timer = this.game.time.create(this.game);
-    this.timer.add(this.delay, this.readyForAction, this);
-    this.timer.start();
+    //TIMER
+    //Not sure how this works, going to do some more reasearch
+    // this.timer = this.game.time.create(this.game);
+    // this.timer.add(this.delay, this.readyForAction, this);
+    // this.timer.start();
 
-    //Physics
+    //COUNTDOWN
+    this.countDown = game.add.sprite(game.world.centerX, game.world.centerY, 'countdown');
+
+    this.countDown.anchor.setTo(0.5, 0.5);
+    this.countDown.alpha = 0;
+
+    game.add.tween(this.countDown).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, true, 0, 1000, false);
+
+    //PHYSICS
     game.physics.startSystem(Phaser.Physics.Arcade);
     game.physics.arcade.enable(character);
 
