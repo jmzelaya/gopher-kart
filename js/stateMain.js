@@ -44,14 +44,27 @@ var StateMain = {
     this.countDown2.anchor.setTo(0.5, 0.5);
     this.countDown2.alpha = 0;
 
+    this.countDown3 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown3');
+
+    this.countDown3.anchor.setTo(0.5, 0.5);
+    this.countDown3.alpha = 0;
+
+    this.countDownGo = game.add.sprite(game.world.centerX, game.world.centerY, 'countDownGo');
+
+    this.countDownGo.anchor.setTo(0.5, 0.5);
+    this.countDownGo.alpha = 0;
+
     // game.add.tween(this.countDown).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, true, 0, 1000, false);
 
-    var tween1 = game.add.tween(this.countDown1).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, false, 300).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, false, 300);
+    var tween1 = game.add.tween(this.countDown1).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false, 0).to({alpha: 0}, 500, Phaser.Easing.Linear.None, false, 0);
     // var tween1out = game.add.tween(this.countDown1).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, false, 300);
-    var tween2 = game.add.tween(this.countDown2).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, false, 0);
-
-    tween1.chain(tween2);
-    tween1.start();
+    var tween2 = game.add.tween(this.countDown2).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false, 0).to({alpha: 0}, 500, Phaser.Easing.Linear.None, false, 0);
+    var tween3 = game.add.tween(this.countDown3).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false, 0).to({alpha: 0}, 500, Phaser.Easing.Linear.None, false, 0);
+    var tweenGo = game.add.tween(this.countDownGo).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false, 0).to({alpha: 0}, 500, Phaser.Easing.Linear.None, false, 0);
+    tween3.chain(tween2);
+    tween2.chain(tween1);
+    tween1.chain(tweenGo);
+    tween3.start();
 
 
     //TIMER
