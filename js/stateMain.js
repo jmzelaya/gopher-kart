@@ -26,6 +26,10 @@ var StateMain = {
     this.titleSong = game.add.audio("title");
     this.titleSong.play('', 0, 1, true);
 
+    this.timer = this.game.time.create(this.game);
+    this.timer.add(this.delay, this.readyForAction, this);
+    this.timer.start();
+
     //Physics
     game.physics.startSystem(Phaser.Physics.Arcade);
     game.physics.arcade.enable(character);
