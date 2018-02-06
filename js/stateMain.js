@@ -46,11 +46,13 @@ var StateMain = {
 
     // game.add.tween(this.countDown).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, true, 0, 1000, false);
 
-    var tween1 = game.add.tween(this.countDown1).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, true, 300);
-    var tween2 = game.add.tween(this.countDown2).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, true, 0);
+    var tween1 = game.add.tween(this.countDown1).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, false, 300).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, false, 300);
+    // var tween1out = game.add.tween(this.countDown1).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, false, 300);
+    var tween2 = game.add.tween(this.countDown2).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, false, 0);
 
-    tween1.chain(this.tween2);
+    tween1.chain(tween2);
     tween1.start();
+
 
     //TIMER
     //Not sure how this works, going to do some more reasearch
