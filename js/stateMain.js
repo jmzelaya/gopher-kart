@@ -20,7 +20,11 @@ var StateMain = {
     //Add obstacles
 
     //Countdown Spritesheet
-    game.load.image("countdown", "assets/count-down.png");
+    game.load.image("countDown3", "assets/three.png");
+    game.load.image("countDown2", "assets/two.png");
+    game.load.image("countDown1", "assets/one.png");
+    game.load.image("countDownGo", "assets/go.png");
+
 
   },
 
@@ -29,19 +33,29 @@ var StateMain = {
     this.titleSong = game.add.audio("title");
     this.titleSong.play('', 0, 1, true);
 
+    //COUNTDOWN
+    this.countDown1 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown1');
+
+    this.countDown1.anchor.setTo(0.5, 0.5);
+    this.countDown1.alpha = 0;
+
+    this.countDown2 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown2');
+
+    this.countDown2.anchor.setTo(0.5, 0.5);
+    this.countDown2.alpha = 0;
+
+    // game.add.tween(this.countDown).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, true, 0, 1000, false);
+
+    this.tween1 = game.add.tween(this.countDown1).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, true, 100, 1000, false);
+    this.tween2 = game.add.tween(this.countDown2).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, true, 0, 1000, false);
+    this.tween1.chain(this.tween2);
+    this.tween1.start();
+
     //TIMER
     //Not sure how this works, going to do some more reasearch
     // this.timer = this.game.time.create(this.game);
     // this.timer.add(this.delay, this.readyForAction, this);
     // this.timer.start();
-
-    //COUNTDOWN
-    this.countDown = game.add.sprite(game.world.centerX, game.world.centerY, 'countdown');
-
-    this.countDown.anchor.setTo(0.5, 0.5);
-    this.countDown.alpha = 0;
-
-    game.add.tween(this.countDown).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, true, 0, 1000, false);
 
     //PHYSICS
     game.physics.startSystem(Phaser.Physics.Arcade);
