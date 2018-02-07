@@ -13,7 +13,8 @@ var StateChoice = {
     //sample test button
     game.load.spritesheet("confirmButton", "assets/buttons-sprite.png", 111, 24, 4);
 
-    game.load.image("buttons", "assets/red-button.png");
+    game.load.spritesheet("buttons", "assets/on-off-buttons.png", 59, 41, 2);
+    game.load.spritesheet("blueMarquee", "assets/blue-crawl.png", 50, 12, 45);
 
   },
 
@@ -23,7 +24,7 @@ var StateChoice = {
     //Watched youtube video, need to check docs for .play params
     this.selectSong.play('', 0, 1, true);
 
-
+    //Background
     this.background = game.add.image(0, 0, "background");
 
     //Blue Gopher
@@ -33,7 +34,7 @@ var StateChoice = {
     this.racerBlue.animations.play("idle");
     //Choose Blue
     this.startBlue = game.add.button(game.world.centerX-150, game.world.centerY+105,
-     "buttons", this.startBlue, this, 1, 0, 1);
+     "buttons", this.blueStart, this);
     this.startBlue.anchor.set(0.5, 0.5);
 
 
@@ -44,7 +45,7 @@ var StateChoice = {
     this.racerPink.animations.play("idle");
     //Choose Pink
     this.startPink = game.add.button(game.world.centerX, game.world.centerY+105,
-     "buttons", this.startPink, this, 1, 0, 1);
+     "buttons", this.startPink, this, 0, 0, 1);
     this.startPink.anchor.set(0.5, 0.5);
 
 
@@ -55,32 +56,47 @@ var StateChoice = {
     this.racerPurple.animations.play("idle");
     //Choose Purple
     this.startPurple = game.add.button(game.world.centerX+150, game.world.centerY+105,
-     "buttons", this.startPurple, this, 1, 0, 1);
+     "buttons", this.startPurple, this, 0, 0, 1);
     this.startPurple.anchor.set(0.5, 0.5);
-
 
 
     //Confirmation button
     this.startConfirm = game.add.button(game.world.centerX, game.world.height-50,
-     "confirmButton", this.startConfirm, this, 1, 0, 1);
+     "confirmButton", this.startConfirm, this, 0, 0, 1);
     this.startConfirm.anchor.set(0.5, 0.5);
+
+    //Marquee
+    this.blueMarquee = game.add.sprite(game.world.centerX, game.world.centerY, "blueMarquee");
 
   },
 
   //Maybe make 1 function with conditional or case switch?
   //A lot of functions for no reason really...
-  startBlue: function () {
-    character = "blue";
+  blueStart: function () {
+    if(this.startBlue && character === undefined){
+      character = "blue";
+      this.startBlue.setFrames(1);
+      //Turn all other button frames to 0
+      //Play animation
+        //Marquee
+        //idle drive
+    }
+    else if(this.startBlue && character === "blue"){
+      this.startBlue.setFrames(0);
+      character = undefined;
+    }
     console.log(character);
   },
 
   startPink: function () {
     character = "pink";
+    this.startPink.setFrames(1);
     console.log(character);
   },
 
   startPurple: function () {
     character = "purple";
+    this.startPurple.setFrames(1);
     console.log(character);
   },
 

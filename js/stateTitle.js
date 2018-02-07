@@ -9,7 +9,6 @@ var StateTitle = {
      //1. Start game
      //2. Tutorial??
      game.load.spritesheet("buttons", "assets/buttons-sprite.png", 111, 24, 4);
-
      //Need: "best played in landscape-view image for mobile"
   },
 
