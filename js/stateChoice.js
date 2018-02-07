@@ -45,7 +45,7 @@ var StateChoice = {
     this.racerPink.animations.play("idle");
     //Choose Pink
     this.startPink = game.add.button(game.world.centerX, game.world.centerY+105,
-     "buttons", this.startPink, this, 0, 0, 1);
+     "buttons", this.pinkStart, this);
     this.startPink.anchor.set(0.5, 0.5);
 
 
@@ -56,7 +56,7 @@ var StateChoice = {
     this.racerPurple.animations.play("idle");
     //Choose Purple
     this.startPurple = game.add.button(game.world.centerX+150, game.world.centerY+105,
-     "buttons", this.startPurple, this, 0, 0, 1);
+     "buttons", this.purpleStart, this);
     this.startPurple.anchor.set(0.5, 0.5);
 
 
@@ -75,8 +75,9 @@ var StateChoice = {
   blueStart: function () {
     if(this.startBlue && character === undefined){
       character = "blue";
-      this.startBlue.setFrames(1);
       //Turn all other button frames to 0
+
+      this.startBlue.setFrames(1);
       //Play animation
         //Marquee
         //idle drive
@@ -88,15 +89,35 @@ var StateChoice = {
     console.log(character);
   },
 
-  startPink: function () {
-    character = "pink";
-    this.startPink.setFrames(1);
+  pinkStart: function () {
+    if(this.startPink && character === undefined){
+      character = "pink";
+      this.startPink.setFrames(1);
+      //Turn all other button frames to 0
+      //Play animation
+        //Marquee
+        //idle drive
+    }
+    else if(this.startPink && character === "pink"){
+      this.startPink.setFrames(0);
+      character = undefined;
+    }
     console.log(character);
   },
 
-  startPurple: function () {
-    character = "purple";
-    this.startPurple.setFrames(1);
+  purpleStart: function () {
+    if(this.startPurple && character === undefined){
+      character = "purple";
+      this.startPurple.setFrames(1);
+      //Turn all other button frames to 0
+      //Play animation
+        //Marquee
+        //idle drive
+    }
+    else if(this.startPurple && character === "purple"){
+      this.startPurple.setFrames(0);
+      character = undefined;
+    }
     console.log(character);
   },
 
