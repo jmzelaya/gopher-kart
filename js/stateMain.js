@@ -33,39 +33,6 @@ var StateMain = {
     this.titleSong = game.add.audio("title");
     this.titleSong.play('', 0, 1, true);
 
-    //COUNTDOWN
-    this.countDown1 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown1');
-
-    this.countDown1.anchor.setTo(0.5, 0.5);
-    this.countDown1.alpha = 0;
-
-    this.countDown2 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown2');
-
-    this.countDown2.anchor.setTo(0.5, 0.5);
-    this.countDown2.alpha = 0;
-
-    this.countDown3 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown3');
-
-    this.countDown3.anchor.setTo(0.5, 0.5);
-    this.countDown3.alpha = 0;
-
-    this.countDownGo = game.add.sprite(game.world.centerX, game.world.centerY, 'countDownGo');
-
-    this.countDownGo.anchor.setTo(0.5, 0.5);
-    this.countDownGo.alpha = 0;
-
-    // game.add.tween(this.countDown).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, true, 0, 1000, false);
-
-    var tween1 = game.add.tween(this.countDown1).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false, 0).to({alpha: 0}, 500, Phaser.Easing.Linear.None, false, 0);
-    // var tween1out = game.add.tween(this.countDown1).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, false, 300);
-    var tween2 = game.add.tween(this.countDown2).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false, 0).to({alpha: 0}, 500, Phaser.Easing.Linear.None, false, 0);
-    var tween3 = game.add.tween(this.countDown3).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false, 0).to({alpha: 0}, 500, Phaser.Easing.Linear.None, false, 0);
-    var tweenGo = game.add.tween(this.countDownGo).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false, 0).to({alpha: 0}, 500, Phaser.Easing.Linear.None, false, 0);
-    tween3.chain(tween2);
-    tween2.chain(tween1);
-    tween1.chain(tweenGo);
-    tween3.start();
-
 
     //TIMER
     //Not sure how this works, going to do some more reasearch
@@ -135,6 +102,47 @@ var StateMain = {
         console.log("New obstacle added!");
       }
     }, 3500);
+
+
+    //COUNTDOWN
+    this.countDown1 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown1');
+    this.countDown1.anchor.setTo(0.5, 0.5);
+    this.countDown1.alpha = 0;
+
+    this.countDown2 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown2');
+    this.countDown2.anchor.setTo(0.5, 0.5);
+    this.countDown2.alpha = 0;
+
+    this.countDown3 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown3');
+    this.countDown3.anchor.setTo(0.5, 0.5);
+    this.countDown3.alpha = 0;
+
+    this.countDownGo = game.add.sprite(game.world.centerX, game.world.centerY, 'countDownGo');
+    this.countDownGo.anchor.setTo(0.5, 0.5);
+    this.countDownGo.alpha = 0;
+
+    //COUNTDOWN GROUP
+    this.countGroup = game.add.group();
+    this.countGroup.add(this.countDown1);
+    this.countGroup.add(this.countDown2);
+    this.countGroup.add(this.countDown3);
+    this.countGroup.add(this.countDownGo);
+
+
+    //TWEENS
+    var tween1 = game.add.tween(this.countDown1).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false,
+      0).to({alpha: 0}, 500, Phaser.Easing.Linear.None, false, 0);
+    var tween2 = game.add.tween(this.countDown2).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false,
+      0).to({alpha: 0}, 500, Phaser.Easing.Linear.None, false, 0);
+    var tween3 = game.add.tween(this.countDown3).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false,
+      0).to({alpha: 0}, 500, Phaser.Easing.Linear.None, false, 0);
+    var tweenGo = game.add.tween(this.countDownGo).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false,
+      0).to({alpha: 0}, 500, Phaser.Easing.Linear.None, false, 0);
+    tween3.chain(tween2);
+    tween2.chain(tween1);
+    tween1.chain(tweenGo);
+    tween3.start();
+
   },
 
   update: function (){
