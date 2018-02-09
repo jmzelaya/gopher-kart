@@ -70,6 +70,9 @@ var StateChoice = {
 
     //Marquee
     this.blueMarquee = game.add.sprite(game.world.centerX, game.world.centerY, "blueMarquee");
+    this.blueMarquee = game.add.sprite(game.world.centerX, game.world.centerY, "blueMarquee");
+    this.blueMarquee = game.add.sprite(game.world.centerX, game.world.centerY, "blueMarquee");
+
   },
 
   //Maybe make 1 function with conditional or case switch?
