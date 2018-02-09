@@ -15,6 +15,9 @@ var StateChoice = {
 
     game.load.spritesheet("buttons", "assets/on-off-buttons.png", 59, 41, 2);
     game.load.spritesheet("blueMarquee", "assets/blue-crawl.png", 50, 12, 45);
+    game.load.spritesheet("pinkMarquee", "assets/pink-crawl.png", 50, 12, 45);
+    game.load.spritesheet("purpleMarquee", "assets/purple-crawl.png", 50, 12, 45);
+
 
   },
 
@@ -67,17 +70,17 @@ var StateChoice = {
 
     //Marquee
     this.blueMarquee = game.add.sprite(game.world.centerX, game.world.centerY, "blueMarquee");
-
   },
 
   //Maybe make 1 function with conditional or case switch?
   //A lot of functions for no reason really...
   blueStart: function () {
-    if(this.startBlue && character === undefined){
+    if(this.startBlue && character !== "blue"){
       character = "blue";
       //Turn all other button frames to 0
-
       this.startBlue.setFrames(1);
+
+
       //Play animation
         //Marquee
         //idle drive
@@ -90,9 +93,12 @@ var StateChoice = {
   },
 
   pinkStart: function () {
-    if(this.startPink && character === undefined){
+    if(this.startPink && character !== "pink"){
       character = "pink";
+      this.startPurple.setFrames(0);
+      this.startBlue.setFrames(0);
       this.startPink.setFrames(1);
+
       //Turn all other button frames to 0
       //Play animation
         //Marquee
@@ -106,8 +112,10 @@ var StateChoice = {
   },
 
   purpleStart: function () {
-    if(this.startPurple && character === undefined){
+    if(this.startPurple && character !== "purple"){
       character = "purple";
+      this.startBlue.setFrames(0);
+      this.startPink.setFrames(0);
       this.startPurple.setFrames(1);
       //Turn all other button frames to 0
       //Play animation
