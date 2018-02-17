@@ -5,9 +5,8 @@ var StateChoice = {
 
     //Spritesheets for the 3 colored Gophers
     //Later put into 1 spritesheet
-    game.load.spritesheet("racerBlue", "assets/gopher-blue.png", 63, 60, 7);
-    game.load.spritesheet("racerPink", "assets/gopher-pink.png", 63, 60, 7);
-    game.load.spritesheet("racerPurple", "assets/purple-gopher-drive.png", 64, 60, 2);
+    game.load.spritesheet("racer", "assets/character-select-loops.png", 75, 71, 7);
+
     game.load.image("background", "assets/character-select-background.png");
 
     //sample test button
@@ -30,8 +29,19 @@ var StateChoice = {
     //Background
     this.background = game.add.image(0, 0, "background");
 
+    //Black & White Gophers
+    //Blue
+    this.hiddenBlueGopher = game.add.sprite(game.world.centerX-150, game.world.centerY+40, "racer");
+    this.hiddenBlueGopher.anchor.set(0.5, 0.5);
+    //Pink
+    this.hiddenPinkGopher = game.add.sprite(game.world.centerX, game.world.centerY+40, "racer");
+    this.hiddenPinkGopher.anchor.set(0.5, 0.5);
+    //Purple
+    this.hiddenPurpleGopher = game.add.sprite(game.world.centerX+150, game.world.centerY+40, "racer");
+    this.hiddenPurpleGopher.anchor.set(0.5, 0.5);
+
     //Blue Gopher
-    this.racerBlue = game.add.sprite(game.world.centerX-150, game.world.centerY+40, "racerBlue");
+    // this.racerBlue = game.add.sprite(game.world.centerX-150, game.world.centerY+40, "racer");
     this.racerBlue.anchor.set(0.5, 0.5);
     this.racerBlue.animations.add("idle", [0, 1], 12, true);
     this.racerBlue.animations.play("idle");
@@ -42,9 +52,9 @@ var StateChoice = {
 
 
     //Pink Gopher
-    this.racerPink = game.add.sprite(game.world.centerX, game.world.centerY+40, "racerPink");
+    // this.racerPink = game.add.sprite(game.world.centerX, game.world.centerY+40, "racer");
     this.racerPink.anchor.set(0.5, 0.5);
-    this.racerPink.animations.add("idle", [0, 1], 12, true);
+    this.racerPink.animations.add("idle", [3, 4], 12, true);
     this.racerPink.animations.play("idle");
     //Choose Pink
     this.startPink = game.add.button(game.world.centerX, game.world.centerY+105,
@@ -53,9 +63,9 @@ var StateChoice = {
 
 
     //Purple Gopher
-    this.racerPurple = game.add.sprite(game.world.centerX+150, game.world.centerY+40, "racerPurple");
+    // this.racerPurple = game.add.sprite(game.world.centerX+150, game.world.centerY+40, "racer");
     this.racerPurple.anchor.set(0.5, 0.5);
-    this.racerPurple.animations.add("idle", [0, 1], 12, true);
+    this.racerPurple.animations.add("idle", [5, 6], 12, true);
     this.racerPurple.animations.play("idle");
     //Choose Purple
     this.startPurple = game.add.button(game.world.centerX+150, game.world.centerY+105,
@@ -69,9 +79,9 @@ var StateChoice = {
     this.startConfirm.anchor.set(0.5, 0.5);
 
     //Marquee
-    this.blueMarquee = game.add.sprite(game.world.centerX, game.world.centerY, "blueMarquee");
-    this.blueMarquee = game.add.sprite(game.world.centerX, game.world.centerY, "blueMarquee");
-    this.blueMarquee = game.add.sprite(game.world.centerX, game.world.centerY, "blueMarquee");
+    this.blueMarquee = game.add.sprite(game.world.centerX-150, game.world.centerY, "blueMarquee");
+    this.pinkMarquee = game.add.sprite(game.world.centerX, game.world.centerY, "pinkMarquee");
+    this.purpleMarquee = game.add.sprite(game.world.centerX+150, game.world.centerY, "purpleMarquee");
 
   },
 
