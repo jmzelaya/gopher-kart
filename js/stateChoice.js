@@ -21,15 +21,47 @@ var StateChoice = {
   },
 
   create: function () {
-    //Music
+    //MUSIC
     this.selectSong = game.add.audio("select");
     //Watched youtube video, need to check docs for .play params
     this.selectSong.play('', 0, 1, true);
 
-    //Background
+    //BACKGROUND
     this.background = game.add.image(0, 0, "background");
 
-    //Black & White Gophers
+    //MARQUEE
+    //Blue
+    this.blueMarquee = game.add.sprite(game.world.centerX-150, game.world.centerY-16, "blueMarquee");
+    this.blueMarquee.anchor.set(0.5, 0.5);
+    //Pink
+    this.pinkMarquee = game.add.sprite(game.world.centerX, game.world.centerY-16, "pinkMarquee");
+    this.pinkMarquee.anchor.set(0.5, 0.5);
+    //Purple
+    this.purpleMarquee = game.add.sprite(game.world.centerX+150, game.world.centerY-16, "purpleMarquee");
+    this.purpleMarquee.anchor.set(0.5, 0.5);
+
+    //Choose Racer1
+  this.pickRacer1 = game.add.button(game.world.centerX-150, game.world.centerY+105,
+    "buttons", this.racerStart.bind(this, "racer1"), this);
+  this.pickRacer1.anchor.set(0.5, 0.5);
+
+  //Choose Racer2
+  this.pickRacer2 = game.add.button(game.world.centerX, game.world.centerY+105,
+    "buttons", this.racerStart.bind(this, "racer2"), this);
+  this.pickRacer2.anchor.set(0.5, 0.5);
+
+  //Choose Racer3
+  this.pickRacer3 = game.add.button(game.world.centerX+150, game.world.centerY+105,
+    "buttons", this.racerStart.bind(this, "racer3"), this);
+  this.pickRacer3.anchor.set(0.5, 0.5);
+
+  this.buttons = {
+    "racer1": this.pickRacer1,
+    "racer2": this.pickRacer2,
+    "racer3": this.pickRacer3
+  };
+
+    //BLACK AND WHITE GOPHERS
     //Blue
     this.hiddenBlueGopher = game.add.sprite(game.world.centerX-150, game.world.centerY+40, "racer");
     this.hiddenBlueGopher.anchor.set(0.5, 0.5);
@@ -40,120 +72,19 @@ var StateChoice = {
     this.hiddenPurpleGopher = game.add.sprite(game.world.centerX+150, game.world.centerY+40, "racer");
     this.hiddenPurpleGopher.anchor.set(0.5, 0.5);
 
-    //Blue Gopher
-    // this.racerBlue = game.add.sprite(game.world.centerX-150, game.world.centerY+40, "racer");
-    this.racerBlue.anchor.set(0.5, 0.5);
-    this.racerBlue.animations.add("idle", [0, 1], 12, true);
-    this.racerBlue.animations.play("idle");
-    //Choose Blue
-    this.startBlue = game.add.button(game.world.centerX-150, game.world.centerY+105,
-     "buttons", this.blueStart, this);
-    this.startBlue.anchor.set(0.5, 0.5);
-
-
-    //Pink Gopher
-    // this.racerPink = game.add.sprite(game.world.centerX, game.world.centerY+40, "racer");
-    this.racerPink.anchor.set(0.5, 0.5);
-    this.racerPink.animations.add("idle", [3, 4], 12, true);
-    this.racerPink.animations.play("idle");
-    //Choose Pink
-    this.startPink = game.add.button(game.world.centerX, game.world.centerY+105,
-     "buttons", this.pinkStart, this);
-    this.startPink.anchor.set(0.5, 0.5);
-
-
-    //Purple Gopher
-    // this.racerPurple = game.add.sprite(game.world.centerX+150, game.world.centerY+40, "racer");
-    this.racerPurple.anchor.set(0.5, 0.5);
-    this.racerPurple.animations.add("idle", [5, 6], 12, true);
-    this.racerPurple.animations.play("idle");
-    //Choose Purple
-    this.startPurple = game.add.button(game.world.centerX+150, game.world.centerY+105,
-     "buttons", this.purpleStart, this);
-    this.startPurple.anchor.set(0.5, 0.5);
-
-
-    //Confirmation button
-    this.startConfirm = game.add.button(game.world.centerX, game.world.height-50,
-     "confirmButton", this.startConfirm, this, 0, 0, 1);
-    this.startConfirm.anchor.set(0.5, 0.5);
-
-    //Marquee
-    this.blueMarquee = game.add.sprite(game.world.centerX-150, game.world.centerY, "blueMarquee");
-    this.pinkMarquee = game.add.sprite(game.world.centerX, game.world.centerY, "pinkMarquee");
-    this.purpleMarquee = game.add.sprite(game.world.centerX+150, game.world.centerY, "purpleMarquee");
-
   },
 
-  //Maybe make 1 function with conditional or case switch?
-  //A lot of functions for no reason really...
-  blueStart: function () {
-    if(this.startBlue && character !== "blue"){
-      character = "blue";
-      //Turn all other button frames to 0
-      this.startBlue.setFrames(1);
-
-
-      //Play animation
-        //Marquee
-        //idle drive
+  racerStart: function (racer){
+    console.log(racer);
+    for (var key in this.buttons) {
+      this.buttons[key].frame = 0;
     }
-    else if(this.startBlue && character === "blue"){
-      this.startBlue.setFrames(0);
-      character = undefined;
-    }
+
+    this.buttons[racer].frame = 1;
+    character = racer;
     console.log(character);
   },
 
-  pinkStart: function () {
-    if(this.startPink && character !== "pink"){
-      character = "pink";
-      this.startPurple.setFrames(0);
-      this.startBlue.setFrames(0);
-      this.startPink.setFrames(1);
-
-      //Turn all other button frames to 0
-      //Play animation
-        //Marquee
-        //idle drive
-    }
-    else if(this.startPink && character === "pink"){
-      this.startPink.setFrames(0);
-      character = undefined;
-    }
-    console.log(character);
-  },
-
-  purpleStart: function () {
-    if(this.startPurple && character !== "purple"){
-      character = "purple";
-      this.startBlue.setFrames(0);
-      this.startPink.setFrames(0);
-      this.startPurple.setFrames(1);
-      //Turn all other button frames to 0
-      //Play animation
-        //Marquee
-        //idle drive
-    }
-    else if(this.startPurple && character === "purple"){
-      this.startPurple.setFrames(0);
-      character = undefined;
-    }
-    console.log(character);
-  },
-
-  startConfirm: function () {
-    if(character === undefined){
-      this.sampleText = game.add.text(game.world.centerX, 30, "You must choose a gopher!");
-      this.sampleText.fill = "ffffff";
-      this.sampleText.fontSize = 32;
-      this.sampleText.anchor.set(0.5, 0.5);
-      console.log("You must choose a gopher!");
-    } else {
-    this.selectSong.stop();
-    game.state.start("StateMain");
-    }
-  },
 
 
   update: function () {

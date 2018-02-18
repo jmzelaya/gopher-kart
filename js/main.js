@@ -1,5 +1,7 @@
 var game;
 var character;
+var lane;
+var score;
 
 
 window.onload = function(){
