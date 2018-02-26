@@ -41,25 +41,25 @@ var StateChoice = {
     this.purpleMarquee.anchor.set(0.5, 0.5);
 
     //Choose Racer1
-  this.pickRacer1 = game.add.button(game.world.centerX-150, game.world.centerY+105,
-    "buttons", this.racerStart.bind(this, "racer1"), this);
-  this.pickRacer1.anchor.set(0.5, 0.5);
+    this.pickRacer1 = game.add.button(game.world.centerX-150, game.world.centerY+105,
+      "buttons", this.racerStart.bind(this, "racer1"), this);
+    this.pickRacer1.anchor.set(0.5, 0.5);
 
-  //Choose Racer2
-  this.pickRacer2 = game.add.button(game.world.centerX, game.world.centerY+105,
-    "buttons", this.racerStart.bind(this, "racer2"), this);
-  this.pickRacer2.anchor.set(0.5, 0.5);
+    //Choose Racer2
+    this.pickRacer2 = game.add.button(game.world.centerX, game.world.centerY+105,
+      "buttons", this.racerStart.bind(this, "racer2"), this);
+    this.pickRacer2.anchor.set(0.5, 0.5);
 
-  //Choose Racer3
-  this.pickRacer3 = game.add.button(game.world.centerX+150, game.world.centerY+105,
-    "buttons", this.racerStart.bind(this, "racer3"), this);
-  this.pickRacer3.anchor.set(0.5, 0.5);
+    //Choose Racer3
+    this.pickRacer3 = game.add.button(game.world.centerX+150, game.world.centerY+105,
+      "buttons", this.racerStart.bind(this, "racer3"), this);
+    this.pickRacer3.anchor.set(0.5, 0.5);
 
-  this.buttons = {
-    "racer1": this.pickRacer1,
-    "racer2": this.pickRacer2,
-    "racer3": this.pickRacer3
-  };
+    this.buttons = {
+      "racer1": this.pickRacer1,
+      "racer2": this.pickRacer2,
+      "racer3": this.pickRacer3
+    };
 
     //BLACK AND WHITE GOPHERS
     //Blue
@@ -72,6 +72,26 @@ var StateChoice = {
     this.hiddenPurpleGopher = game.add.sprite(game.world.centerX+150, game.world.centerY+40, "racer");
     this.hiddenPurpleGopher.anchor.set(0.5, 0.5);
 
+
+    //CONFIRMATION BUTTON
+    this.startConfirm = game.add.button(game.world.centerX, game.world.height-50,
+     "confirmButton", this.startConfirm, this, 0, 0, 1);
+    this.startConfirm.anchor.set(0.5, 0.5);
+
+
+  },
+
+  startConfirm: function () {
+    if(character === undefined){
+      this.sampleText = game.add.text(game.world.centerX, 30, "You must choose a gopher!");
+      this.sampleText.fill = "ffffff";
+      this.sampleText.fontSize = 32;
+      this.sampleText.anchor.set(0.5, 0.5);
+      console.log("You must choose a gopher!");
+    } else {
+    this.selectSong.stop();
+    game.state.start("StateMain");
+    }
   },
 
   racerStart: function (racer){

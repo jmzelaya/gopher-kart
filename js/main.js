@@ -2,6 +2,7 @@ var game;
 var character;
 var lane;
 var score;
+var cursors;
 
 
 window.onload = function(){
