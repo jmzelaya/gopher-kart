@@ -42,23 +42,23 @@ var StateChoice = {
 
     //Choose Racer1
     this.pickRacer1 = game.add.button(game.world.centerX-150, game.world.centerY+105,
-      "buttons", this.racerStart.bind(this, "racer1"), this);
+      "buttons", this.racerStart.bind(this, "blue"), this);
     this.pickRacer1.anchor.set(0.5, 0.5);
 
     //Choose Racer2
     this.pickRacer2 = game.add.button(game.world.centerX, game.world.centerY+105,
-      "buttons", this.racerStart.bind(this, "racer2"), this);
+      "buttons", this.racerStart.bind(this, "pink"), this);
     this.pickRacer2.anchor.set(0.5, 0.5);
 
     //Choose Racer3
     this.pickRacer3 = game.add.button(game.world.centerX+150, game.world.centerY+105,
-      "buttons", this.racerStart.bind(this, "racer3"), this);
+      "buttons", this.racerStart.bind(this, "purple"), this);
     this.pickRacer3.anchor.set(0.5, 0.5);
 
     this.buttons = {
-      "racer1": this.pickRacer1,
-      "racer2": this.pickRacer2,
-      "racer3": this.pickRacer3
+      "blue": this.pickRacer1,
+      "pink": this.pickRacer2,
+      "purple": this.pickRacer3
     };
 
     //BLACK AND WHITE GOPHERS

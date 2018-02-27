@@ -44,7 +44,7 @@ var StateMain = {
     // this.timer.start();
 
     //PHYSICS
-    game.physics.arcade.enable(character);
+    // game.physics.arcade.enable(character);
 
     //VARS
     //Maybe add the parts of the road and rails to a group?
@@ -59,6 +59,7 @@ var StateMain = {
       this.racerBlue.animations.add("idle", [0, 1], 12, true);
       this.racerBlue.animations.play("idle");
       game.physics.arcade.enable(this.racerBlue);
+      game.camera.follow(this.racerBlue);
     }
 
     else if (character == "pink") {
@@ -67,7 +68,7 @@ var StateMain = {
       this.racerPink.animations.add("idle", [0, 1], 12, true);
       this.racerPink.animations.play("idle");
       game.physics.arcade.enable(this.racerPink);
-
+      game.camera.follow(this.racerPink);
     }
 
     else{
@@ -76,6 +77,7 @@ var StateMain = {
       this.racerPurple.animations.add("idle", [0, 1], 12, true);
       this.racerPurple.animations.play("idle");
       game.physics.arcade.enable(this.racerPurple);
+      game.camera.follow(this.racerPurple);
 
     }
 
@@ -151,10 +153,8 @@ var StateMain = {
     tween3.start();
 
 
-    //Make camera follow Gopher
-    game.camera.follow(this.racerBlue);
-    game.camera.follow(this.racerPink);
-    game.camera.follow(this.racerPurple);
+    // game.camera.follow(this.racerPink);
+    // game.camera.follow(this.racerPurple);
     //Set cursors to accept input from the keyboard
     cursors = game.input.keyboard.createCursorKeys();
 
@@ -169,7 +169,7 @@ var StateMain = {
       else if(this.character === "pink"){
         this.racerPink.body.acceleration.x = -250;
       }
-      else{
+        else if(this.character === "purple"){
         this.racerPurple.body.acceleration.x = -250;
       }
 
@@ -181,10 +181,11 @@ var StateMain = {
       else if(this.character === "pink"){
         this.racerPink.body.acceleration.x = 250;
       }
-      else{
+      else if(this.character === "purple"){
         this.racerPurple.body.acceleration.x = 250;
       }
     }//CLOSE cursors
+
 
 
 
