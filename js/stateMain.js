@@ -6,9 +6,9 @@ var StateMain = {
     game.stage.backgroundColor = 0xe9fffe;
     //Add racer spritesheet(s) - Later put into 1 :)
     //...maybe put into global variables? To remove repitition...
-    game.load.spritesheet("racerBlue", "assets/gopher-blue.png", 63, 60, 7);
-    game.load.spritesheet("racerPink", "assets/gopher-pink.png", 63, 60, 7);
-    game.load.spritesheet("racerPurple", "assets/gopher-purple.png", 63, 60, 7);
+    game.load.spritesheet("racerBlue", "assets/gopher-blue-updated.png", 64, 60, 15);
+    game.load.spritesheet("racerPink", "assets/gopher-pink.png", 63, 60, 15);
+    game.load.spritesheet("racerPurple", "assets/gopher-purple.png", 63, 60, 15);
     //Road
     game.load.image("road", "assets/road-tile.png");
     //Top rail
@@ -94,7 +94,7 @@ var StateMain = {
 
     console.log("You chose the " + character + " racer!");
 
-    //Puts a delay on the scrolling of the road and rails
+    //Puts a 3 sec delay on the scrolling of the road, rails, and background
     setTimeout(function () {
       //Start scrolling
       road.autoScroll(-200, 0);
@@ -108,7 +108,7 @@ var StateMain = {
     /*
     This are the beginning workings
     of adding random racers OR
-    a new obstacle to the screen
+    a new coin to the screen
     */
     setInterval(function () {
       var randomGen = Math.floor(Math.random() * 20);
