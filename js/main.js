@@ -19,5 +19,5 @@ window.onload = function(){
   // game.state.add("mainState", mainState);
 
 
-  game.state.start("StateChoice");
+  game.state.start("StateMain");
 };

@@ -16,9 +16,9 @@ var StateMain = {
     //Bottom rail
     game.load.image("bottomRail", "assets/bottom-rail.png");
     //Add background
-    game.load.image("sky", "assets/clouds.png");
-    game.load.image("city", "assets/city.png");
-    game.load.image("mtn", "assets/mountains.png");
+    game.load.image("sky", "assets/clouds-re-colored.png");
+    game.load.image("city", "assets/city-re-colored_360.png");
+    game.load.image("mtn", "assets/mountains-recolored.png");
     //Add other racers
     //Add coins
     //Add hearts
@@ -51,12 +51,12 @@ var StateMain = {
 
     //VARS
     //Maybe add the parts of the road and rails to a group?
-    var road = game.add.tileSprite(0, 250, 600, 159, "road");
-    var topRail = game.add.tileSprite(0, 230, 600, 29, "topRail");
-    var bottomRail = game.add.tileSprite(0, 405, 600, 29, "bottomRail");
-    var mtn = game.add.tileSprite(0, 100, 600, 125, "mtn");
-    var city = game.add.tileSprite(0, 141, 600, 90, "city");
-    var sky = game.add.tileSprite(0, 50, 600, 50, "sky");
+    var road = game.add.tileSprite(0, 226, 600, 159, "road");
+    var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
+    var bottomRail = game.add.tileSprite(0, 385, 600, 47, "bottomRail");
+    var mtn = game.add.tileSprite(0, 60, 600, 131, "mtn");
+    var city = game.add.tileSprite(0, 140, 600, 57, "city");
+    var sky = game.add.tileSprite(0, 10, 600, 60, "sky");
 
     //Conditional to add correct gopher to screen
     if(character == "blue"){
@@ -83,11 +83,18 @@ var StateMain = {
     }
 
     else{
-      this.racerPurple = game.add.sprite(50, 320, "racerPurple");
-      this.racerPurple.anchor.set(0.5, 0.5);
-      this.racerPurple.animations.add("idle", [0, 1], 12, true);
-      this.racerPurple.animations.play("idle");
-      game.physics.arcade.enable(this.racerPurple);
+      // this.racerPurple = game.add.sprite(50, 320, "racerPurple");
+      // this.racerPurple.anchor.set(0.5, 0.5);
+      // this.racerPurple.animations.add("idle", [0, 1], 12, true);
+      // this.racerPurple.animations.play("idle");
+      // game.physics.arcade.enable(this.racerPurple);
+      this.racerBlue = game.add.sprite(50, 320, "racerBlue");
+      this.racerBlue.anchor.set(0.5, 0.5);
+      this.racerBlue.animations.add("idle", [0, 1], 12, true);
+      this.racerBlue.animations.play("idle");
+      game.physics.arcade.enable(this.racerBlue);
+      game.camera.follow(this.racerBlue);
+      this.racerBlue.body.collideWorldBounds = true;
 
     }
 
