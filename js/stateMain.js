@@ -59,7 +59,7 @@ var StateMain = {
       this.racerBlue.animations.add("idle", [0, 1], 12, true);
       this.racerBlue.animations.play("idle");
       game.physics.arcade.enable(this.racerBlue);
-      game.camera.follow(this.racerBlue);
+
     }
 
     else if (character == "pink") {
@@ -68,7 +68,7 @@ var StateMain = {
       this.racerPink.animations.add("idle", [0, 1], 12, true);
       this.racerPink.animations.play("idle");
       game.physics.arcade.enable(this.racerPink);
-      game.camera.follow(this.racerPink);
+
     }
 
     else{
@@ -77,7 +77,6 @@ var StateMain = {
       this.racerPurple.animations.add("idle", [0, 1], 12, true);
       this.racerPurple.animations.play("idle");
       game.physics.arcade.enable(this.racerPurple);
-      game.camera.follow(this.racerPurple);
 
     }
 
@@ -162,30 +161,30 @@ var StateMain = {
 
   update: function (){
     //Cursors - Keyboard key check ⌨️
-    if(cursors.left.isDown){
-      if(this.character === "blue"){
-        this.racerBlue.body.acceleration.x = -250;
-      }
-      else if(this.character === "pink"){
-        this.racerPink.body.acceleration.x = -250;
-      }
-        else if(this.character === "purple"){
-        this.racerPurple.body.acceleration.x = -250;
-      }
-
-    }
     if(cursors.right.isDown){
-      if(this.character === "blue"){
-        this.racerBlue.body.acceleration.x = 250;
+      if(this.racerBlue){
+        this.racerBlue.body.velocity.x = 75;
       }
-      else if(this.character === "pink"){
-        this.racerPink.body.acceleration.x = 250;
+      if(this.character === "pink"){
+        this.racerPink.body.velocity.x = 250;
       }
-      else if(this.character === "purple"){
-        this.racerPurple.body.acceleration.x = 250;
+      if(this.character === "purple"){
+        this.racerPurple.body.velocity.x = 250;
       }
     }//CLOSE cursors
 
+    if(cursors.right.isUp){
+      if(this.racerBlue){
+        this.racerBlue.body.velocity.x = 0;
+      }
+      else if(this.character === "pink"){
+        this.racerPink.body.velocity.x = -250;
+      }
+      else if(this.character === "purple"){
+        this.racerPurple.body.velocity.x = -250;
+      }
+
+    }
 
 
 
