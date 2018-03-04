@@ -59,6 +59,9 @@ var StateMain = {
       this.racerBlue.animations.add("idle", [0, 1], 12, true);
       this.racerBlue.animations.play("idle");
       game.physics.arcade.enable(this.racerBlue);
+      game.camera.follow(this.racerBlue);
+      this.racerBlue.body.collideWorldBounds = true;
+
 
     }
 
@@ -68,6 +71,8 @@ var StateMain = {
       this.racerPink.animations.add("idle", [0, 1], 12, true);
       this.racerPink.animations.play("idle");
       game.physics.arcade.enable(this.racerPink);
+      this.racerPink.body.collideWorldBounds = true;
+
 
     }
 
@@ -163,7 +168,7 @@ var StateMain = {
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown){
       if(this.racerBlue){
-        this.racerBlue.body.velocity.x = 75;
+        this.racerBlue.body.velocity.x = 150;
       }
       if(this.character === "pink"){
         this.racerPink.body.velocity.x = 250;
@@ -175,7 +180,7 @@ var StateMain = {
 
     if(cursors.right.isUp){
       if(this.racerBlue){
-        this.racerBlue.body.velocity.x = 0;
+        this.racerBlue.body.velocity.x = -165;
       }
       else if(this.character === "pink"){
         this.racerPink.body.velocity.x = -250;
@@ -185,6 +190,31 @@ var StateMain = {
       }
 
     }
+    if(cursors.up.isDown){
+      if(this.racerBlue){
+        this.racerBlue.body.velocity.y = -70;
+      }
+      else if(this.character === "pink"){
+        this.racerPink.body.velocity.x = -250;
+      }
+      else if(this.character === "purple"){
+        this.racerPurple.body.velocity.x = -250;
+      }
+
+    }
+    if(cursors.down.isDown){
+      if(this.racerBlue){
+        this.racerBlue.body.velocity.y = 70;
+      }
+      else if(this.character === "pink"){
+        this.racerPink.body.velocity.x = -250;
+      }
+      else if(this.character === "purple"){
+        this.racerPurple.body.velocity.x = -250;
+      }
+
+    }
+
 
 
 

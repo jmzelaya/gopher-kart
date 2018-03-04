@@ -63,14 +63,20 @@ var StateChoice = {
 
     //BLACK AND WHITE GOPHERS
     //Blue
-    this.hiddenBlueGopher = game.add.sprite(game.world.centerX-150, game.world.centerY+40, "racer");
-    this.hiddenBlueGopher.anchor.set(0.5, 0.5);
+    this.blue = game.add.sprite(game.world.centerX-150, game.world.centerY+40, "racer");
+    this.blue.frame = 1;
+    this.blue.animations.add("blue", [1, 2]);
+    this.blue.anchor.set(0.5, 0.5);
     //Pink
-    this.hiddenPinkGopher = game.add.sprite(game.world.centerX, game.world.centerY+40, "racer");
-    this.hiddenPinkGopher.anchor.set(0.5, 0.5);
+    this.PinkGopher = game.add.sprite(game.world.centerX, game.world.centerY+40, "racer");
+    this.PinkGopher.frame = 3;
+    this.PinkGopher.animations.add("pink", [3, 4]);
+    this.PinkGopher.anchor.set(0.5, 0.5);
     //Purple
-    this.hiddenPurpleGopher = game.add.sprite(game.world.centerX+150, game.world.centerY+40, "racer");
-    this.hiddenPurpleGopher.anchor.set(0.5, 0.5);
+    this.PurpleGopher = game.add.sprite(game.world.centerX+150, game.world.centerY+40, "racer");
+    this.PurpleGopher.frame = 5;
+    this.PurpleGopher.animations.add("purple", [5, 6]);
+    this.PurpleGopher.anchor.set(0.5, 0.5);
 
 
     //CONFIRMATION BUTTON
@@ -102,6 +108,7 @@ var StateChoice = {
 
     this.buttons[racer].frame = 1;
     character = racer;
+    character.animations.play("blue");
     console.log(character);
   },
 
