@@ -108,7 +108,7 @@ var StateChoice = {
 
     this.buttons[racer].frame = 1;
     character = racer;
-    character.animations.play("blue");
+    // character.animations.play("blue");
     console.log(character);
   },
 

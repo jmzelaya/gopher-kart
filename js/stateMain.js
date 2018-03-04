@@ -16,9 +16,12 @@ var StateMain = {
     //Bottom rail
     game.load.image("bottomRail", "assets/bottom-rail.png");
     //Add background
+    game.load.image("sky", "assets/clouds.png");
+    game.load.image("city", "assets/city.png");
+    game.load.image("mtn", "assets/mountains.png");
     //Add other racers
-    //Add obstacles
-
+    //Add coins
+    //Add hearts
     //Countdown Spritesheet
     game.load.image("countDown3", "assets/three.png");
     game.load.image("countDown2", "assets/two.png");
@@ -51,6 +54,9 @@ var StateMain = {
     var road = game.add.tileSprite(0, 250, 600, 159, "road");
     var topRail = game.add.tileSprite(0, 230, 600, 29, "topRail");
     var bottomRail = game.add.tileSprite(0, 405, 600, 29, "bottomRail");
+    var mtn = game.add.tileSprite(0, 100, 600, 125, "mtn");
+    var city = game.add.tileSprite(0, 141, 600, 90, "city");
+    var sky = game.add.tileSprite(0, 50, 600, 50, "sky");
 
     //Conditional to add correct gopher to screen
     if(character == "blue"){
@@ -90,14 +96,13 @@ var StateMain = {
 
     //Puts a delay on the scrolling of the road and rails
     setTimeout(function () {
-      for(var i = 3; i > 0; i --){
-        console.log(i);
-      }
-      console.log("GO!");
       //Start scrolling
       road.autoScroll(-200, 0);
       topRail.autoScroll(-200, 0);
       bottomRail.autoScroll(-200, 0);
+      sky.autoScroll(-5,0);
+      city.autoScroll(-30,0);
+      mtn.autoScroll(-15,0);
     }, 3000);
 
     /*
@@ -165,6 +170,7 @@ var StateMain = {
   },
 
   update: function (){
+
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown){
       if(this.racerBlue){
@@ -180,7 +186,7 @@ var StateMain = {
 
     if(cursors.right.isUp){
       if(this.racerBlue){
-        this.racerBlue.body.velocity.x = -165;
+        this.racerBlue.body.velocity.x = -250;
       }
       else if(this.character === "pink"){
         this.racerPink.body.velocity.x = -250;
