@@ -202,6 +202,18 @@ var StateMain = {
       }
 
     }
+    if(cursors.up.isUp){
+      if(this.racerBlue){
+        this.racerBlue.body.velocity.y = 0;
+      }
+      else if(this.character === "pink"){
+        this.racerPink.body.velocity.x = -250;
+      }
+      else if(this.character === "purple"){
+        this.racerPurple.body.velocity.x = -250;
+      }
+
+    }
     if(cursors.down.isDown){
       if(this.racerBlue){
         this.racerBlue.body.velocity.y = 70;
