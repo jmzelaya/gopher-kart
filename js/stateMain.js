@@ -50,6 +50,10 @@ var StateMain = {
     // game.physics.arcade.enable(character);
 
     //VARS
+    score = 0;
+    this.top = game.height - 200 ;
+    this.bottom = game.height - 80;
+
     //Maybe add the parts of the road and rails to a group?
     var road = game.add.tileSprite(0, 226, 600, 159, "road");
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
@@ -238,6 +242,23 @@ var StateMain = {
         this.racerPurple.body.velocity.x = -250;
       }
 
+    }
+
+    //Check if dragon is going above screen
+    if(this.racerBlue.y<this.top){
+      //If it's too high, make y equal to this.top
+      this.racerBlue.y=this.top;
+      //remove the y velocity to prevent flapping past screen
+      this.racerBlue.body.velocity.y = 0;
+
+    }
+
+    //Check if racerBlue is going below the screen
+    if(this.racerBlue.y > this.bottom){
+      //If too low set y to this.bottom
+      this.racerBlue.y = this.bottom;
+      //Remove y gravity to prevent just falling below screen
+      this.racerBlue.body.gravity.y = 0;
     }
 
 
