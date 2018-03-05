@@ -58,7 +58,7 @@ var StateMain = {
     var road = game.add.tileSprite(0, 226, 600, 159, "road");
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
     var bottomRail = game.add.tileSprite(0, 385, 600, 47, "bottomRail");
-    var mtn = game.add.tileSprite(0, 60, 600, 131, "mtn");
+    var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
     var city = game.add.tileSprite(0, 140, 600, 57, "city");
     var sky = game.add.tileSprite(0, 10, 600, 60, "sky");
 
@@ -197,7 +197,8 @@ var StateMain = {
 
     if(cursors.right.isUp){
       if(this.racerBlue){
-        this.racerBlue.body.velocity.x = -250;
+        this.racerBlue.body.velocity.x = -150;
+        // this.racerBlue.body.velocity.x = -250;
       }
       else if(this.character === "pink"){
         this.racerPink.body.velocity.x = -250;
@@ -244,21 +245,16 @@ var StateMain = {
 
     }
 
-    //Check if dragon is going above screen
     if(this.racerBlue.y<this.top){
-      //If it's too high, make y equal to this.top
       this.racerBlue.y=this.top;
-      //remove the y velocity to prevent flapping past screen
-      this.racerBlue.body.velocity.y = 0;
+      // this.racerBlue.body.velocity.y = 0;
 
     }
 
     //Check if racerBlue is going below the screen
     if(this.racerBlue.y > this.bottom){
-      //If too low set y to this.bottom
       this.racerBlue.y = this.bottom;
-      //Remove y gravity to prevent just falling below screen
-      this.racerBlue.body.gravity.y = 0;
+      // this.racerBlue.body.gravity.y = 0;
     }
 
 
