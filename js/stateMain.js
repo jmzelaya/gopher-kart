@@ -198,7 +198,6 @@ var StateMain = {
     if(cursors.right.isUp){
       if(this.racerBlue){
         this.racerBlue.body.velocity.x = -150;
-        // this.racerBlue.body.velocity.x = -250;
       }
       else if(this.character === "pink"){
         this.racerPink.body.velocity.x = -250;
@@ -210,7 +209,7 @@ var StateMain = {
     }
     if(cursors.up.isDown){
       if(this.racerBlue){
-        this.racerBlue.body.velocity.y = -70;
+        this.racerBlue.body.velocity.y = -100;
       }
       else if(this.character === "pink"){
         this.racerPink.body.velocity.x = -250;
@@ -234,7 +233,7 @@ var StateMain = {
     }
     if(cursors.down.isDown){
       if(this.racerBlue){
-        this.racerBlue.body.velocity.y = 70;
+        this.racerBlue.body.velocity.y = 100;
       }
       else if(this.character === "pink"){
         this.racerPink.body.velocity.x = -250;
@@ -243,6 +242,12 @@ var StateMain = {
         this.racerPurple.body.velocity.x = -250;
       }
 
+    }
+
+    if(cursors.left.isDown){
+      if(this.racerBlue){
+        this.racerBlue.body.velocity.x = -250;
+      }
     }
 
     if(this.racerBlue.y<this.top){
