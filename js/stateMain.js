@@ -60,7 +60,7 @@ var StateMain = {
     var bottomRail = game.add.tileSprite(0, 385, 600, 47, "bottomRail");
     var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
     var city = game.add.tileSprite(0, 140, 600, 57, "city");
-    var sky = game.add.tileSprite(0, 10, 600, 60, "sky");
+    var sky = game.add.tileSprite(0, 8, 600, 60, "sky");
 
     //Conditional to add correct gopher to screen
     if(character == "blue"){
