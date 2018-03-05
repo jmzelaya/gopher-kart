@@ -17,7 +17,7 @@ var StateMain = {
     game.load.image("bottomRail", "assets/bottom-rail.png");
     //Add background
     game.load.image("sky", "assets/clouds-re-colored.png");
-    game.load.image("city", "assets/city-re-colored_360.png");
+    game.load.image("city", "assets/city-re-colored.png");
     game.load.image("mtn", "assets/mountains-recolored.png");
     //Add other racers
     //Add coins
@@ -59,7 +59,7 @@ var StateMain = {
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
     var bottomRail = game.add.tileSprite(0, 385, 600, 47, "bottomRail");
     var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
-    var city = game.add.tileSprite(0, 140, 600, 57, "city");
+    var city = game.add.tileSprite(0, 107, 600, 90, "city");
     var sky = game.add.tileSprite(0, 8, 600, 60, "sky");
 
     //Conditional to add correct gopher to screen
