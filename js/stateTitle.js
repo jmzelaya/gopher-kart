@@ -10,9 +10,12 @@ var StateTitle = {
      //2. Tutorial??
      game.load.spritesheet("buttons", "assets/buttons-sprite.png", 111, 24, 4);
      //Need: "best played in landscape-view image for mobile"
+    
+    game.load.image("background", "assets/bg-color.png");
   },
 
   create: function (){
+     //background = game.add.tileSprite(0, 0, 600, 432, "background");
      this.titleSong = game.add.audio("title");
      this.titleSong.play('', 0, 1, true);
 

@@ -7,11 +7,11 @@ var cursors;
 
 window.onload = function(){
   if(screen.width>900){
-    game = new Phaser.Game(600, 432, Phaser.AUTO, "ph_game", null, false, false);
+    game = new Phaser.Game(600, 432, Phaser.AUTO, "phaser-wrapper", null, false, false);
   }
   else{
     game = new
-    Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, "ph_game");
+    Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, "phaser-wrapper");
   }
   game.state.add("StateTitle", StateTitle);
   game.state.add("StateMain", StateMain);
@@ -19,5 +19,5 @@ window.onload = function(){
   // game.state.add("mainState", mainState);
 
 
-  game.state.start("StateMain");
+  game.state.start("StateTitle");
 };
