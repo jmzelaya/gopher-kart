@@ -1,6 +1,31 @@
+
+body {
+  font-family: 'Patua One', cursive;
+  background: url("../assets/web/full-bg.jpg") #000 50% 83px;
+  background-size: 2958px 1310px;
+  background-repeat: no-repeat;
+  color: #FFF;
+}
 canvas{
   image-rendering: -moz-crisp-edges;
   image-rendering: -webkit-crisp-edges;
   image-rendering: pixelated;
   margin: 50px auto 0;
+}
+#phaser-wrapper {
+  width: 100%;
+  position: relative;
+}
+#phaser-wrapper img {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+#phaser-wrapper canvas {
+  position: absolute;
+  top: 122px;
+  left: 50%;
+  margin-left: -300px;
+  border-radius: 10px;
 }

@@ -12,9 +12,9 @@ var StateMain = {
     //Road
     game.load.image("road", "assets/road-tile.png");
     //Top rail
-    game.load.image("topRail", "assets/top-rail.png");
+    game.load.image("topRail", "assets/top-rail-long.png");
     //Bottom rail
-    game.load.image("bottomRail", "assets/bottom-rail.png");
+    game.load.image("bottomRail", "assets/bottom-rail-long.png");
     //Add background
     game.load.image("sky", "assets/clouds-re-colored.png");
     game.load.image("city", "assets/city-re-colored.png");
@@ -28,10 +28,13 @@ var StateMain = {
     game.load.image("countDown1", "assets/one.png");
     game.load.image("countDownGo", "assets/go.png");
 
-
+    game.load.image("background", "assets/bg-color.png");
   },
 
   create: function () {
+    
+    background = game.add.tileSprite(0, 0, 600, 432, "background");
+
     //MUSIC
     this.titleSong = game.add.audio("title");
     this.titleSong.play('', 0, 1, true);
