@@ -21,7 +21,7 @@ var StateMain = {
     game.load.image("mtn", "assets/mountains-recolored.png");
     //Add other racers
     //Add coins
-    game.load.spritesheet("coin", "assets/coin.png", 17, 16, 6);
+    game.load.spritesheet("coin", "assets/coin.png", 16, 16, 6);
     //Add hearts
     //Countdown Spritesheet
     game.load.image("countDown3", "assets/three.png");
@@ -58,7 +58,6 @@ var StateMain = {
     this.top = game.height - 200 ;
     this.bottom = game.height - 80;
 
-    //Maybe add the parts of the road and rails to a group?
     var road = game.add.tileSprite(0, 226, 600, 159, "road");
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
     var bottomRail = game.add.tileSprite(0, 385, 600, 47, "bottomRail");
@@ -71,6 +70,8 @@ var StateMain = {
     this.coins.createMultiple(40, 'coin');
     this.coins.setAll('checkWorldBounds', true);
     this.coins.setAll('outOfBoundsKill', true);
+    // this.coins.animations.add("spin", [0, 1, 2, 3, 4, 5], 12, true);
+    // this.coins.animation.play("spin");
 
     //Conditional to add correct gopher to screen
     if(character == "blue"){
@@ -189,19 +190,21 @@ var StateMain = {
 
     setListeners: function(){
 
-      game.time.events.loop(Phaser.Timer.SECOND, this.loadCoin, this);
+      game.time.events.loop(Phaser.Timer.SECOND * 2, this.loadCoin, this);
     },
 
     loadCoin: function (){
       var coin = this.coins.getFirstDead();
       //y position
-      var yy = game.rnd.integerInRange(100, game.height-60);
+      var yy = game.rnd.integerInRange(210, game.height-55);
       //x position
       var xx = game.width-100;
 
       coin.reset(xx, yy);
       coin.enabled = true;
       coin.body.velocity.x = -200;
+      coin.animations.add("spin", [0, 1, 2, 3, 4, 5], 12, true);
+      coin.animations.play("spin");
     },
 
   update: function (){
