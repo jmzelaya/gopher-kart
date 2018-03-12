@@ -21,6 +21,7 @@ var StateMain = {
     game.load.image("mtn", "assets/mountains-recolored.png");
     //Add other racers
     //Add coins
+    game.load.spritesheet("coin", "assets/coin.png", 17, 16, 6);
     //Add hearts
     //Countdown Spritesheet
     game.load.image("countDown3", "assets/three.png");
@@ -32,7 +33,7 @@ var StateMain = {
   },
 
   create: function () {
-    
+
     background = game.add.tileSprite(0, 0, 600, 432, "background");
 
     //MUSIC
@@ -65,17 +66,21 @@ var StateMain = {
     var city = game.add.tileSprite(0, 107, 600, 90, "city");
     var sky = game.add.tileSprite(0, 8, 600, 60, "sky");
 
+    //COINS
+    this.coins=game.add.group();
+    this.coins.createMultiple(40, 'coin');
+    this.coins.setAll('checkWorldBounds', true);
+    this.coins.setAll('outOfBoundsKill', true);
+
     //Conditional to add correct gopher to screen
     if(character == "blue"){
       this.racerBlue = game.add.sprite(50, 320, "racerBlue");
       this.racerBlue.anchor.set(0.5, 0.5);
       this.racerBlue.animations.add("idle", [0, 1], 12, true);
       this.racerBlue.animations.play("idle");
-      game.physics.arcade.enable(this.racerBlue);
+      game.physics.arcade.enable([this.racerBlue, this.coins]);
       game.camera.follow(this.racerBlue);
       this.racerBlue.body.collideWorldBounds = true;
-
-
     }
 
     else if (character == "pink") {
@@ -85,8 +90,6 @@ var StateMain = {
       this.racerPink.animations.play("idle");
       game.physics.arcade.enable(this.racerPink);
       this.racerPink.body.collideWorldBounds = true;
-
-
     }
 
     else{
@@ -181,7 +184,25 @@ var StateMain = {
     //Set cursors to accept input from the keyboard
     cursors = game.input.keyboard.createCursorKeys();
 
+    this.setListeners();
   },
+
+    setListeners: function(){
+
+      game.time.events.loop(Phaser.Timer.SECOND, this.loadCoin, this);
+    },
+
+    loadCoin: function (){
+      var coin = this.coins.getFirstDead();
+      //y position
+      var yy = game.rnd.integerInRange(100, game.height-60);
+      //x position
+      var xx = game.width-100;
+
+      coin.reset(xx, yy);
+      coin.enabled = true;
+      coin.body.velocity.x = -200;
+    },
 
   update: function (){
 
