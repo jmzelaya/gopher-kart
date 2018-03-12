@@ -24,7 +24,7 @@ canvas{
 }
 #phaser-wrapper canvas {
   position: absolute;
-  top: 122px;
+  top: 110px;
   left: 50%;
   margin-left: -300px;
   border-radius: 10px;
