@@ -1,5 +1,5 @@
-
-body {
+/*-- GAME SCREEN --*/
+body.game-page {
   font-family: 'Patua One', cursive;
   background: url("../assets/web/full-bg.jpg") #000 50% 83px;
   background-size: 2958px 1310px;
@@ -29,3 +29,91 @@ canvas{
   margin-left: -300px;
   border-radius: 10px;
 }
+
+/*-- LEADERBOARD SCREEN --*/
+body.leaderboard-page {
+  font-family: 'Patua One', cursive;
+  background: url("../assets/web/arcade-bg.jpg") #000;
+  background-size:cover;
+  background-repeat: no-repeat;
+  color: #FFF;
+}
+body.leaderboard-page h1 {
+  color: #04fcdc;
+  text-align: center;
+}
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+.leaderboard-list dl {
+  border: 3px solid rgba(255,255,255,0.10);
+  opacity: 0;
+  padding: 5px 25px;
+  border-radius: 5px;
+}
+.leaderboard-list dl:nth-child(1) {
+  color: #fcfc04;
+  opacity: 1;
+  border: none;
+}
+.leaderboard-list dl:nth-child(2) {
+  color: #dcdcdc;
+  animation: fade 1s normal forwards ease-in-out;
+  animation-delay: 0.2s;
+}
+.leaderboard-list dl:nth-child(3) {
+  color: #fc0404;
+  animation: fade 1s normal forwards ease-in-out;
+  animation-delay: 0.4s;
+}
+.leaderboard-list dl:nth-child(4) {
+  color: #fcb444;
+  animation: fade 1s normal forwards ease-in-out;
+  animation-delay: 0.8s;
+}
+.leaderboard-list dl:nth-child(5) {
+  color: #fcb494;
+  animation: fade 1s normal forwards ease-in-out;
+  animation-delay: 1.2s;
+}
+.leaderboard-list dl:nth-child(6) {
+  color: #f4cc34;
+  animation: fade 1s normal forwards ease-in-out;
+  animation-delay: 1.4s;
+}
+.leaderboard-list dl:nth-child(7) {
+  color: #fcfc04;
+  animation: fade 1s normal forwards ease-in-out;
+  animation-delay: 1.8s;
+}
+.leaderboard-list dl:nth-child(8) {
+  color: #14b42c;
+  animation: fade 1s normal forwards ease-in-out;
+  animation-delay: 2.2s;
+}
+.leaderboard-list dl:nth-child(9) {
+  color: #04fcdc;
+  animation: fade 1s normal forwards ease-in-out;
+  animation-delay: 2.4s;
+}
+.leaderboard-list dl:nth-child(10) {
+  color: #149cb4;
+  animation: fade 1s normal forwards ease-in-out;
+  animation-delay: 2.8s;
+}
+.leaderboard-list dl:nth-child(11) {
+  color: #0cd424;
+  animation: fade 1s normal forwards ease-in-out;
+  animation-delay: 3.2s;
+}
+.leaderboard-list dl dd{
+  display: inline-block;
+  font-size: 25px;
+  width: 32.5%;
+  margin: 0;
+}
+.leaderboard-list dl dd:last-child{
+  text-align: right;
+}
+
