@@ -61,9 +61,9 @@ var StateMain = {
     var road = game.add.tileSprite(0, 226, 600, 159, "road");
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
     var bottomRail = game.add.tileSprite(0, 385, 600, 47, "bottomRail");
+    var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
     var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
     var city = game.add.tileSprite(0, 107, 600, 90, "city");
-    var sky = game.add.tileSprite(0, 8, 600, 60, "sky");
 
     //COINS
     this.coins=game.add.group();
@@ -77,7 +77,7 @@ var StateMain = {
     if(character == "blue"){
       this.racerBlue = game.add.sprite(50, 320, "racerBlue");
       this.racerBlue.anchor.set(0.5, 0.5);
-      this.racerBlue.animations.add("idle", [0, 1], 12, true);
+      this.racerBlue.animations.add("idle", [0, 1], 9, true);
       this.racerBlue.animations.play("idle");
       game.physics.arcade.enable([this.racerBlue, this.coins]);
       game.camera.follow(this.racerBlue);
@@ -87,7 +87,7 @@ var StateMain = {
     else if (character == "pink") {
       this.racerPink = game.add.sprite(50, 320, "racerPink");
       this.racerPink.anchor.set(0.5, 0.5);
-      this.racerPink.animations.add("idle", [0, 1], 12, true);
+      this.racerPink.animations.add("idle", [0, 1], 9, true);
       this.racerPink.animations.play("idle");
       game.physics.arcade.enable(this.racerPink);
       this.racerPink.body.collideWorldBounds = true;
@@ -101,7 +101,7 @@ var StateMain = {
       // game.physics.arcade.enable(this.racerPurple);
       this.racerBlue = game.add.sprite(50, 320, "racerBlue");
       this.racerBlue.anchor.set(0.5, 0.5);
-      this.racerBlue.animations.add("idle", [0, 1], 12, true);
+      this.racerBlue.animations.add("idle", [0, 1], 9, true);
       this.racerBlue.animations.play("idle");
       game.physics.arcade.enable(this.racerBlue);
       game.camera.follow(this.racerBlue);
@@ -115,9 +115,9 @@ var StateMain = {
     //Puts a 3 sec delay on the scrolling of the road, rails, and background
     setTimeout(function () {
       //Start scrolling
-      road.autoScroll(-200, 0);
-      topRail.autoScroll(-200, 0);
-      bottomRail.autoScroll(-200, 0);
+      road.autoScroll(-230, 0);
+      topRail.autoScroll(-230, 0);
+      bottomRail.autoScroll(-230, 0);
       sky.autoScroll(-5,0);
       city.autoScroll(-30,0);
       mtn.autoScroll(-15,0);

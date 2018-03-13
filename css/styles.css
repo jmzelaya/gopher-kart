@@ -1,7 +1,7 @@
 /*-- GAME SCREEN --*/
 body.game-page {
   font-family: 'Patua One', cursive;
-  background: url("../assets/web/full-bg.jpg") #000 50% 83px;
+  background: url("../assets/web/full-bg.jpg") #000 50% 0px;
   background-size: 2958px 1310px;
   background-repeat: no-repeat;
   color: #FFF;
@@ -24,7 +24,7 @@ canvas{
 }
 #phaser-wrapper canvas {
   position: absolute;
-  top: 110px;
+  top: 102px;
   left: 50%;
   margin-left: -300px;
   border-radius: 10px;
