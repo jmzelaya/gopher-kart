@@ -57,6 +57,10 @@ var StateMain = {
     score = 0;
     this.top = game.height - 200 ;
     this.bottom = game.height - 80;
+    //Figure out exact y positions
+    //Make a loop function thing to pick one and call at the bottom?
+    this.availLanes = [400, 390, 380];
+    this.lanes = availLanes[Math.floor(Math.random()*availLanes.length)];
 
     var road = game.add.tileSprite(0, 226, 600, 159, "road");
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
@@ -70,8 +74,12 @@ var StateMain = {
     this.coins.createMultiple(40, 'coin');
     this.coins.setAll('checkWorldBounds', true);
     this.coins.setAll('outOfBoundsKill', true);
-    // this.coins.animations.add("spin", [0, 1, 2, 3, 4, 5], 12, true);
-    // this.coins.animation.play("spin");
+
+    //OTHER RACERS
+    this.npcRacers = game.add.group();
+    this.npcRacers.createMultiple.(40, 'npc');
+    this.npcRacers.setAll('checkWorldBounds', true);
+    this.npcRacers.setAll('outOfBoundsKill', true);
 
     //Conditional to add correct gopher to screen
     if(character == "blue"){
@@ -79,7 +87,7 @@ var StateMain = {
       this.racerBlue.anchor.set(0.5, 0.5);
       this.racerBlue.animations.add("idle", [0, 1], 9, true);
       this.racerBlue.animations.play("idle");
-      game.physics.arcade.enable([this.racerBlue, this.coins]);
+      game.physics.arcade.enable([this.racerBlue, this.coins, this.npcRacers]);
       game.camera.follow(this.racerBlue);
       this.racerBlue.body.collideWorldBounds = true;
     }
@@ -191,6 +199,7 @@ var StateMain = {
     setListeners: function(){
 
       game.time.events.loop(Phaser.Timer.SECOND * 2, this.loadCoin, this);
+      game.time.events.loop(Phaser.Timer.SECOND * 2, this.loadRacer, this);
     },
 
     loadCoin: function (){
@@ -206,6 +215,12 @@ var StateMain = {
       coin.animations.add("spin", [0, 1, 2, 3, 4, 5], 12, true);
       coin.animations.play("spin");
     },
+
+    loadRacer: function () {
+      var npc = this.npcRacers.getFirstDead;
+
+    }
+
 
   update: function (){
 

@@ -16,7 +16,7 @@ var StateChoice = {
     game.load.spritesheet("blueMarquee", "assets/blue-crawl.png", 50, 12, 45);
     game.load.spritesheet("pinkMarquee", "assets/pink-crawl.png", 50, 12, 45);
     game.load.spritesheet("purpleMarquee", "assets/purple-crawl.png", 50, 12, 45);
-
+    // game.load.spritesheet("neonCnfrm", "assets/neon-sign.png", )
 
   },
 
