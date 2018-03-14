@@ -30,17 +30,22 @@ var StateMain = {
     game.load.image("countDownGo", "assets/go.png");
 
     game.load.image("background", "assets/bg-color.png");
+    
+    game.load.bitmapFont('pixelFont', 'assets/fonts/bitmapFonts/pixelFont.png', 'assets/fonts/bitmapFonts/pixelFont.xml');
+  
+    var timeText;
   },
+  
+  
 
   create: function () {
-
+    
     background = game.add.tileSprite(0, 0, 600, 432, "background");
 
     //MUSIC
     this.titleSong = game.add.audio("title");
     this.titleSong.play('', 0, 1, true);
-
-
+    
     //Start Physics Engine
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -192,6 +197,15 @@ var StateMain = {
     // game.camera.follow(this.racerPurple);
     //Set cursors to accept input from the keyboard
     cursors = game.input.keyboard.createCursorKeys();
+    
+    //TEXT
+    var scoreText;
+    scoreText = game.add.bitmapText(535, 7, 'pixelFont', '100', 21);
+    
+    var timeLabel;
+    timeLabel = game.add.bitmapText(275, 7, 'pixelFont', 'TIME', 21);
+    
+    timeText = game.add.bitmapText(280, 27, 'pixelFont', '300', 21);
 
     this.setListeners();
   },
@@ -224,6 +238,8 @@ var StateMain = {
 
   update: function (){
 
+    //timeText.text = '' + Math.round(game.time.now);
+    
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown){
       if(this.racerBlue){
