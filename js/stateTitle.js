@@ -1,5 +1,6 @@
 var StateTitle = {
   preload: function(){
+     game.load.bitmapFont('pixelFont', 'assets/fonts/bitmapFonts/pixelFont.png', 'assets/fonts/bitmapFonts/pixelFont.xml');
      game.load.audio("title", "assets/music/More-Crazy-Races.mp3");
 
      game.load.image("city", "assets/city-re-colored.png");
@@ -8,7 +9,7 @@ var StateTitle = {
      //Need to add buttons for:
      //1. Start game
      //2. Tutorial??
-     game.load.spritesheet("buttons", "assets/buttons-sprite.png", 111, 24, 4);
+     game.load.spritesheet("buttons", "assets/main-menu-buttons.png", 217, 40, 2);
      //Need: "best played in landscape-view image for mobile"
     
     game.load.image("background", "assets/bg-color.png");
@@ -17,6 +18,7 @@ var StateTitle = {
   },
 
   create: function (){
+     
      background = game.add.tileSprite(0, 0, 600, 432, "background");
      this.titleSong = game.add.audio("title");
      this.titleSong.play('', 0, 1, true);
@@ -29,12 +31,14 @@ var StateTitle = {
       13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28], 12, true);
      this.logo.animations.play("menu");
      //Define and add game buttons
-     this.startBtn = game.add.button(285, game.world.height-50,
+     this.startBtn = game.add.button(285, game.world.height-60,
       "buttons", this.startGame, this, 1, 0, 1);
      this.startBtn.anchor.set(0.5, 0.5);
      //Enable input
      //Call setListeners();
-
+    
+     var bmpText;
+     bmpText = game.add.bitmapText(155, 400, 'pixelFont', '©2018 Ardan Labs', 21);
   },
 
   startGame: function (){
