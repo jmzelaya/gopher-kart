@@ -5,7 +5,7 @@ var StateChoice = {
 
     //Spritesheets for the 3 colored Gophers
     //Later put into 1 spritesheet
-    game.load.spritesheet("racer", "assets/character-select-loops.png", 75, 71, 7);
+    game.load.spritesheet("racer", "assets/character-select-loops.png", 76, 72, 7);
 
     game.load.image("background", "assets/character-select-background.png");
 
@@ -33,12 +33,18 @@ var StateChoice = {
     //Blue
     this.blueMarquee = game.add.sprite(game.world.centerX-150, game.world.centerY-16, "blueMarquee");
     this.blueMarquee.anchor.set(0.5, 0.5);
+    this.blueMarquee.animations.add("blueCrawl", [],15, true);
+    this.blueMarquee.animations.play("blueCrawl");
     //Pink
     this.pinkMarquee = game.add.sprite(game.world.centerX, game.world.centerY-16, "pinkMarquee");
     this.pinkMarquee.anchor.set(0.5, 0.5);
+    this.pinkMarquee.animations.add("pinkCrawl", [],13, true);
+    this.pinkMarquee.animations.play("pinkCrawl");
     //Purple
     this.purpleMarquee = game.add.sprite(game.world.centerX+150, game.world.centerY-16, "purpleMarquee");
     this.purpleMarquee.anchor.set(0.5, 0.5);
+    this.purpleMarquee.animations.add("purpleCrawl", [],10, true);
+    this.purpleMarquee.animations.play("purpleCrawl");
 
     //Choose Racer1
     this.pickRacer1 = game.add.button(game.world.centerX-150, game.world.centerY+105,
@@ -65,25 +71,30 @@ var StateChoice = {
     //Blue
     this.blue = game.add.sprite(game.world.centerX-150, game.world.centerY+40, "racer");
     this.blue.frame = 1;
-    this.blue.animations.add("blue", [1, 2]);
+    this.blue.animations.add("blue", [1, 2],9, true);
     this.blue.anchor.set(0.5, 0.5);
+    this.blue.animations.play("blue");
+    
     //Pink
     this.PinkGopher = game.add.sprite(game.world.centerX, game.world.centerY+40, "racer");
     this.PinkGopher.frame = 3;
-    this.PinkGopher.animations.add("pink", [3, 4]);
+    this.PinkGopher.animations.add("pink", [3, 4],9, true);
     this.PinkGopher.anchor.set(0.5, 0.5);
+    this.PinkGopher.animations.play("pink");
+    
     //Purple
     this.PurpleGopher = game.add.sprite(game.world.centerX+150, game.world.centerY+40, "racer");
     this.PurpleGopher.frame = 5;
-    this.PurpleGopher.animations.add("purple", [5, 6]);
+    this.PurpleGopher.animations.add("purple", [5, 6],9, true);
     this.PurpleGopher.anchor.set(0.5, 0.5);
+    this.PurpleGopher.animations.play("purple");
 
 
     //CONFIRMATION BUTTON
     this.startConfirm = game.add.button(game.world.centerX, game.world.height-50,
      "confirmButton", this.startConfirm, this, 0, 0, 1);
     this.startConfirm.anchor.set(0.5, 0.5);
-
+    
 
   },
 
