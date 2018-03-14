@@ -1,7 +1,7 @@
 var StateChoice = {
   preload: function () {
     //Music and Sounds
-    game.load.audio("select", "assets/music/Good-Morning-Doctor-Weird.mp3");
+    game.load.audio("select", "assets/music/BeepBox-Song3.wav");
 
     //Spritesheets for the 3 colored Gophers
     //Later put into 1 spritesheet

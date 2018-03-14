@@ -1,7 +1,7 @@
 var StateMain = {
 
   preload: function () {
-    game.load.audio("title", "assets/music/More-Crazy-Races.mp3");
+    game.load.audio("title", "assets/music/BeepBox-Song1.wav");
 
     game.stage.backgroundColor = 0xe9fffe;
     //Add racer spritesheet(s) - Later put into 1 :)
