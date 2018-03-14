@@ -30,22 +30,22 @@ var StateMain = {
     game.load.image("countDownGo", "assets/go.png");
 
     game.load.image("background", "assets/bg-color.png");
-    
+
     game.load.bitmapFont('pixelFont', 'assets/fonts/bitmapFonts/pixelFont.png', 'assets/fonts/bitmapFonts/pixelFont.xml');
-  
+
     var timeText;
   },
-  
-  
+
+
 
   create: function () {
-    
+
     background = game.add.tileSprite(0, 0, 600, 432, "background");
 
     //MUSIC
     this.titleSong = game.add.audio("title");
     this.titleSong.play('', 0, 1, true);
-    
+
     //Start Physics Engine
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -64,8 +64,8 @@ var StateMain = {
     this.bottom = game.height - 80;
     //Figure out exact y positions
     //Make a loop function thing to pick one and call at the bottom?
-    this.availLanes = [400, 390, 380];
-    this.lanes = availLanes[Math.floor(Math.random()*availLanes.length)];
+    // this.availLanes = [400, 390, 380];
+    // this.lanes = availLanes[Math.floor(Math.random()*availLanes.length)];
 
     var road = game.add.tileSprite(0, 226, 600, 159, "road");
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
@@ -81,10 +81,10 @@ var StateMain = {
     this.coins.setAll('outOfBoundsKill', true);
 
     //OTHER RACERS
-    this.npcRacers = game.add.group();
-    this.npcRacers.createMultiple.(40, 'npc');
-    this.npcRacers.setAll('checkWorldBounds', true);
-    this.npcRacers.setAll('outOfBoundsKill', true);
+    // this.npcRacers = game.add.group();
+    // this.npcRacers.createMultiple.(40, 'npc');
+    // this.npcRacers.setAll('checkWorldBounds', true);
+    // this.npcRacers.setAll('outOfBoundsKill', true);
 
     //Conditional to add correct gopher to screen
     if(character == "blue"){
@@ -92,7 +92,7 @@ var StateMain = {
       this.racerBlue.anchor.set(0.5, 0.5);
       this.racerBlue.animations.add("idle", [0, 1], 9, true);
       this.racerBlue.animations.play("idle");
-      game.physics.arcade.enable([this.racerBlue, this.coins, this.npcRacers]);
+      game.physics.arcade.enable([this.racerBlue, this.coins]);
       game.camera.follow(this.racerBlue);
       this.racerBlue.body.collideWorldBounds = true;
     }
@@ -197,14 +197,14 @@ var StateMain = {
     // game.camera.follow(this.racerPurple);
     //Set cursors to accept input from the keyboard
     cursors = game.input.keyboard.createCursorKeys();
-    
+
     //TEXT
     var scoreText;
     scoreText = game.add.bitmapText(535, 7, 'pixelFont', '100', 21);
-    
+
     var timeLabel;
     timeLabel = game.add.bitmapText(275, 7, 'pixelFont', 'TIME', 21);
-    
+
     timeText = game.add.bitmapText(280, 27, 'pixelFont', '300', 21);
 
     this.setListeners();
@@ -213,7 +213,7 @@ var StateMain = {
     setListeners: function(){
 
       game.time.events.loop(Phaser.Timer.SECOND * 2, this.loadCoin, this);
-      game.time.events.loop(Phaser.Timer.SECOND * 2, this.loadRacer, this);
+      // game.time.events.loop(Phaser.Timer.SECOND * 2, this.loadRacer, this);
     },
 
     loadCoin: function (){
@@ -230,16 +230,10 @@ var StateMain = {
       coin.animations.play("spin");
     },
 
-    loadRacer: function () {
-      var npc = this.npcRacers.getFirstDead;
-
-    }
-
-
   update: function (){
 
     //timeText.text = '' + Math.round(game.time.now);
-    
+
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown){
       if(this.racerBlue){
