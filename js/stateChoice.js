@@ -7,10 +7,15 @@ var StateChoice = {
     //Later put into 1 spritesheet
     game.load.spritesheet("racer", "assets/character-select-loops.png", 76, 72, 7);
 
-    game.load.image("background", "assets/character-select-background.png");
+    game.load.image("background", "assets/bg-color.png");
+    game.load.image("city", "assets/city-re-colored.png");
+    game.load.image("sky", "assets/clouds-re-colored.png");
+    game.load.image("mtn", "assets/mountains-recolored.png");
+    game.load.image("select", "assets/character-select-bg.png");
 
     //sample test button
     game.load.spritesheet("confirmButton", "assets/buttons-sprite.png", 111, 24, 4);
+    game.load.spritesheet("neon", "assets/neon-sign.png", 120, 31, 13);
 
     game.load.spritesheet("buttons", "assets/on-off-buttons.png", 59, 41, 2);
     game.load.spritesheet("blueMarquee", "assets/blue-crawl.png", 50, 12, 45);
@@ -27,7 +32,12 @@ var StateChoice = {
     this.selectSong.play('', 0, 1, true);
 
     //BACKGROUND
-    this.background = game.add.image(0, 0, "background");
+    this.background = game.add.tileSprite(0, 0, 600, 432, "background");
+    
+    this.sky = game.add.tileSprite(0, 10, 600, 78, "sky");
+    this.mtn = game.add.tileSprite(0, 250, 600, 131, "mtn");
+    this.city = game.add.tileSprite(0, 290, 600, 90, "city"); 
+    this.select = game.add.tileSprite(0, 0, 600, 432, "select");
 
     //MARQUEE
     //Blue
@@ -92,7 +102,7 @@ var StateChoice = {
 
     //CONFIRMATION BUTTON
     this.startConfirm = game.add.button(game.world.centerX, game.world.height-50,
-     "confirmButton", this.startConfirm, this, 0, 0, 1);
+     "neon", this.startConfirm, this, 0, 0, 1);
     this.startConfirm.anchor.set(0.5, 0.5);
     
 
@@ -126,7 +136,7 @@ var StateChoice = {
 
 
   update: function () {
-
+    this.sky.tilePosition.x -= 0.1;
 
   },
 
