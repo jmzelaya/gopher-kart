@@ -15,7 +15,7 @@ var StateChoice = {
 
     //sample test button
     game.load.spritesheet("confirmButton", "assets/buttons-sprite.png", 111, 24, 4);
-    game.load.spritesheet("neon", "assets/neon-sign.png", 120, 31, 13);
+    game.load.spritesheet("neon", "assets/neon-sign.png", 120, 30, 13);
 
     game.load.spritesheet("buttons", "assets/on-off-buttons.png", 59, 41, 2);
     game.load.spritesheet("blueMarquee", "assets/blue-crawl.png", 50, 12, 45);
@@ -101,11 +101,13 @@ var StateChoice = {
 
 
     //CONFIRMATION BUTTON
-    this.startConfirm = game.add.button(game.world.centerX, game.world.height-50,
+    this.startConfirm = game.add.button(game.world.centerX, game.world.height-46,
      "neon", this.startConfirm, this, 0, 0, 1);
+    this.startConfirm.frame = 13;
     this.startConfirm.anchor.set(0.5, 0.5);
-    
-
+    this.startConfirm.animations.add("neon", [],5, true);
+    this.startConfirm.anchor.set(0.5, 0.5);
+    this.startConfirm.animations.play("neon");
   },
 
   startConfirm: function () {
