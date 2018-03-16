@@ -21,7 +21,7 @@ var StateMain = {
     game.load.image("mtn", "assets/mountains-recolored.png");
     //Add other racers
     //Add coins
-    game.load.spritesheet("coin", "assets/coin.png", 16, 16, 6);
+    game.load.spritesheet("coin", "assets/coin-shadow.png", 16, 19, 6);
     //Add hearts
     //Countdown Spritesheet
     game.load.image("countDown3", "assets/three.png");
