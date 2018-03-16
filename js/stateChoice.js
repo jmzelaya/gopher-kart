@@ -33,10 +33,10 @@ var StateChoice = {
 
     //BACKGROUND
     this.background = game.add.tileSprite(0, 0, 600, 432, "background");
-    
+
     this.sky = game.add.tileSprite(0, 10, 600, 78, "sky");
     this.mtn = game.add.tileSprite(0, 250, 600, 131, "mtn");
-    this.city = game.add.tileSprite(0, 290, 600, 90, "city"); 
+    this.city = game.add.tileSprite(0, 290, 600, 90, "city");
     this.select = game.add.tileSprite(0, 0, 600, 432, "select");
 
     //MARQUEE
@@ -84,14 +84,14 @@ var StateChoice = {
     this.blue.animations.add("blue", [1, 2],9, true);
     this.blue.anchor.set(0.5, 0.5);
     this.blue.animations.play("blue");
-    
+
     //Pink
     this.PinkGopher = game.add.sprite(game.world.centerX, game.world.centerY+40, "racer");
     this.PinkGopher.frame = 3;
     this.PinkGopher.animations.add("pink", [3, 4],9, true);
     this.PinkGopher.anchor.set(0.5, 0.5);
     this.PinkGopher.animations.play("pink");
-    
+
     //Purple
     this.PurpleGopher = game.add.sprite(game.world.centerX+150, game.world.centerY+40, "racer");
     this.PurpleGopher.frame = 5;
@@ -103,11 +103,11 @@ var StateChoice = {
     //CONFIRMATION BUTTON
     this.startConfirm = game.add.button(game.world.centerX, game.world.height-46,
      "neon", this.startConfirm, this, 0, 0, 1);
-    this.startConfirm.frame = 13;
+    this.startConfirm.frame = 12;
     this.startConfirm.anchor.set(0.5, 0.5);
     this.startConfirm.animations.add("neon", [],5, true);
     this.startConfirm.anchor.set(0.5, 0.5);
-    this.startConfirm.animations.play("neon");
+    // this.startConfirm.animations.play("neon");
   },
 
   startConfirm: function () {
@@ -131,6 +131,7 @@ var StateChoice = {
 
     this.buttons[racer].frame = 1;
     character = racer;
+    this.startConfirm.animations.play("neon");
     // character.animations.play("blue");
     console.log(character);
   },
