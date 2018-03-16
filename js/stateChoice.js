@@ -102,7 +102,7 @@ var StateChoice = {
 
     //CONFIRMATION BUTTON
     this.startConfirm = game.add.button(game.world.centerX, game.world.height-46,
-     "neon", this.startConfirm, this, 0, 0, 1);
+     "neon", this.startConfirm, this, 12, 12, 12);
     this.startConfirm.frame = 12;
     this.startConfirm.anchor.set(0.5, 0.5);
     this.startConfirm.animations.add("neon", [],5, true);
