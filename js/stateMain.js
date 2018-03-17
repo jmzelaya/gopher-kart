@@ -199,8 +199,7 @@ var StateMain = {
     cursors = game.input.keyboard.createCursorKeys();
 
     //TEXT
-    var scoreText;
-    scoreText = game.add.bitmapText(535, 7, 'pixelFont', '100', 21);
+    scoreText = game.add.bitmapText(535, 7, 'pixelFont', '0', 21);
 
     var timeLabel;
     timeLabel = game.add.bitmapText(275, 7, 'pixelFont', 'TIME', 21);
@@ -230,9 +229,17 @@ var StateMain = {
       coin.animations.play("spin");
     },
 
+    onPickUp: function (racerBlue, coin){
+      coin.kill();
+      score += 1;
+      console.log("Your score is --> " + score);
+    },
+
   update: function (){
+    game.physics.arcade.collide(this.racerBlue, this.coins, null, this.onPickUp, this);
 
     //timeText.text = '' + Math.round(game.time.now);
+    scoreText.text = score;
 
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown){

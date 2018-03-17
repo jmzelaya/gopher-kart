@@ -3,6 +3,7 @@ var character;
 var lane;
 var score;
 var cursors;
+var scoreText;
 
 
 window.onload = function(){
