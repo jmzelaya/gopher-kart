@@ -47,6 +47,7 @@ var StateMain = {
     //MUSIC
     this.titleSong = game.add.audio("title");
     this.titleSong.play('', 0, 1, true);
+    this.titleSong.volume = 0.5;
 
     //Start Physics Engine
     game.physics.startSystem(Phaser.Physics.ARCADE);
