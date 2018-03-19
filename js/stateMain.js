@@ -2,6 +2,8 @@ var StateMain = {
 
   preload: function () {
     game.load.audio("title", "assets/music/BeepBox-Song1.wav");
+    
+    game.load.audio("coinBeep", "assets/music/sfx/coin.wav");
 
     game.stage.backgroundColor = 0xe9fffe;
     //Add racer spritesheet(s) - Later put into 1 :)
@@ -233,6 +235,8 @@ var StateMain = {
       coin.kill();
       score += 1;
       console.log("Your score is --> " + score);
+      this.coinBeep = game.add.audio("coinBeep");
+      this.coinBeep.play('', 0, 1, false);
     },
 
   update: function (){
