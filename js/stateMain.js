@@ -15,6 +15,8 @@ var StateMain = {
     game.load.image("road", "assets/road-tile.png");
     //Top rail
     game.load.image("topRail", "assets/top-rail-long.png");
+    //Scene Extras
+    game.load.image("extras", "assets/light-posts.png");
     //Bottom rail
     game.load.image("bottomRail", "assets/bottom-rail-long.png");
     //Add background
@@ -71,12 +73,12 @@ var StateMain = {
     // this.lanes = availLanes[Math.floor(Math.random()*availLanes.length)];
 
     var road = game.add.tileSprite(0, 226, 600, 159, "road");
-    var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
     var bottomRail = game.add.tileSprite(0, 385, 600, 47, "bottomRail");
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
     var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
     var city = game.add.tileSprite(0, 107, 600, 90, "city");
-
+    var extras = game.add.tileSprite(0, 15, 600, 182, "extras");
+    var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
     //COINS
     this.coins=game.add.group();
     this.coins.createMultiple(40, 'coin');
@@ -137,6 +139,7 @@ var StateMain = {
       sky.autoScroll(-5,0);
       city.autoScroll(-30,0);
       mtn.autoScroll(-15,0);
+      extras.autoScroll(-230, 0);
     }, 3000);
 
     /*
@@ -238,6 +241,7 @@ var StateMain = {
       console.log("Your score is --> " + score);
       this.coinBeep = game.add.audio("coinBeep");
       this.coinBeep.play('', 0, 1, false);
+      this.coinBeep.volume = 0.6;
     },
 
   update: function (){
