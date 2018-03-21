@@ -77,7 +77,7 @@ var StateMain = {
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
     var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
     var city = game.add.tileSprite(0, 107, 600, 90, "city");
-    var extras = game.add.tileSprite(0, 15, 600, 182, "extras");
+    var extras = game.add.tileSprite(0, 160, 1246, 39, "extras");
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
     //COINS
     this.coins=game.add.group();
