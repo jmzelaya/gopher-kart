@@ -83,7 +83,7 @@ var StateMain = {
     var road = game.add.tileSprite(0, 226, 600, 159, "road");
     var bottomRail = game.add.tileSprite(0, 385, 600, 47, "bottomRail");
     var posts = game.add.tileSprite(0, 15, 3000, 182, "posts");
-    var extras = game.add.tileSprite(0, 158, 1246, 39, "extras");
+    var extras = game.add.tileSprite(0, 120, 3000, 84, "extras");
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
     //COINS
     this.coins=game.add.group();
