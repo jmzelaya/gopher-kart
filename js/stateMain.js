@@ -16,7 +16,11 @@ var StateMain = {
     //Top rail
     game.load.image("topRail", "assets/top-rail-long.png");
     //Scene Extras
-    game.load.image("extras", "assets/light-posts.png");
+    game.load.image("extras", "assets/signs.png");
+    //Light Posts
+    game.load.image("posts", "assets/light-posts.png");
+    //Truck
+    game.load.image("truck", "assets/truck.png");
     //Bottom rail
     game.load.image("bottomRail", "assets/bottom-rail-long.png");
     //Add background
@@ -72,12 +76,14 @@ var StateMain = {
     // this.availLanes = [400, 390, 380];
     // this.lanes = availLanes[Math.floor(Math.random()*availLanes.length)];
 
-    var road = game.add.tileSprite(0, 226, 600, 159, "road");
-    var bottomRail = game.add.tileSprite(0, 385, 600, 47, "bottomRail");
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
     var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
     var city = game.add.tileSprite(0, 107, 600, 90, "city");
-    var extras = game.add.tileSprite(0, 160, 1246, 39, "extras");
+    var truck = game.add.tileSprite(0, 90, 3000, 142, "truck");
+    var road = game.add.tileSprite(0, 226, 600, 159, "road");
+    var bottomRail = game.add.tileSprite(0, 385, 600, 47, "bottomRail");
+    var posts = game.add.tileSprite(0, 15, 3000, 182, "posts");
+    var extras = game.add.tileSprite(0, 158, 1246, 39, "extras");
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
     //COINS
     this.coins=game.add.group();
@@ -139,6 +145,8 @@ var StateMain = {
       sky.autoScroll(-5,0);
       city.autoScroll(-30,0);
       mtn.autoScroll(-15,0);
+      truck.autoScroll(-450, 0);
+      posts.autoScroll(-230, 0);
       extras.autoScroll(-230, 0);
     }, 3000);
 
