@@ -139,15 +139,15 @@ var StateMain = {
     //Puts a 3 sec delay on the scrolling of the road, rails, and background
     setTimeout(function () {
       //Start scrolling
-      road.autoScroll(-230, 0);
-      topRail.autoScroll(-230, 0);
-      bottomRail.autoScroll(-230, 0);
+      road.autoScroll(-330, 0);
+      topRail.autoScroll(-330, 0);
+      bottomRail.autoScroll(-330, 0);
       sky.autoScroll(-5,0);
       city.autoScroll(-30,0);
       mtn.autoScroll(-15,0);
       truck.autoScroll(-450, 0);
-      posts.autoScroll(-230, 0);
-      extras.autoScroll(-230, 0);
+      posts.autoScroll(-330, 0);
+      extras.autoScroll(-330, 0);
     }, 3000);
 
     /*
