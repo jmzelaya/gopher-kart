@@ -145,7 +145,7 @@ var StateMain = {
       sky.autoScroll(-5,0);
       city.autoScroll(-30,0);
       mtn.autoScroll(-15,0);
-      truck.autoScroll(-450, 0);
+      truck.autoScroll(-550, 0);
       posts.autoScroll(-330, 0);
       extras.autoScroll(-330, 0);
     }, 3000);
