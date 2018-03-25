@@ -134,7 +134,21 @@ var StateChoice = {
     this.startConfirm.animations.play("neon");
     // character.animations.play("blue");
     console.log(character);
+
+
   },
+
+
+//Iterate through the 'key' in the 'buttons' object.
+//In the buttons object turn all of them to frame '0' (off)
+//Take the button of the racer value passed in with bind()
+//And turn THAT button's frame to 1 (on)
+//Now...
+
+//Create a NEW sprite 'racer' (w/e);
+//add to the global.....????
+//Make a character object?
+//And pass THAT to the global?
 
 
 
