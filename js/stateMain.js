@@ -74,10 +74,12 @@ var StateMain = {
     this.lane = function () {
       return availLanes[Math.floor(Math.random()*availLanes.length)];
     }
-    this.pickNPC = availNpcGophers[Math.floor(Math.random()*availNpcGophers.length)];
+    this.pickNPC = function(){
+      return availNpcGophers[Math.floor(Math.random()*availNpcGophers.length)];
+    }
     // this.npc = game.add.sprite(game.width, this.lane, this.pickNPC);
 
-    console.log("NEW NPC ADDED: " + this.lane + " , " + this.pickNPC);
+    console.log("NEW NPC ADDED: " + this.lane() + " , " + this.pickNPC());
 
 
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
@@ -98,7 +100,7 @@ var StateMain = {
 
     // OTHER RACERS
     this.npcRacers = game.add.group();
-    this.npcRacers.createMultiple(40, this.pickNPC);
+    this.npcRacers.createMultiple(4, this.pickNPC());
     this.npcRacers.setAll('checkWorldBounds', true);
     this.npcRacers.setAll('outOfBoundsKill', true);
     //CHECK OUT HUNGRY DRAGON TO PICK BETWEEN DIFFERENT COLORS
@@ -209,7 +211,7 @@ var StateMain = {
       var newNpc = this.npcRacers.getFirstDead();
       var xx = game.width;
       var yy = this.lane();
-      newNpc.key = this.pickNPC;
+      newNpc.key = this.pickNPC();
       newNpc.anchor.set(0.5 , 0.5);
       newNpc.reset(xx, yy);
       newNpc.enabled = true;
