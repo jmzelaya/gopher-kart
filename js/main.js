@@ -1,6 +1,7 @@
 var game;
 var character;
-var lane;
+var availLanes = [233, 289, 345];
+var availNpcGophers = ["blue", "pink", "purple"];
 var score;
 var cursors;
 var scoreText;

@@ -71,7 +71,10 @@ var StateMain = {
     score = 0;
     this.top = game.height - 200 ;
     this.bottom = game.height - 80;
-    this.lane = [233, 289, 345];
+    this.lane = availLanes[Math.floor(Math.random()*availLanes.length)];
+    this.npc = availNpcGophers[Math.floor(Math.random()*availNpcGophers.length)];
+
+    console.log("NEW NPC ADDED: " + this.lane + " , " + this.npc);
     //Figure out exact y positions
     //Make a loop function thing to pick one and call at the bottom?
     // this.lanes = availLanes[Math.floor(Math.random()*availLanes.length)];
