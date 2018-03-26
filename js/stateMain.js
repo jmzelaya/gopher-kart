@@ -30,6 +30,8 @@ var StateMain = {
     //Add other racers
     //Add coins
     game.load.spritesheet("coin", "assets/coin-shadow.png", 16, 19, 6);
+
+    game.load.spritesheet("npc", "assets/other-gophers.png", 64, 60, 6);
     //Add hearts
     //Countdown Spritesheet
     game.load.image("countDown3", "assets/three.png");
@@ -100,7 +102,7 @@ var StateMain = {
 
     // OTHER RACERS
     this.npcRacers = game.add.group();
-    this.npcRacers.createMultiple(4, this.pickNPC());
+    this.npcRacers.createMultiple(40, 'npc');
     this.npcRacers.setAll('checkWorldBounds', true);
     this.npcRacers.setAll('outOfBoundsKill', true);
     //CHECK OUT HUNGRY DRAGON TO PICK BETWEEN DIFFERENT COLORS
@@ -211,12 +213,12 @@ var StateMain = {
       var newNpc = this.npcRacers.getFirstDead();
       var xx = game.width;
       var yy = this.lane();
-      newNpc.key = this.pickNPC();
+      // newNpc.key = this.pickNPC();
       newNpc.anchor.set(0.5 , 0.5);
       newNpc.reset(xx, yy);
       newNpc.enabled = true;
       newNpc.body.velocity.x = -200;
-      newNpc.animations.add("idle", [0, 1], 12, true);
+      newNpc.animations.add("idle", this.pickNPC(), 12, true);
       newNpc.animations.play("idle");
     },
 
