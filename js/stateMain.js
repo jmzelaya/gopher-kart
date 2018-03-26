@@ -1,16 +1,16 @@
 var StateMain = {
 
   preload: function () {
-    game.load.audio("title", "assets/music/BeepBox-Song1.wav");
-    
+    game.load.audio("title", "assets/music/racingMain.wav");
+
     game.load.audio("coinBeep", "assets/music/sfx/coin.wav");
 
     game.stage.backgroundColor = 0xe9fffe;
     //Add racer spritesheet(s) - Later put into 1 :)
     //...maybe put into global variables? To remove repitition...
-    game.load.spritesheet("racerBlue", "assets/gopher-blue-updated.png", 64, 60, 15);
-    game.load.spritesheet("racerPink", "assets/gopher-pink.png", 63, 60, 15);
-    game.load.spritesheet("racerPurple", "assets/gopher-purple.png", 63, 60, 15);
+    game.load.spritesheet("blue", "assets/gopher-blue-updated.png", 64, 60, 15);
+    game.load.spritesheet("pink", "assets/gopher-pink.png", 64, 60, 15);
+    game.load.spritesheet("purple", "assets/gopher-purple.png", 64, 60, 15);
     //Road
     game.load.image("road", "assets/road-tile.png");
     //Top rail
@@ -71,15 +71,15 @@ var StateMain = {
     score = 0;
     this.top = game.height - 200 ;
     this.bottom = game.height - 80;
+    this.lane = [233, 289, 345];
     //Figure out exact y positions
     //Make a loop function thing to pick one and call at the bottom?
-    // this.availLanes = [400, 390, 380];
     // this.lanes = availLanes[Math.floor(Math.random()*availLanes.length)];
 
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
     var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
     var city = game.add.tileSprite(0, 107, 600, 90, "city");
-    var truck = game.add.tileSprite(0, 77, 3000, 121, "truck");
+    var truck = game.add.tileSprite(0, 90, 3000, 142, "truck");
     var road = game.add.tileSprite(0, 226, 600, 159, "road");
     var bottomRail = game.add.tileSprite(0, 385, 600, 47, "bottomRail");
     var posts = game.add.tileSprite(0, 15, 3000, 182, "posts");
@@ -93,45 +93,17 @@ var StateMain = {
 
     //OTHER RACERS
     // this.npcRacers = game.add.group();
-    // this.npcRacers.createMultiple.(40, 'npc');
+    // this.npcRacers.createMultiple(40, 'npc');
     // this.npcRacers.setAll('checkWorldBounds', true);
     // this.npcRacers.setAll('outOfBoundsKill', true);
 
-    //Conditional to add correct gopher to screen
-    if(character == "blue"){
-      this.racerBlue = game.add.sprite(50, 320, "racerBlue");
-      this.racerBlue.anchor.set(0.5, 0.5);
-      this.racerBlue.animations.add("idle", [0, 1], 9, true);
-      this.racerBlue.animations.play("idle");
-      game.physics.arcade.enable([this.racerBlue, this.coins]);
-      game.camera.follow(this.racerBlue);
-      this.racerBlue.body.collideWorldBounds = true;
-    }
-
-    else if (character == "pink") {
-      this.racerPink = game.add.sprite(50, 320, "racerPink");
-      this.racerPink.anchor.set(0.5, 0.5);
-      this.racerPink.animations.add("idle", [0, 1], 9, true);
-      this.racerPink.animations.play("idle");
-      game.physics.arcade.enable(this.racerPink);
-      this.racerPink.body.collideWorldBounds = true;
-    }
-
-    else{
-      // this.racerPurple = game.add.sprite(50, 320, "racerPurple");
-      // this.racerPurple.anchor.set(0.5, 0.5);
-      // this.racerPurple.animations.add("idle", [0, 1], 12, true);
-      // this.racerPurple.animations.play("idle");
-      // game.physics.arcade.enable(this.racerPurple);
-      this.racerBlue = game.add.sprite(50, 320, "racerBlue");
-      this.racerBlue.anchor.set(0.5, 0.5);
-      this.racerBlue.animations.add("idle", [0, 1], 9, true);
-      this.racerBlue.animations.play("idle");
-      game.physics.arcade.enable(this.racerBlue);
-      game.camera.follow(this.racerBlue);
-      this.racerBlue.body.collideWorldBounds = true;
-
-    }
+    this.sprite = game.add.sprite(50, 320, character);
+    this.sprite.anchor.set(0.5, 0.5);
+    this.sprite.animations.add("idle", [0, 1], 9, true);
+    this.sprite.animations.play("idle");
+    game.physics.arcade.enable([this.sprite, this.coins]);
+    game.camera.follow(this.sprite);
+    this.sprite.body.collideWorldBounds = true;
 
 
     console.log("You chose the " + character + " racer!");
@@ -206,9 +178,6 @@ var StateMain = {
     tween1.chain(tweenGo);
     tween3.start();
 
-
-    // game.camera.follow(this.racerPink);
-    // game.camera.follow(this.racerPurple);
     //Set cursors to accept input from the keyboard
     cursors = game.input.keyboard.createCursorKeys();
 
@@ -225,16 +194,15 @@ var StateMain = {
 
     setListeners: function(){
 
-      game.time.events.loop(Phaser.Timer.SECOND * 2, this.loadCoin, this);
-      // game.time.events.loop(Phaser.Timer.SECOND * 2, this.loadRacer, this);
+      game.time.events.loop(Phaser.Timer.SECOND, this.loadCoin, this);
     },
 
     loadCoin: function (){
       var coin = this.coins.getFirstDead();
       //y position
-      var yy = game.rnd.integerInRange(210, game.height-55);
+      var yy = game.rnd.integerInRange(240, game.height-70);
       //x position
-      var xx = game.width-100;
+      var xx = game.width;
 
       coin.reset(xx, yy);
       coin.enabled = true;
@@ -243,7 +211,7 @@ var StateMain = {
       coin.animations.play("spin");
     },
 
-    onPickUp: function (racerBlue, coin){
+    onPickUp: function (sprite, coin){
       coin.kill();
       score += 1;
       console.log("Your score is --> " + score);
@@ -253,94 +221,45 @@ var StateMain = {
     },
 
   update: function (){
-    game.physics.arcade.collide(this.racerBlue, this.coins, null, this.onPickUp, this);
+    game.physics.arcade.collide(this.sprite, this.coins, null, this.onPickUp, this);
 
     //timeText.text = '' + Math.round(game.time.now);
     scoreText.text = score;
 
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown){
-      if(this.racerBlue){
-        this.racerBlue.body.velocity.x = 150;
-      }
-      if(this.character === "pink"){
-        this.racerPink.body.velocity.x = 250;
-      }
-      if(this.character === "purple"){
-        this.racerPurple.body.velocity.x = 250;
-      }
-    }//CLOSE cursors
+        this.sprite.body.velocity.x = 150;
+    }
 
     if(cursors.right.isUp){
-      if(this.racerBlue){
-        this.racerBlue.body.velocity.x = -150;
-      }
-      else if(this.character === "pink"){
-        this.racerPink.body.velocity.x = -250;
-      }
-      else if(this.character === "purple"){
-        this.racerPurple.body.velocity.x = -250;
-      }
-
+        this.sprite.body.velocity.x = -150;
     }
+
     if(cursors.up.isDown){
-      if(this.racerBlue){
-        this.racerBlue.body.velocity.y = -100;
-      }
-      else if(this.character === "pink"){
-        this.racerPink.body.velocity.x = -250;
-      }
-      else if(this.character === "purple"){
-        this.racerPurple.body.velocity.x = -250;
-      }
-
+        this.sprite.body.velocity.y = -100;
     }
+
     if(cursors.up.isUp){
-      if(this.racerBlue){
-        this.racerBlue.body.velocity.y = 0;
-      }
-      else if(this.character === "pink"){
-        this.racerPink.body.velocity.x = -250;
-      }
-      else if(this.character === "purple"){
-        this.racerPurple.body.velocity.x = -250;
-      }
-
+        this.sprite.body.velocity.y = 0;
     }
-    if(cursors.down.isDown){
-      if(this.racerBlue){
-        this.racerBlue.body.velocity.y = 100;
-      }
-      else if(this.character === "pink"){
-        this.racerPink.body.velocity.x = -250;
-      }
-      else if(this.character === "purple"){
-        this.racerPurple.body.velocity.x = -250;
-      }
 
+    if(cursors.down.isDown){
+      this.sprite.body.velocity.y = 100;
     }
 
     if(cursors.left.isDown){
-      if(this.racerBlue){
-        this.racerBlue.body.velocity.x = -250;
+      if(this.sprite){
+        this.sprite.body.velocity.x = -250;
       }
     }
 
-    if(this.racerBlue.y<this.top){
-      this.racerBlue.y=this.top;
-      // this.racerBlue.body.velocity.y = 0;
-
+    if(this.sprite.y<this.top){
+      this.sprite.y=this.top;
     }
 
-    //Check if racerBlue is going below the screen
-    if(this.racerBlue.y > this.bottom){
-      this.racerBlue.y = this.bottom;
-      // this.racerBlue.body.gravity.y = 0;
+    if(this.sprite.y > this.bottom){
+      this.sprite.y = this.bottom;
     }
-
-
-
-
 
   },
 
