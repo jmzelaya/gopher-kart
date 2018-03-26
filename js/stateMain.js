@@ -72,9 +72,10 @@ var StateMain = {
     this.top = game.height - 200 ;
     this.bottom = game.height - 80;
     this.lane = availLanes[Math.floor(Math.random()*availLanes.length)];
-    this.npc = availNpcGophers[Math.floor(Math.random()*availNpcGophers.length)];
+    this.pickNPC = availNpcGophers[Math.floor(Math.random()*availNpcGophers.length)];
+    this.npc = game.add.sprite(game.width, this.lane, this.pickNPC);
 
-    console.log("NEW NPC ADDED: " + this.lane + " , " + this.npc);
+    console.log("NEW NPC ADDED: " + this.lane + " , " + this.pickNPC);
 
 
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
@@ -94,17 +95,17 @@ var StateMain = {
     this.coins.setAll('outOfBoundsKill', true);
 
     // OTHER RACERS
-    // this.npcRacers = game.add.group();
-    // this.npcRacers.createMultiple(40, 'npc');
-    // this.npcRacers.setAll('checkWorldBounds', true);
-    // this.npcRacers.setAll('outOfBoundsKill', true);
+    this.npcRacers = game.add.group();
+    this.npcRacers.createMultiple(40, this.pickNPC);
+    this.npcRacers.setAll('checkWorldBounds', true);
+    this.npcRacers.setAll('outOfBoundsKill', true);
 
     this.sprite = game.add.sprite(50, 320, character);
     this.sprite.anchor.set(0.5, 0.5);
     this.sprite.animations.add("crash", [2,3,4,5,6], 5, true);
     this.sprite.animations.add("idle", [0, 1], 9, true);
     this.sprite.animations.play("idle");
-    game.physics.arcade.enable([this.sprite, this.coins]);
+    game.physics.arcade.enable([this.sprite, this.coins, this.npcRacers]);
     game.camera.follow(this.sprite);
     this.sprite.body.collideWorldBounds = true;
 
@@ -130,16 +131,16 @@ var StateMain = {
     of adding random racers OR
     a new coin to the screen
     */
-    setInterval(function () {
-      var randomGen = Math.floor(Math.random() * 20);
-      if(randomGen % 2 === 0){
-        // this.racerPink = game.add.sprite(50, 350, "racerPink");
-        console.log("New racer added!");
-      }
-      else{
-        console.log("New obstacle added!");
-      }
-    }, 3500);
+    // setInterval(function () {
+    //   var randomGen = Math.floor(Math.random() * 20);
+    //   if(randomGen % 2 === 0){
+    //     // this.racerPink = game.add.sprite(50, 350, "racerPink");
+    //     console.log("New racer added!");
+    //   }
+    //   else{
+    //     console.log("New obstacle added!");
+    //   }
+    // }, 3500);
 
 
     //COUNTDOWN
@@ -198,12 +199,19 @@ var StateMain = {
     setListeners: function(){
 
       game.time.events.loop(Phaser.Timer.SECOND, this.loadCoin, this);
-      // game.time.events.loop(Phaser.Timer.SECOND * 5, this.loadNPC, this);
+      game.time.events.loop(Phaser.Timer.SECOND * 5, this.loadNPC, this);
     },
 
-    // loadNPC: function (){
-    //   var npc = this.npcRacers.getFirstDead();
-    // }
+    loadNPC: function (){
+      var newNpc = this.npcRacers.getFirstDead();
+      var xx = game.width;
+      var yy = this.lane;
+      newNpc.reset(xx, yy);
+      newNpc.enabled = true;
+      newNpc.body.velocity.x = -200;
+      newNpc.animations.add("idle", [0, 1], 12, true);
+      newNpc.animations.play("idle");
+    },
 
     loadCoin: function (){
       var coin = this.coins.getFirstDead();
