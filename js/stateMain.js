@@ -194,15 +194,15 @@ var StateMain = {
 
     setListeners: function(){
 
-      game.time.events.loop(Phaser.Timer.SECOND * 5, this.loadCoin, this);
+      game.time.events.loop(Phaser.Timer.SECOND, this.loadCoin, this);
     },
 
     loadCoin: function (){
       var coin = this.coins.getFirstDead();
       //y position
-      var yy = game.rnd.integerInRange(210, game.height-55);
+      var yy = game.rnd.integerInRange(240, game.height-70);
       //x position
-      var xx = game.width-100;
+      var xx = game.width;
 
       coin.reset(xx, yy);
       coin.enabled = true;

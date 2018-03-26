@@ -135,7 +135,10 @@ var StateChoice = {
     // character.animations.play("blue");
     console.log(character);
 
-
+    //When you select character
+    //add the spritesheet
+    //and concatenate the var color to 'MARQUEE'
+    //And play animation
   },
 
 
