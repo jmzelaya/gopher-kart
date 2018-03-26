@@ -75,9 +75,7 @@ var StateMain = {
     this.npc = availNpcGophers[Math.floor(Math.random()*availNpcGophers.length)];
 
     console.log("NEW NPC ADDED: " + this.lane + " , " + this.npc);
-    //Figure out exact y positions
-    //Make a loop function thing to pick one and call at the bottom?
-    // this.lanes = availLanes[Math.floor(Math.random()*availLanes.length)];
+
 
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
     var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
@@ -88,13 +86,14 @@ var StateMain = {
     var posts = game.add.tileSprite(0, 15, 3000, 182, "posts");
     var extras = game.add.tileSprite(0, 120, 3000, 84, "extras");
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
+
     //COINS
     this.coins=game.add.group();
     this.coins.createMultiple(40, 'coin');
     this.coins.setAll('checkWorldBounds', true);
     this.coins.setAll('outOfBoundsKill', true);
 
-    //OTHER RACERS
+    // OTHER RACERS
     // this.npcRacers = game.add.group();
     // this.npcRacers.createMultiple(40, 'npc');
     // this.npcRacers.setAll('checkWorldBounds', true);
@@ -102,6 +101,7 @@ var StateMain = {
 
     this.sprite = game.add.sprite(50, 320, character);
     this.sprite.anchor.set(0.5, 0.5);
+    this.sprite.animations.add("crash", [2,3,4,5,6], 5, true);
     this.sprite.animations.add("idle", [0, 1], 9, true);
     this.sprite.animations.play("idle");
     game.physics.arcade.enable([this.sprite, this.coins]);
@@ -198,7 +198,12 @@ var StateMain = {
     setListeners: function(){
 
       game.time.events.loop(Phaser.Timer.SECOND, this.loadCoin, this);
+      // game.time.events.loop(Phaser.Timer.SECOND * 5, this.loadNPC, this);
     },
+
+    // loadNPC: function (){
+    //   var npc = this.npcRacers.getFirstDead();
+    // }
 
     loadCoin: function (){
       var coin = this.coins.getFirstDead();
