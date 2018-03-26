@@ -1,7 +1,7 @@
 var StateMain = {
 
   preload: function () {
-    game.load.audio("title", "assets/music/racingMain.wav");
+    game.load.audio("title", "assets/music/racingMain-compressed.m4a");
 
     game.load.audio("coinBeep", "assets/music/sfx/coin.wav");
 
