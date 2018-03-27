@@ -118,6 +118,10 @@ var StateMain = {
     this.sprite.body.collideWorldBounds = true;
     this.sprite.body.immovable = true;
 
+    this.sprite.body.width = 40;
+    this.sprite.body.height = 40
+    this.sprite.body.offset.setTo(-20, -30);
+
 
     console.log("You chose the " + character + " racer!");
 
@@ -288,6 +292,10 @@ var StateMain = {
 
   },
 
+  render: function (){
+    game.debug.body(this.sprite);
+
+  },
 
 
 };//END StateMain
