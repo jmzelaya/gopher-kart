@@ -10,6 +10,7 @@ var availNpcGophers =
 var score;
 var cursors;
 var scoreText;
+var lives = 3;
 
 
 window.onload = function(){

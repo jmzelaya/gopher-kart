@@ -105,16 +105,18 @@ var StateMain = {
     this.npcRacers.createMultiple(40, 'npc');
     this.npcRacers.setAll('checkWorldBounds', true);
     this.npcRacers.setAll('outOfBoundsKill', true);
+
     //CHECK OUT HUNGRY DRAGON TO PICK BETWEEN DIFFERENT COLORS
 
-    this.sprite = game.add.sprite(50, 320, character);
+    this.sprite = game.add.sprite(50, 289, character);
     this.sprite.anchor.set(0.5, 0.5);
-    this.sprite.animations.add("crash", [2,3,4,5,6], 5, true);
+    this.sprite.animations.add("crash", [2,3,4,5,6], 5, false);
     this.sprite.animations.add("idle", [0, 1], 9, true);
     this.sprite.animations.play("idle");
     game.physics.arcade.enable([this.sprite, this.coins, this.npcRacers]);
     game.camera.follow(this.sprite);
     this.sprite.body.collideWorldBounds = true;
+    this.sprite.body.immovable = true;
 
 
     console.log("You chose the " + character + " racer!");
@@ -132,22 +134,6 @@ var StateMain = {
       posts.autoScroll(-330, 0);
       extras.autoScroll(-330, 0);
     }, 3000);
-
-    /*
-    This are the beginning workings
-    of adding random racers OR
-    a new coin to the screen
-    */
-    // setInterval(function () {
-    //   var randomGen = Math.floor(Math.random() * 20);
-    //   if(randomGen % 2 === 0){
-    //     // this.racerPink = game.add.sprite(50, 350, "racerPink");
-    //     console.log("New racer added!");
-    //   }
-    //   else{
-    //     console.log("New obstacle added!");
-    //   }
-    // }, 3500);
 
 
     //COUNTDOWN
@@ -200,13 +186,16 @@ var StateMain = {
 
     timeText = game.add.bitmapText(280, 27, 'pixelFont', '300', 21);
 
+    game.debug.bodyInfo(this.npcRacers);
+
+
     this.setListeners();
   },
 
     setListeners: function(){
 
-      game.time.events.loop(Phaser.Timer.SECOND, this.loadCoin, this);
-      game.time.events.loop(Phaser.Timer.SECOND * 5, this.loadNPC, this);
+      game.time.events.loop(Phaser.Timer.SECOND * 5, this.loadCoin, this);
+      game.time.events.loop(Phaser.Timer.SECOND * 3, this.loadNPC, this);
     },
 
     loadNPC: function (){
@@ -220,6 +209,10 @@ var StateMain = {
       newNpc.body.velocity.x = -200;
       newNpc.animations.add("idle", this.pickNPC(), 12, true);
       newNpc.animations.play("idle");
+      newNpc.body.immovable = true;
+      newNpc.body.checkCollision.up = false;
+      newNpc.body.checkCollision.down = false;
+
     },
 
     loadCoin: function (){
@@ -245,8 +238,15 @@ var StateMain = {
       this.coinBeep.volume = 0.6;
     },
 
+    onCrash: function (sprite, npc){
+      sprite.animations.play("crash");
+      lives -= 1;
+      console.log("You have " + lives + "lives left!");
+    },
+
   update: function (){
     game.physics.arcade.collide(this.sprite, this.coins, null, this.onPickUp, this);
+    game.physics.arcade.collide(this.sprite, this.npcRacers, null, this.onCrash, this);
 
     //timeText.text = '' + Math.round(game.time.now);
     scoreText.text = score;
