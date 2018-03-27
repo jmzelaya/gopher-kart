@@ -118,9 +118,9 @@ var StateMain = {
     this.sprite.body.collideWorldBounds = true;
     this.sprite.body.immovable = true;
 
-    this.sprite.body.width = 40;
-    this.sprite.body.height = 40
-    this.sprite.body.offset.setTo(-20, -30);
+    this.sprite.body.width = 64;
+    this.sprite.body.height = 35
+    this.sprite.body.offset.setTo(0, 25);
 
 
     console.log("You chose the " + character + " racer!");
@@ -213,10 +213,12 @@ var StateMain = {
       newNpc.body.velocity.x = -200;
       newNpc.animations.add("idle", this.pickNPC(), 12, true);
       newNpc.animations.play("idle");
-      newNpc.body.immovable = true;
+      newNpc.body.immovable = false;
       newNpc.body.checkCollision.up = false;
       newNpc.body.checkCollision.down = false;
-
+      newNpc.body.width = 64;
+      newNpc.body.height = 35
+      newNpc.body.offset.setTo(0, 25);
     },
 
     loadCoin: function (){
@@ -246,6 +248,7 @@ var StateMain = {
       sprite.animations.play("crash");
       lives -= 1;
       console.log("You have " + lives + "lives left!");
+      sprite.animations.play("idle");
     },
 
   update: function (){
@@ -293,8 +296,7 @@ var StateMain = {
   },
 
   render: function (){
-    game.debug.body(this.sprite);
-
+    //game.debug.body(this.sprite);
   },
 
 
