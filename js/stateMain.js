@@ -31,7 +31,7 @@ var StateMain = {
     //Add coins
     game.load.spritesheet("coin", "assets/coin-shadow.png", 16, 19, 6);
 
-    game.load.spritesheet("npc", "assets/other-gophers.png", 64, 60, 6);
+    game.load.spritesheet("npc", "assets/other-gophers.png", 64, 60, 12);
     //Add hearts
     //Countdown Spritesheet
     game.load.image("countDown3", "assets/three.png");
@@ -118,9 +118,9 @@ var StateMain = {
     this.sprite.body.collideWorldBounds = true;
     this.sprite.body.immovable = true;
 
-    this.sprite.body.width = 64;
-    this.sprite.body.height = 35
-    this.sprite.body.offset.setTo(0, 25);
+    this.sprite.body.width = 60;
+    this.sprite.body.height = 30
+    this.sprite.body.offset.setTo(3, 30);
 
 
     console.log("You chose the " + character + " racer!");
@@ -216,9 +216,9 @@ var StateMain = {
       newNpc.body.immovable = false;
       newNpc.body.checkCollision.up = false;
       newNpc.body.checkCollision.down = false;
-      newNpc.body.width = 64;
-      newNpc.body.height = 35
-      newNpc.body.offset.setTo(0, 25);
+      newNpc.body.width = 60;
+      newNpc.body.height = 30
+      newNpc.body.offset.setTo(3, 30);
     },
 
     loadCoin: function (){
