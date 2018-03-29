@@ -248,7 +248,7 @@ var StateMain = {
       sprite.animations.play("crash");
       lives -= 1;
       console.log("You have " + lives + "lives left!");
-      sprite.animations.play("idle");
+      // sprite.animations.play("idle");
     },
 
   update: function (){
