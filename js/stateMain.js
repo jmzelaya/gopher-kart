@@ -199,7 +199,7 @@ var StateMain = {
     setListeners: function(){
 
       game.time.events.loop(Phaser.Timer.SECOND * 5, this.loadCoin, this);
-      game.time.events.loop(Phaser.Timer.SECOND * 3, this.loadNPC, this);
+      game.time.events.loop(Phaser.Timer.SECOND, this.loadNPC, this);
     },
 
     loadNPC: function (){
