@@ -247,6 +247,7 @@ var StateMain = {
     onCrash: function (sprite, npc){
       sprite.animations.play("crash");
       lives -= 1;
+      npc.kill();
       console.log("You have " + lives + "lives left!");
       // sprite.animations.play("idle");
     },
