@@ -33,6 +33,7 @@ var StateMain = {
 
     game.load.spritesheet("npc", "assets/other-gophers.png", 64, 60, 12);
     //Add hearts
+    game.load.spritesheet("heart", "assets/heart-17x16.png", 17, 16, 6);
     //Countdown Spritesheet
     game.load.image("countDown3", "assets/three.png");
     game.load.image("countDown2", "assets/two.png");
@@ -66,9 +67,6 @@ var StateMain = {
     // this.timer.add(this.delay, this.readyForAction, this);
     // this.timer.start();
 
-    //PHYSICS
-    // game.physics.arcade.enable(character);
-
     //VARS
     score = 0;
     this.top = game.height - 200 ;
@@ -94,6 +92,12 @@ var StateMain = {
     var extras = game.add.tileSprite(0, 120, 3000, 84, "extras");
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
 
+    //LIVES
+    this.lives = game.add.sprite(game.world.centerX, game.world.centerY, "heart");
+    this.lives.anchor.set(0.5, 0.5);
+
+
+
     //COINS
     this.coins=game.add.group();
     this.coins.createMultiple(40, 'coin');
@@ -105,8 +109,6 @@ var StateMain = {
     this.npcRacers.createMultiple(40, 'npc');
     this.npcRacers.setAll('checkWorldBounds', true);
     this.npcRacers.setAll('outOfBoundsKill', true);
-
-    //CHECK OUT HUNGRY DRAGON TO PICK BETWEEN DIFFERENT COLORS
 
     this.sprite = game.add.sprite(50, 289, character);
     this.sprite.anchor.set(0.5, 0.5);
@@ -125,6 +127,8 @@ var StateMain = {
 
     console.log("You chose the " + character + " racer!");
 
+
+    //PLAN IS TO REMOVE THIS ?
     //Puts a 3 sec delay on the scrolling of the road, rails, and background
     setTimeout(function () {
       //Start scrolling
