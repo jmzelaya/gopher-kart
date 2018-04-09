@@ -93,9 +93,14 @@ var StateMain = {
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
 
     //LIVES
-    this.lives = game.add.sprite(game.world.centerX, game.world.centerY, "heart");
-    this.lives.anchor.set(0.5, 0.5);
+    this.heart1 = game.add.sprite(game.world.centerX-350, game.world.centerY-190, "heart");
+    this.heart2 = game.add.sprite(game.world.centerX-250, game.world.centerY-190, "heart");
+    this.heart3 = game.add.sprite(game.world.centerX-150, game.world.centerY-190, "heart");
 
+    this.livesGroup = game.add.group();
+    this.livesGroup.add(this.heart1);
+    this.livesGroup.add(this.heart2);
+    this.livesGroup.add(this.heart3);
 
 
     //COINS
@@ -202,7 +207,7 @@ var StateMain = {
 
     setListeners: function(){
 
-      game.time.events.loop(Phaser.Timer.SECOND * 5, this.loadCoin, this);
+      game.time.events.loop(Phaser.Timer.SECOND, this.loadCoin, this);
       game.time.events.loop(Phaser.Timer.SECOND, this.loadNPC, this);
     },
 
@@ -252,6 +257,7 @@ var StateMain = {
       sprite.animations.play("crash");
       lives -= 1;
       npc.kill();
+      this.lives.kill();
       console.log("You have " + lives + "lives left!");
       // sprite.animations.play("idle");
     },
