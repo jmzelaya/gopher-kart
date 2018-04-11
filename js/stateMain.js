@@ -30,8 +30,8 @@ var StateMain = {
     //Add other racers
     //Add coins
     game.load.spritesheet("coin", "assets/coin-shadow.png", 16, 19, 6);
-
     game.load.spritesheet("npc", "assets/other-gophers.png", 64, 60, 12);
+    game.load.spritesheet("explosion", "assets/explosion.png", 64, 60, 4);
     //Add hearts
     game.load.spritesheet("heart", "assets/heart-17x16.png", 17, 16, 6);
     //Countdown Spritesheet
@@ -39,11 +39,8 @@ var StateMain = {
     game.load.image("countDown2", "assets/two.png");
     game.load.image("countDown1", "assets/one.png");
     game.load.image("countDownGo", "assets/go.png");
-
     game.load.image("background", "assets/bg-color.png");
-
     game.load.bitmapFont('pixelFont', 'assets/fonts/bitmapFonts/pixelFont.png', 'assets/fonts/bitmapFonts/pixelFont.xml');
-
     var timeText;
   },
 
@@ -114,7 +111,6 @@ var StateMain = {
     this.npcRacers.createMultiple(40, 'npc');
     this.npcRacers.setAll('checkWorldBounds', true);
     this.npcRacers.setAll('outOfBoundsKill', true);
-
     this.sprite = game.add.sprite(50, 289, character);
     this.sprite.anchor.set(0.5, 0.5);
     this.sprite.animations.add("crash", [2,3,4,5,6], 5, false);
@@ -124,11 +120,9 @@ var StateMain = {
     game.camera.follow(this.sprite);
     this.sprite.body.collideWorldBounds = true;
     this.sprite.body.immovable = true;
-
     this.sprite.body.width = 60;
     this.sprite.body.height = 30
     this.sprite.body.offset.setTo(3, 30);
-
 
     console.log("You chose the " + character + " racer!");
 
@@ -228,6 +222,7 @@ var StateMain = {
       newNpc.body.width = 60;
       newNpc.body.height = 30
       newNpc.body.offset.setTo(3, 30);
+      newNpc.z = 200;
     },
 
     loadCoin: function (){
@@ -255,11 +250,15 @@ var StateMain = {
 
     onCrash: function (sprite, npc){
       sprite.animations.play("crash");
-      lives -= 1;
+      //lives -= 1;
+      explosion = this.game.add.sprite(npc.body.x,npc.body.y,"explosion");
+      explosion.anchor.setTo(0.1,0.5);
+      explosion.animations.add("explosion", [0, 1, 2, 3], 12, false);
+      explosion.animations.play("explosion", 12, false, true);
       npc.kill();
-      this.lives.kill();
+      //this.lives.kill();
       console.log("You have " + lives + "lives left!");
-      // sprite.animations.play("idle");
+      //sprite.animations.play("idle");
     },
 
   update: function (){
@@ -303,11 +302,12 @@ var StateMain = {
     if(this.sprite.y > this.bottom){
       this.sprite.y = this.bottom;
     }
-
   },
 
   render: function (){
     //game.debug.body(this.sprite);
+    //game.debug.text('Sprite z-depth: ' + this.sprite.z, 10, 20);
+    //console.log('NPCs z-depth: ' + this.npcRacers.z);
   },
 
 
