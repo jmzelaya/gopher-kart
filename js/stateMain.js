@@ -113,7 +113,7 @@ var StateMain = {
     this.npcRacers.setAll('outOfBoundsKill', true);
     this.sprite = game.add.sprite(50, 289, character);
     this.sprite.anchor.set(0.5, 0.5);
-    this.sprite.animations.add("crash", [2,3,4,5,6], 5, false);
+    this.sprite.animations.add("crash", [2,3,4,5,6], 9, false);
     this.sprite.animations.add("idle", [0, 1], 9, true);
     this.sprite.animations.play("idle");
     game.physics.arcade.enable([this.sprite, this.coins, this.npcRacers]);
@@ -250,6 +250,10 @@ var StateMain = {
 
     onCrash: function (sprite, npc){
       sprite.animations.play("crash");
+      sprite.events.onAnimationComplete.add(function(){			
+        console.log("Crash animation complete");
+        sprite.animations.play("idle");
+      }, this);
       //lives -= 1;
       explosion = this.game.add.sprite(npc.body.x,npc.body.y,"explosion");
       explosion.anchor.setTo(0.1,0.5);
@@ -264,7 +268,6 @@ var StateMain = {
   update: function (){
     game.physics.arcade.collide(this.sprite, this.coins, null, this.onPickUp, this);
     game.physics.arcade.collide(this.sprite, this.npcRacers, null, this.onCrash, this);
-
     //timeText.text = '' + Math.round(game.time.now);
     scoreText.text = score;
 
