@@ -30,7 +30,7 @@ var StateMain = {
     //Add other racers
     //Add coins
     game.load.spritesheet("coin", "assets/coin-shadow.png", 16, 19, 6);
-    game.load.spritesheet("npc", "assets/other-gophers.png", 64, 60, 12);
+    game.load.spritesheet("npc", "assets/other-gophers.png", 64, 60, 18);
     game.load.spritesheet("explosion", "assets/explosion.png", 64, 60, 4);
     //Add hearts
     game.load.spritesheet("heart", "assets/heart-17x16.png", 17, 16, 6);
