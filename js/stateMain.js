@@ -196,8 +196,8 @@ var StateMain = {
   },
 
     setListeners: function(){
-      game.time.events.loop(Phaser.Timer.SECOND, this.loadCoin, this);
-      game.time.events.loop(Phaser.Timer.SECOND, this.loadNPC, this);
+      game.time.events.loop(Phaser.Timer.SECOND * 1.5, this.loadCoin, this);
+      game.time.events.loop(Phaser.Timer.SECOND * 1.5, this.loadNPC, this);
     },
 
     loadNPC: function (){
@@ -245,7 +245,7 @@ var StateMain = {
 
     onCrash: function (sprite, npc){
       sprite.animations.play("crash");
-      sprite.events.onAnimationComplete.add(function(){			
+      sprite.events.onAnimationComplete.add(function(){
         console.log("Crash animation complete");
         sprite.animations.play("idle");
       }, this);
