@@ -101,6 +101,46 @@ body.leaderboard-page {
   background-repeat: no-repeat;
   color: #FFF;
 }
+.ardan-sticker {
+  height: 60px;
+  width: 130px;
+  display: block;
+  position: absolute;
+  top: 693px;
+  left: 50%;
+  margin-left: -65px;
+  border-radius: 100%;
+  transition: all 0.1s ease;
+}
+.ardan-sticker:hover {
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0px 1px 30px rgba(255,255,255,0.2);
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+}
+.github-sticker {
+  height: 90px;
+  width: 110px;
+  display: block;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  margin-left: 205px;
+  border-radius: 100%;
+  transition: all 0.1s ease;
+}
+.github-sticker:hover {
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0px 1px 30px rgba(255,255,255,0.2);
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+}
 body.leaderboard-page h1 {
   color: #04fcdc;
   text-align: center;

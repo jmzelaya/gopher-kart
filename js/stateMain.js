@@ -186,7 +186,8 @@ var StateMain = {
     cursors = game.input.keyboard.createCursorKeys();
 
     //TEXT
-    scoreText = game.add.bitmapText(535, 7, 'pixelFont', '0', 21);
+    scoreText = game.add.bitmapText(585, 5, 'pixelFont', '0', 21);
+    scoreText.anchor.set(1.0 , 0);
     var timeLabel;
     timeLabel = game.add.bitmapText(275, 7, 'pixelFont', 'TIME', 21);
     timeText = game.add.bitmapText(280, 27, 'pixelFont', '300', 21);
@@ -236,7 +237,7 @@ var StateMain = {
 
     onPickUp: function (sprite, coin){
       coin.kill();
-      score += 1;
+      score += 1000;
       console.log("Your score is --> " + score);
       this.coinBeep = game.add.audio("coinBeep");
       this.coinBeep.play('', 0, 1, false);
