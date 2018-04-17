@@ -90,9 +90,9 @@ var StateMain = {
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
 
     //LIVES
-    this.heart1 = game.add.sprite(game.world.centerX-350, game.world.centerY-190, "heart");
-    this.heart2 = game.add.sprite(game.world.centerX-250, game.world.centerY-190, "heart");
-    this.heart3 = game.add.sprite(game.world.centerX-150, game.world.centerY-190, "heart");
+    this.heart1 = game.add.sprite(game.world.centerX-285, game.world.centerY-205, "heart");
+    this.heart2 = game.add.sprite(game.world.centerX-265, game.world.centerY-205, "heart");
+    this.heart3 = game.add.sprite(game.world.centerX-245, game.world.centerY-205, "heart");
 
     this.livesGroup = game.add.group();
     this.livesGroup.add(this.heart1);
@@ -187,20 +187,15 @@ var StateMain = {
 
     //TEXT
     scoreText = game.add.bitmapText(535, 7, 'pixelFont', '0', 21);
-
     var timeLabel;
     timeLabel = game.add.bitmapText(275, 7, 'pixelFont', 'TIME', 21);
-
     timeText = game.add.bitmapText(280, 27, 'pixelFont', '300', 21);
-
+    
     game.debug.bodyInfo(this.npcRacers);
-
-
     this.setListeners();
   },
 
     setListeners: function(){
-
       game.time.events.loop(Phaser.Timer.SECOND, this.loadCoin, this);
       game.time.events.loop(Phaser.Timer.SECOND, this.loadNPC, this);
     },

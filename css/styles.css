@@ -1,11 +1,71 @@
-/*-- GAME SCREEN --*/
+/*-- GLOBAL STYLES --*/
 body.game-page {
   font-family: 'Patua One', cursive;
   background: url("../assets/web/full-bg.jpg") #000 50% 0px;
   background-size: 2958px 1310px;
   background-repeat: no-repeat;
   color: #FFF;
+  margin: 0;
 }
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -150px;
+  padding-top: 160px;
+}
+footer,
+.push {
+  height: 150px;
+}
+footer {
+  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 20px;
+}
+footer h1 {
+  font-size: 23px;
+  font-weight: 500;
+  opacity: 0.85;
+  margin: 0;
+}
+footer p {
+  margin: 0;
+  padding: 0;
+  opacity: 0.85;
+}
+footer ul {
+  margin: 0;
+  padding: 0;
+  opacity: 0.85;
+}
+footer ul li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+footer ul li a {
+  color: #6CBDFF;
+}
+footer .jami a {
+  color: #C1B1FF;
+  font-weight: 500;
+}
+footer .renee a {
+  color: #B2FBFF;
+  font-weight: 500;
+}
+footer .ardan a {
+  color:#FFA488;
+  font-weight: 500;
+}
+/*-- GAME SCREEN STYLES --*/
 canvas{
   image-rendering: -moz-crisp-edges;
   image-rendering: -webkit-crisp-edges;
@@ -15,6 +75,8 @@ canvas{
 #phaser-wrapper {
   width: 100%;
   position: relative;
+  height: 432px;
+  width: 100%;
 }
 #phaser-wrapper img {
   display: block;
@@ -24,10 +86,11 @@ canvas{
 }
 #phaser-wrapper canvas {
   position: absolute;
-  top: 102px;
+  top: 0;
   left: 50%;
   margin-left: -300px;
   border-radius: 10px;
+  margin-top: 0px;
 }
 
 /*-- LEADERBOARD SCREEN --*/
@@ -116,4 +179,3 @@ body.leaderboard-page h1 {
 .leaderboard-list dl dd:last-child{
   text-align: right;
 }
-
