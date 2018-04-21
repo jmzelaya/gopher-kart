@@ -12,5 +12,5 @@ var StateTutorial = {
   update: function(){
 
     
-  }
-}
+  },
+};
