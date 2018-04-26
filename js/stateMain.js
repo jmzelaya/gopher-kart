@@ -191,7 +191,7 @@ var StateMain = {
     var timeLabel;
     timeLabel = game.add.bitmapText(275, 7, 'pixelFont', 'TIME', 21);
     timeText = game.add.bitmapText(280, 27, 'pixelFont', '300', 21);
-    
+
     game.debug.bodyInfo(this.npcRacers);
     this.setListeners();
   },
@@ -218,7 +218,17 @@ var StateMain = {
       newNpc.body.width = 60;
       newNpc.body.height = 30
       newNpc.body.offset.setTo(3, 30);
-      newNpc.z = 200;
+      // newNpc.z = 200;
+
+      if(newNpc.yy = 233){
+        newNpc.z = 100
+      } elseif(newNpc.yy = 289){
+        newNpc.z = 200
+      } else {
+        newNpc.z = 300
+      }
+
+      npcRacer.sort('z', Phaser.Group.SORT_ASCENDING);
     },
 
     loadCoin: function (){
