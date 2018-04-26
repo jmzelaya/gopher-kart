@@ -111,6 +111,7 @@ var StateMain = {
     this.npcRacers.createMultiple(40, 'npc');
     this.npcRacers.setAll('checkWorldBounds', true);
     this.npcRacers.setAll('outOfBoundsKill', true);
+
     this.sprite = game.add.sprite(50, 289, character);
     this.sprite.anchor.set(0.5, 0.5);
     this.sprite.animations.add("crash", [2,3,4,5,6], 9, false);
@@ -124,7 +125,13 @@ var StateMain = {
     this.sprite.body.height = 30
     this.sprite.body.offset.setTo(3, 30);
 
+    this.mainCharacter = game.add.group();
+    this.mainCharacter.add(this.sprite);
+
     console.log("You chose the " + character + " racer!");
+
+    game.world.bringToTop(this.npcRacers);
+    // game.world.sendToBack(this.mainCharacter);
 
 
     //PLAN IS TO REMOVE THIS ?
@@ -311,6 +318,18 @@ var StateMain = {
     if(this.sprite.y > this.bottom){
       this.sprite.y = this.bottom;
     }
+    //
+    // if(newNpc.yy = 233){
+    //   this.sprite.bringToTop();
+    // } elseif(newNpc.yy = 289){
+    //   this.sprite.bringToTop();
+    // } else {
+    //   this.sprite.bringToTop();
+    // }
+    // this.npcRacers.bringToTop();
+
+
+
   },
 
   render: function (){
