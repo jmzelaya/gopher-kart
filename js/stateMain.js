@@ -218,17 +218,17 @@ var StateMain = {
       newNpc.body.width = 60;
       newNpc.body.height = 30
       newNpc.body.offset.setTo(3, 30);
-      // newNpc.z = 200;
+      newNpc.z = 200;
 
-      if(newNpc.yy = 233){
-        newNpc.z = 100
-      } elseif(newNpc.yy = 289){
-        newNpc.z = 200
-      } else {
-        newNpc.z = 300
-      }
-
-      npcRacer.sort('z', Phaser.Group.SORT_ASCENDING);
+      // if(newNpc.yy = 233){
+      //   newNpc.z = 100
+      // } elseif(newNpc.yy = 289){
+      //   newNpc.z = 200
+      // } else {
+      //   newNpc.z = 300
+      // }
+      //
+      // npcRacer.sort('z', Phaser.Group.SORT_ASCENDING);
     },
 
     loadCoin: function (){
