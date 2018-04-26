@@ -228,7 +228,6 @@ var StateMain = {
         newNpc.z = 300
       }
 
-      npcRacer.sort('z', Phaser.Group.SORT_ASCENDING);
     },
 
     loadCoin: function (){
