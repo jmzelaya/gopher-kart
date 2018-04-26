@@ -130,8 +130,8 @@ var StateMain = {
 
     console.log("You chose the " + character + " racer!");
 
-    game.world.bringToTop(this.npcRacers);
-    // game.world.sendToBack(this.mainCharacter);
+    game.world.moveUp(this.npcRacers);
+    game.world.moveDown(this.mainCharacter);
 
 
     //PLAN IS TO REMOVE THIS ?
