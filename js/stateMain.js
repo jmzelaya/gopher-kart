@@ -225,11 +225,23 @@ var StateMain = {
       newNpc.body.width = 60;
       newNpc.body.height = 30
       newNpc.body.offset.setTo(3, 30);
-      newNpc.z = 200;
-
-      // if(newNpc.yy = 233){
-      //   newNpc.z = 100
-      // } elseif(newNpc.yy = 289){
+      
+      if(newNpc.position.y == 233){
+         console.log('top lane');
+          newNpc.z = 233
+          console.log(newNpc)
+      }
+      if(newNpc.position.y == 289){
+         console.log('mid lane');
+          newNpc.z = 289
+          console.log(newNpc)
+      }
+      if(newNpc.position.y == 345){
+         console.log('bottom lane');
+          newNpc.z = 345
+          console.log(newNpc)
+      }
+      //elseif(newNpc.yy = 289){
       //   newNpc.z = 200
       // } else {
       //   newNpc.z = 300
