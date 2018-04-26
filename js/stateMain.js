@@ -30,7 +30,7 @@ var StateMain = {
     //Add other racers
     //Add coins
     game.load.spritesheet("coin", "assets/coin-shadow.png", 16, 19, 6);
-    game.load.spritesheet("npc", "assets/other-gophers.png", 64, 60, 20);
+    game.load.spritesheet("npc", "assets/other-gophers.png", 64, 60, 18);
     game.load.spritesheet("explosion", "assets/explosion.png", 64, 60, 4);
     //Add hearts
     game.load.spritesheet("heart", "assets/heart-17x16.png", 17, 16, 6);
@@ -111,6 +111,7 @@ var StateMain = {
     this.npcRacers.createMultiple(40, 'npc');
     this.npcRacers.setAll('checkWorldBounds', true);
     this.npcRacers.setAll('outOfBoundsKill', true);
+
     this.sprite = game.add.sprite(50, 289, character);
     this.sprite.anchor.set(0.5, 0.5);
     this.sprite.animations.add("crash", [2,3,4,5,6], 9, false);
@@ -124,7 +125,13 @@ var StateMain = {
     this.sprite.body.height = 30
     this.sprite.body.offset.setTo(3, 30);
 
+    this.mainCharacter = game.add.group();
+    this.mainCharacter.add(this.sprite);
+
     console.log("You chose the " + character + " racer!");
+
+    game.world.bringToTop(this.npcRacers);
+    // game.world.sendToBack(this.mainCharacter);
 
 
     //PLAN IS TO REMOVE THIS ?
@@ -218,16 +225,17 @@ var StateMain = {
       newNpc.body.width = 60;
       newNpc.body.height = 30
       newNpc.body.offset.setTo(3, 30);
-      // newNpc.z = 200;
+      newNpc.z = 200;
 
-      if(newNpc.yy = 233){
-        newNpc.z = 100
-      } elseif(newNpc.yy = 289){
-        newNpc.z = 200
-      } else {
-        newNpc.z = 300
-      }
-
+      // if(newNpc.yy = 233){
+      //   newNpc.z = 100
+      // } elseif(newNpc.yy = 289){
+      //   newNpc.z = 200
+      // } else {
+      //   newNpc.z = 300
+      // }
+      //
+      // npcRacer.sort('z', Phaser.Group.SORT_ASCENDING);
     },
 
     loadCoin: function (){
@@ -310,6 +318,18 @@ var StateMain = {
     if(this.sprite.y > this.bottom){
       this.sprite.y = this.bottom;
     }
+    //
+    // if(newNpc.yy = 233){
+    //   this.sprite.bringToTop();
+    // } elseif(newNpc.yy = 289){
+    //   this.sprite.bringToTop();
+    // } else {
+    //   this.sprite.bringToTop();
+    // }
+    // this.npcRacers.bringToTop();
+
+
+
   },
 
   render: function (){
