@@ -125,14 +125,9 @@ var StateMain = {
     this.sprite.body.height = 30
     this.sprite.body.offset.setTo(3, 30);
 
-    this.mainCharacter = game.add.group();
-    this.mainCharacter.add(this.sprite);
+    this.npcRacers.add(this.sprite);
 
     console.log("You chose the " + character + " racer!");
-
-    game.world.moveUp(this.npcRacers);
-    game.world.moveDown(this.mainCharacter);
-
 
     //PLAN IS TO REMOVE THIS ?
     //Puts a 3 sec delay on the scrolling of the road, rails, and background
@@ -225,29 +220,6 @@ var StateMain = {
       newNpc.body.width = 60;
       newNpc.body.height = 30
       newNpc.body.offset.setTo(3, 30);
-      
-      if(newNpc.position.y == 233){
-         console.log('top lane');
-          newNpc.z = 233
-          console.log(newNpc)
-      }
-      if(newNpc.position.y == 289){
-         console.log('mid lane');
-          newNpc.z = 289
-          console.log(newNpc)
-      }
-      if(newNpc.position.y == 345){
-         console.log('bottom lane');
-          newNpc.z = 345
-          console.log(newNpc)
-      }
-      //elseif(newNpc.yy = 289){
-      //   newNpc.z = 200
-      // } else {
-      //   newNpc.z = 300
-      // }
-      //
-      // npcRacer.sort('z', Phaser.Group.SORT_ASCENDING);
     },
 
     loadCoin: function (){
@@ -291,6 +263,9 @@ var StateMain = {
     },
 
   update: function (){
+    // this.npcRacers.sort();
+    this.npcRacers.sort('y', Phaser.Group.SORT_ASCENDING)
+
     game.physics.arcade.collide(this.sprite, this.coins, null, this.onPickUp, this);
     game.physics.arcade.collide(this.sprite, this.npcRacers, null, this.onCrash, this);
     //timeText.text = '' + Math.round(game.time.now);
@@ -330,24 +305,13 @@ var StateMain = {
     if(this.sprite.y > this.bottom){
       this.sprite.y = this.bottom;
     }
-    //
-    // if(newNpc.yy = 233){
-    //   this.sprite.bringToTop();
-    // } elseif(newNpc.yy = 289){
-    //   this.sprite.bringToTop();
-    // } else {
-    //   this.sprite.bringToTop();
-    // }
-    // this.npcRacers.bringToTop();
-
-
 
   },
 
   render: function (){
-    //game.debug.body(this.sprite);
-    //game.debug.text('Sprite z-depth: ' + this.sprite.z, 10, 20);
-    //console.log('NPCs z-depth: ' + this.npcRacers.z);
+    // game.debug.body(this.sprite);
+    // game.debug.text('Sprite z-depth: ' + this.sprite.z, 10, 20);
+    // console.log('NPCs z-depth: ' + this.npcRacers.z);
   },
 
 
