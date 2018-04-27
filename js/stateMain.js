@@ -89,6 +89,15 @@ var StateMain = {
     var extras = game.add.tileSprite(0, 120, 3000, 84, "extras");
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
 
+    //EMPTY LIVES
+    this.emptyHeart1 = game.add.sprite(game.world.centerX-285, game.world.centerY-205, "heart");
+    this.emptyHeart1.frame = 5;
+    this.emptyHeart2 = game.add.sprite(game.world.centerX-265, game.world.centerY-205, "heart");
+    this.emptyHeart2.frame = 5;
+    this.emptyHeart3 = game.add.sprite(game.world.centerX-245, game.world.centerY-205, "heart");
+    this.emptyHeart3.frame = 5;
+
+
     //LIVES
     this.heart1 = game.add.sprite(game.world.centerX-285, game.world.centerY-205, "heart");
     this.heart2 = game.add.sprite(game.world.centerX-265, game.world.centerY-205, "heart");
