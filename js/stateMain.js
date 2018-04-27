@@ -271,13 +271,17 @@ var StateMain = {
         heart.kill();
       }, 1000);
 
-      // heart.kill();
+
       explosion = this.game.add.sprite(npc.body.x,npc.body.y,"explosion");
       explosion.anchor.setTo(0.1,0.5);
       explosion.animations.add("explosion", [0, 1, 2, 3], 12, false);
       explosion.animations.play("explosion", 12, false, true);
       npc.kill();
       console.log("You have " + lives + "lives left!");
+
+      if(lives === 0){
+        alert("Game Over");
+      }
     },
 
 
