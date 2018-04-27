@@ -94,10 +94,10 @@ var StateMain = {
     this.heart2 = game.add.sprite(game.world.centerX-265, game.world.centerY-205, "heart");
     this.heart3 = game.add.sprite(game.world.centerX-245, game.world.centerY-205, "heart");
 
-    this.livesGroup = game.add.group();
-    this.livesGroup.add(this.heart1);
-    this.livesGroup.add(this.heart2);
-    this.livesGroup.add(this.heart3);
+    this.heartGroup = game.add.group();
+    this.heartGroup.add(this.heart1);
+    this.heartGroup.add(this.heart2);
+    this.heartGroup.add(this.heart3);
 
 
     //COINS
@@ -252,18 +252,24 @@ var StateMain = {
         sprite.animations.play("idle");
       }, this);
       //lives -= 1;
+      lives -= 1;
+      var heart = this.heartGroup.getFirstAlive();
+
+      heart.animations.add("drain", [0,1,2,3,4,5],12, false);
+      heart.animations.play("drain");
+
+      // heart.kill();
       explosion = this.game.add.sprite(npc.body.x,npc.body.y,"explosion");
       explosion.anchor.setTo(0.1,0.5);
       explosion.animations.add("explosion", [0, 1, 2, 3], 12, false);
       explosion.animations.play("explosion", 12, false, true);
       npc.kill();
-      //this.lives.kill();
       console.log("You have " + lives + "lives left!");
-      //sprite.animations.play("idle");
     },
 
+
+
   update: function (){
-    // this.npcRacers.sort();
     this.npcRacers.sort('y', Phaser.Group.SORT_ASCENDING)
 
     game.physics.arcade.collide(this.sprite, this.coins, null, this.onPickUp, this);
