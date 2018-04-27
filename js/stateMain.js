@@ -257,6 +257,10 @@ var StateMain = {
 
       heart.animations.add("drain", [0,1,2,3,4,5],12, false);
       heart.animations.play("drain");
+      console.log(heart);
+      setTimeout(function(){
+        heart.kill();
+      }, 1000);
 
       // heart.kill();
       explosion = this.game.add.sprite(npc.body.x,npc.body.y,"explosion");
