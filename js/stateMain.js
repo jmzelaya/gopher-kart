@@ -60,9 +60,9 @@ var StateMain = {
 
     //TIMER
     //Not sure how this works, going to do some more reasearch
-    // this.timer = this.game.time.create(this.game);
-    // this.timer.add(this.delay, this.readyForAction, this);
-    // this.timer.start();
+    this.timer = this.game.time.create(this.game);
+    this.timer.add(this.delay, this.readyForAction, this);
+    this.timer.start();
 
     //VARS
     score = 0;
@@ -280,9 +280,10 @@ var StateMain = {
       console.log("You have " + lives + "lives left!");
 
       if(lives === 0){
-        alert("Game Over");
+        game.state.start("StateOver");
       }
     },
+
 
 
 

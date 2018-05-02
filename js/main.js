@@ -32,7 +32,7 @@ window.onload = function(){
   game.state.add("StateMain", StateMain);
   game.state.add("StateChoice", StateChoice);
   game.state.add("StateTutorial", StateTutorial);
-  // game.state.add("mainState", mainState);
+  game.state.add("StateOver", StateOver);
 
 
   game.state.start("StateTitle");
