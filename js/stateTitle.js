@@ -2,19 +2,19 @@ var StateTitle = {
   preload: function(){
     game.load.bitmapFont('pixelFont', 'assets/fonts/bitmapFonts/pixelFont.png', 'assets/fonts/bitmapFonts/pixelFont.xml');
     game.load.audio("title", "assets/music/BeepBox-Song2.wav");
-
     game.load.image("city", "assets/city-re-colored.png");
+    
     game.stage.backgroundColor = 0xe9fffe;
     game.load.spritesheet("logo", "assets/menu-animation.png", 576, 334, 28);
     //Need to add buttons for:
     //1. Start game
     //2. Tutorial??
     game.load.spritesheet("buttons", "assets/main-menu-buttons.png", 217, 40, 2);
+    game.load.spritesheet("controls-buttons", "assets/controls-button.png", 108, 32, 2);
     //Need: "best played in landscape-view image for mobile"
 
     //Temp button for tutorial button
     game.load.image("tutorial", "assets/try-again.png");
-
     game.load.image("background", "assets/bg-color.png");
     game.load.image("sky", "assets/clouds-re-colored.png");
     game.load.image("mtn", "assets/mountains-recolored.png");
@@ -39,8 +39,8 @@ var StateTitle = {
      this.startBtn.anchor.set(0.5, 0.5);
 
     //Define and add game buttons
-     this.tutorial = game.add.button(485, game.world.height-60,
-      "buttons", this.startTutorial, this, 1, 0, 1);
+     this.tutorial = game.add.button(486, game.world.height-37,
+      "controls-buttons", this.startTutorial, this, 1, 0, 1);
      this.startBtn.anchor.set(0.5, 0.5);
 
      //Enable input
