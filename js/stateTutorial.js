@@ -1,4 +1,5 @@
 var StateTutorial = {
+  
   preload: function(){
     game.load.image("background", "assets/bg-color.png");
     game.load.spritesheet("controls", "assets/controls-animation.png", 600, 432, 24);
@@ -16,24 +17,24 @@ var StateTutorial = {
     
     //Back Button
     this.startBtn = game.add.button(40, game.world.height-20,
-      "back-button", this.startMain, this, 1, 0, 1);
-     this.startBtn.anchor.set(0.5, 0.5);
+    "back-button", this.startMain, this, 1, 0, 1);
+    this.startBtn.anchor.set(0.5, 0.5);
     
     //Define and add game buttons
-     this.startBtn = game.add.button(563, game.world.height-20,
-      "play-button", this.startGame, this, 1, 0, 1);
-     this.startBtn.anchor.set(0.5, 0.5);
+    this.startBtn = game.add.button(563, game.world.height-20,
+    "play-button", this.startGame, this, 1, 0, 1);
+    this.startBtn.anchor.set(0.5, 0.5);
   },
   
   startGame: function (){
     game.state.start("StateChoice");
   },
+  
   startMain: function (){
     game.state.start("StateTitle");
   },
 
   update: function(){
-
-    
   },
+  
 };

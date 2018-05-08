@@ -4,6 +4,7 @@ var StateMain = {
     game.load.audio("title", "assets/music/racingMain-compressed.m4a");
 
     game.load.audio("coinBeep", "assets/music/sfx/coin.wav");
+    game.load.audio("npc_explosion", "assets/music/sfx/npc_explosion.wav");
 
     game.stage.backgroundColor = 0xe9fffe;
     //Add racer spritesheet(s) - Later put into 1 :)
@@ -256,6 +257,9 @@ var StateMain = {
 
     onCrash: function (sprite, npc){
       sprite.animations.play("crash");
+      this.npc_explosion = game.add.audio("npc_explosion");
+      this.npc_explosion.play('', 0, 1, false);
+      this.npc_explosion.volume = 0.3;
       sprite.events.onAnimationComplete.add(function(){
         console.log("Crash animation complete");
         sprite.animations.play("idle");
