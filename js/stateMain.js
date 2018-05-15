@@ -45,8 +45,6 @@ var StateMain = {
     var timeText;
   },
 
-
-
   create: function () {
 
     background = game.add.tileSprite(0, 0, 600, 432, "background");
@@ -79,7 +77,6 @@ var StateMain = {
 
     console.log("NEW NPC ADDED: " + this.lane() + " , " + this.pickNPC());
 
-
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
     var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
     var city = game.add.tileSprite(0, 107, 600, 90, "city");
@@ -98,7 +95,6 @@ var StateMain = {
     this.emptyHeart3 = game.add.sprite(game.world.centerX-245, game.world.centerY-205, "heart");
     this.emptyHeart3.frame = 5;
 
-
     //LIVES
     this.heart1 = game.add.sprite(game.world.centerX-285, game.world.centerY-205, "heart");
     this.heart2 = game.add.sprite(game.world.centerX-265, game.world.centerY-205, "heart");
@@ -108,7 +104,6 @@ var StateMain = {
     this.heartGroup.add(this.heart1);
     this.heartGroup.add(this.heart2);
     this.heartGroup.add(this.heart3);
-
 
     //COINS
     this.coins=game.add.group();
@@ -154,7 +149,6 @@ var StateMain = {
       extras.autoScroll(-330, 0);
     // }, 3000);
 
-
     //COUNTDOWN
     this.countDown1 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown1');
     this.countDown1.anchor.setTo(0.5, 0.5);
@@ -178,7 +172,6 @@ var StateMain = {
     this.countGroup.add(this.countDown2);
     this.countGroup.add(this.countDown3);
     this.countGroup.add(this.countDownGo);
-
 
     //TWEENS
     var tween1 = game.add.tween(this.countDown1).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false,
@@ -282,7 +275,6 @@ var StateMain = {
         heart.kill();
       }, 1000);
 
-
       explosion = this.game.add.sprite(npc.body.x,npc.body.y,"explosion");
       explosion.anchor.setTo(0.1,0.5);
       explosion.animations.add("explosion", [0, 1, 2, 3], 12, false);
@@ -294,9 +286,6 @@ var StateMain = {
         game.state.start("StateOver");
       }
     },
-
-
-
 
   update: function (){
     this.npcRacers.sort('y', Phaser.Group.SORT_ASCENDING);
@@ -337,7 +326,7 @@ var StateMain = {
       this.sprite.y=this.top;
     }
 
-    if(this.sprite.y > this.bottom){
+    if(this.sprite.y>this.bottom){
       this.sprite.y = this.bottom;
     }
 
@@ -348,6 +337,5 @@ var StateMain = {
     // game.debug.text('Sprite z-depth: ' + this.sprite.z, 10, 20);
     // console.log('NPCs z-depth: ' + this.npcRacers.z);
   },
-
 
 };//END StateMain
