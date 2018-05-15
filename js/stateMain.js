@@ -71,10 +71,10 @@ var StateMain = {
     this.bottom = game.height - 80;
     this.lane = function () {
       return availLanes[Math.floor(Math.random()*availLanes.length)];
-    }
+    };
     this.pickNPC = function(){
       return availNpcGophers[Math.floor(Math.random()*availNpcGophers.length)];
-    }
+    };
     // this.npc = game.add.sprite(game.width, this.lane, this.pickNPC);
 
     console.log("NEW NPC ADDED: " + this.lane() + " , " + this.pickNPC());
@@ -132,7 +132,7 @@ var StateMain = {
     this.sprite.body.collideWorldBounds = true;
     this.sprite.body.immovable = true;
     this.sprite.body.width = 60;
-    this.sprite.body.height = 30
+    this.sprite.body.height = 30;
     this.sprite.body.offset.setTo(3, 30);
 
     this.npcRacers.add(this.sprite);
@@ -141,7 +141,7 @@ var StateMain = {
 
     //PLAN IS TO REMOVE THIS ?
     //Puts a 3 sec delay on the scrolling of the road, rails, and background
-    setTimeout(function () {
+    // setTimeout(function () {
       //Start scrolling
       road.autoScroll(-330, 0);
       topRail.autoScroll(-330, 0);
@@ -152,7 +152,7 @@ var StateMain = {
       truck.autoScroll(-550, 0);
       posts.autoScroll(-330, 0);
       extras.autoScroll(-330, 0);
-    }, 3000);
+    // }, 3000);
 
 
     //COUNTDOWN
@@ -196,6 +196,13 @@ var StateMain = {
 
     //Set cursors to accept input from the keyboard
     cursors = game.input.keyboard.createCursorKeys();
+
+
+    game.input.enabled = false;
+
+    setTimeout(function(){
+      game.input.enabled = true;
+    },3000);
 
     //TEXT
     scoreText = game.add.bitmapText(585, 5, 'pixelFont', '0', 21);
@@ -292,7 +299,7 @@ var StateMain = {
 
 
   update: function (){
-    this.npcRacers.sort('y', Phaser.Group.SORT_ASCENDING)
+    this.npcRacers.sort('y', Phaser.Group.SORT_ASCENDING);
 
     game.physics.arcade.collide(this.sprite, this.coins, null, this.onPickUp, this);
     game.physics.arcade.collide(this.sprite, this.npcRacers, null, this.onCrash, this);
