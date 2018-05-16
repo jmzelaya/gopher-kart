@@ -3,7 +3,7 @@ var StateTitle = {
     game.load.bitmapFont('pixelFont', 'assets/fonts/bitmapFonts/pixelFont.png', 'assets/fonts/bitmapFonts/pixelFont.xml');
     game.load.audio("title", "assets/music/BeepBox-Song2.wav");
     game.load.image("city", "assets/city-re-colored.png");
-    
+    game.load.audio("select_button", "assets/music/sfx/select.wav");
     game.stage.backgroundColor = 0xe9fffe;
     game.load.spritesheet("logo", "assets/menu-animation.png", 576, 334, 28);
     //Need to add buttons for:
@@ -21,27 +21,31 @@ var StateTitle = {
   },
 
   create: function (){
-
      background = game.add.tileSprite(0, 0, 600, 432, "background");
      this.titleSong = game.add.audio("title");
      this.titleSong.play('', 0, 1, true);
+    
+     
+     
+
      this.sky = game.add.tileSprite(0, 10, 600, 78, "sky");
      this.mtn = game.add.tileSprite(0, 295, 600, 131, "mtn");
      this.city = game.add.tileSprite(0, 342, 600, 90, "city");
+    
      this.logo = game.add.sprite(game.world.centerX, game.world.height-250, "logo");
      this.logo.anchor.set(0.5, 0.5);
      this.logo.animations.add("menu", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
       13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28], 12, true);
      this.logo.animations.play("menu");
+
      //Define and add game buttons
-     this.startBtn = game.add.button(285, game.world.height-60,
-      "buttons", this.startGame, this, 1, 0, 1);
+     this.startBtn = game.add.button(285, game.world.height-60, "buttons", this.startGame, this, 1, 0, 1);
      this.startBtn.anchor.set(0.5, 0.5);
 
     //Define and add game buttons
-     this.tutorial = game.add.button(486, game.world.height-37,
-      "controls-buttons", this.startTutorial, this, 1, 0, 1);
+     this.tutorial = game.add.button(486, game.world.height-37, "controls-buttons", this.startTutorial, this, 1, 0, 1);
      this.startBtn.anchor.set(0.5, 0.5);
+    
 
      //Enable input
      //Call setListeners();
@@ -51,9 +55,14 @@ var StateTitle = {
   },
 
   startGame: function (){
+    this.select_button = game.add.audio("select_button");
+    this.select_button.play('', 0, 1, false);
+    this.select_button.volume = 0.3;
     this.titleSong.stop();
     game.state.start("StateChoice");
   },
+  
+  
 
   startTutorial: function(){
     this.titleSong.stop();

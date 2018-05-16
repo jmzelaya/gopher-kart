@@ -46,9 +46,7 @@ var StateMain = {
   },
 
   create: function () {
-
     background = game.add.tileSprite(0, 0, 600, 432, "background");
-
     //MUSIC
     this.titleSong = game.add.audio("title");
     this.titleSong.play('', 0, 1, true);
@@ -190,7 +188,6 @@ var StateMain = {
     //Set cursors to accept input from the keyboard
     cursors = game.input.keyboard.createCursorKeys();
 
-
     game.input.enabled = false;
 
     setTimeout(function(){
@@ -210,7 +207,7 @@ var StateMain = {
 
     setListeners: function(){
       game.time.events.loop(Phaser.Timer.SECOND * 1.5, this.loadCoin, this);
-      game.time.events.loop(Phaser.Timer.SECOND * 1.5, this.loadNPC, this);
+      game.time.events.loop(Phaser.Timer.SECOND * 3.0, this.loadNPC, this);
     },
 
     loadNPC: function (){
@@ -248,7 +245,7 @@ var StateMain = {
 
     onPickUp: function (sprite, coin){
       coin.kill();
-      score += 1000;
+      score += 100;
       console.log("Your score is --> " + score);
       this.coinBeep = game.add.audio("coinBeep");
       this.coinBeep.play('', 0, 1, false);
@@ -296,43 +293,43 @@ var StateMain = {
     scoreText.text = score;
 
     //Cursors - Keyboard key check ⌨️
-    if(cursors.right.isDown){
+    if(cursors.right.isDown) {
         this.sprite.body.velocity.x = 150;
     }
 
-    if(cursors.right.isUp){
+    if(cursors.right.isUp) {
         this.sprite.body.velocity.x = -150;
     }
 
-    if(cursors.up.isDown){
-        this.sprite.body.velocity.y = -100;
+    if(cursors.up.isDown) {
+        this.sprite.body.velocity.y = -80;
     }
 
-    if(cursors.up.isUp){
+    if(cursors.up.isUp) {
         this.sprite.body.velocity.y = 0;
     }
 
-    if(cursors.down.isDown){
-      this.sprite.body.velocity.y = 100;
+    if(cursors.down.isDown) {
+      this.sprite.body.velocity.y = 80;
     }
 
-    if(cursors.left.isDown){
+    if(cursors.left.isDown) {
       if(this.sprite){
         this.sprite.body.velocity.x = -250;
       }
     }
 
-    if(this.sprite.y<this.top){
+    if(this.sprite.y<this.top) {
       this.sprite.y=this.top;
     }
 
-    if(this.sprite.y>this.bottom){
+    if(this.sprite.y>this.bottom) {
       this.sprite.y = this.bottom;
     }
 
   },
 
-  render: function (){
+  render: function () {
     // game.debug.body(this.sprite);
     // game.debug.text('Sprite z-depth: ' + this.sprite.z, 10, 20);
     // console.log('NPCs z-depth: ' + this.npcRacers.z);
