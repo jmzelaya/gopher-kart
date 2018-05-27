@@ -24,9 +24,6 @@ var StateTitle = {
      background = game.add.tileSprite(0, 0, 600, 432, "background");
      this.titleSong = game.add.audio("title");
      this.titleSong.play('', 0, 1, true);
-    
-     
-     
 
      this.sky = game.add.tileSprite(0, 10, 600, 78, "sky");
      this.mtn = game.add.tileSprite(0, 295, 600, 131, "mtn");
@@ -45,7 +42,6 @@ var StateTitle = {
     //Define and add game buttons
      this.tutorial = game.add.button(486, game.world.height-37, "controls-buttons", this.startTutorial, this, 1, 0, 1);
      this.startBtn.anchor.set(0.5, 0.5);
-    
 
      //Enable input
      //Call setListeners();
@@ -61,8 +57,6 @@ var StateTitle = {
     this.titleSong.stop();
     game.state.start("StateChoice");
   },
-  
-  
 
   startTutorial: function(){
     this.titleSong.stop();
