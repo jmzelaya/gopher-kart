@@ -5,10 +5,10 @@ var StateMain = {
 
     game.load.audio("coinBeep", "assets/music/sfx/coin.wav");
     game.load.audio("npc_explosion", "assets/music/sfx/npc_explosion.wav");
+    game.load.audio("drive", "assets/music/sfx/drive.wav");
 
     game.stage.backgroundColor = 0xe9fffe;
-    //Add racer spritesheet(s) - Later put into 1 :)
-    //...maybe put into global variables? To remove repitition...
+
     game.load.spritesheet("blue", "assets/gopher-blue-updated.png", 64, 60, 15);
     game.load.spritesheet("pink", "assets/gopher-pink.png", 64, 60, 15);
     game.load.spritesheet("purple", "assets/gopher-purple.png", 64, 60, 15);
@@ -28,10 +28,11 @@ var StateMain = {
     game.load.image("sky", "assets/clouds-re-colored.png");
     game.load.image("city", "assets/city-re-colored.png");
     game.load.image("mtn", "assets/mountains-recolored.png");
-    //Add other racers
     //Add coins
     game.load.spritesheet("coin", "assets/coin-shadow.png", 16, 19, 6);
+    //NPCs
     game.load.spritesheet("npc", "assets/other-gophers.png", 64, 60, 20);
+    //Explosion
     game.load.spritesheet("explosion", "assets/explosion.png", 64, 60, 4);
     //Add hearts
     game.load.spritesheet("heart", "assets/heart-17x16.png", 17, 16, 6);
@@ -41,16 +42,22 @@ var StateMain = {
     game.load.image("countDown1", "assets/one.png");
     game.load.image("countDownGo", "assets/go.png");
     game.load.image("background", "assets/bg-color.png");
+
+    //Font
     game.load.bitmapFont('pixelFont', 'assets/fonts/bitmapFonts/pixelFont.png', 'assets/fonts/bitmapFonts/pixelFont.xml');
     var timeText;
   },
 
   create: function () {
     background = game.add.tileSprite(0, 0, 600, 432, "background");
+
     //MUSIC
     this.titleSong = game.add.audio("title");
     this.titleSong.play('', 0, 1, true);
     this.titleSong.volume = 0.5;
+
+    //SFX
+    this.drivingSound = game.add.audio("drive");
 
     //Start Physics Engine
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -63,17 +70,22 @@ var StateMain = {
 
     //VARS
     score = 0;
+
+    //Set top and bottom boundaries for Gopher
     this.top = game.height - 200 ;
     this.bottom = game.height - 80;
+
+    //Random lane logic for NPC spawn
     this.lane = function () {
       return availLanes[Math.floor(Math.random()*availLanes.length)];
     };
+    //Random NPC logic
     this.pickNPC = function(){
       return availNpcGophers[Math.floor(Math.random()*availNpcGophers.length)];
     };
     // this.npc = game.add.sprite(game.width, this.lane, this.pickNPC);
 
-    console.log("NEW NPC ADDED: " + this.lane() + " , " + this.pickNPC());
+    // console.log("NEW NPC ADDED: " + this.lane() + " , " + this.pickNPC());
 
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
     var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
@@ -115,6 +127,7 @@ var StateMain = {
     this.npcRacers.setAll('checkWorldBounds', true);
     this.npcRacers.setAll('outOfBoundsKill', true);
 
+    //Main racer
     this.sprite = game.add.sprite(50, 289, character);
     this.sprite.anchor.set(0.5, 0.5);
     this.sprite.animations.add("crash", [2,3,4,5,6], 9, false);
@@ -130,22 +143,18 @@ var StateMain = {
 
     this.npcRacers.add(this.sprite);
 
-    console.log("You chose the " + character + " racer!");
+    // console.log("You chose the " + character + " racer!");
 
-    //PLAN IS TO REMOVE THIS ?
-    //Puts a 3 sec delay on the scrolling of the road, rails, and background
-    // setTimeout(function () {
-      //Start scrolling
-      road.autoScroll(-330, 0);
-      topRail.autoScroll(-330, 0);
-      bottomRail.autoScroll(-330, 0);
-      sky.autoScroll(-5,0);
-      city.autoScroll(-30,0);
-      mtn.autoScroll(-15,0);
-      truck.autoScroll(-550, 0);
-      posts.autoScroll(-330, 0);
-      extras.autoScroll(-330, 0);
-    // }, 3000);
+    //Background image scroll speed
+    road.autoScroll(-330, 0);
+    topRail.autoScroll(-330, 0);
+    bottomRail.autoScroll(-330, 0);
+    sky.autoScroll(-5,0);
+    city.autoScroll(-30,0);
+    mtn.autoScroll(-15,0);
+    truck.autoScroll(-550, 0);
+    posts.autoScroll(-330, 0);
+    extras.autoScroll(-330, 0);
 
     //COUNTDOWN
     this.countDown1 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown1');
@@ -188,8 +197,8 @@ var StateMain = {
     //Set cursors to accept input from the keyboard
     cursors = game.input.keyboard.createCursorKeys();
 
+    //Prevent user from moving until after "GO!"
     game.input.enabled = false;
-
     setTimeout(function(){
       game.input.enabled = true;
     },3000);
@@ -201,11 +210,13 @@ var StateMain = {
     timeLabel = game.add.bitmapText(275, 7, 'pixelFont', 'TIME', 21);
     timeText = game.add.bitmapText(280, 27, 'pixelFont', '300', 21);
 
-    game.debug.bodyInfo(this.npcRacers);
+
+    // game.debug.bodyInfo(this.npcRacers);
     this.setListeners();
   },
 
     setListeners: function(){
+      //Spawn coins and NPCs
       game.time.events.loop(Phaser.Timer.SECOND * 1.5, this.loadCoin, this);
       game.time.events.loop(Phaser.Timer.SECOND * 3.0, this.loadNPC, this);
     },
@@ -225,7 +236,7 @@ var StateMain = {
       newNpc.body.checkCollision.up = false;
       newNpc.body.checkCollision.down = false;
       newNpc.body.width = 60;
-      newNpc.body.height = 30
+      newNpc.body.height = 30;
       newNpc.body.offset.setTo(3, 30);
     },
 
@@ -261,7 +272,6 @@ var StateMain = {
         console.log("Crash animation complete");
         sprite.animations.play("idle");
       }, this);
-      //lives -= 1;
       lives -= 1;
       var heart = this.heartGroup.getFirstAlive();
 
@@ -284,17 +294,26 @@ var StateMain = {
       }
     },
 
+    driveSound: function(){
+      this.drivingSound.play('', 0, 1, false);
+
+      this.drivingSound.volume = 0.2;
+    },
+
   update: function (){
+    //Allows for correct "z-index" of gopher
     this.npcRacers.sort('y', Phaser.Group.SORT_ASCENDING);
 
+    //Collisions
     game.physics.arcade.collide(this.sprite, this.coins, null, this.onPickUp, this);
     game.physics.arcade.collide(this.sprite, this.npcRacers, null, this.onCrash, this);
-    //timeText.text = '' + Math.round(game.time.now);
+    timeText.text = '' + Math.round(game.time.now);
     scoreText.text = score;
 
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown) {
         this.sprite.body.velocity.x = 150;
+         this.driveSound();
     }
 
     if(cursors.right.isUp) {
