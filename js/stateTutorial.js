@@ -41,6 +41,8 @@ var StateTutorial = {
 
   startMain: function (){
     game.state.start("StateTitle");
+    this.tutorialSong.stop();
+
   },
 
   update: function(){
