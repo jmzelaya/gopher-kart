@@ -1,7 +1,7 @@
 var StateOver = {
   preload : function(){
     game.load.spritesheet("blue", "assets/gopher-blue-updated.png", 64, 60, 14);
-    
+
     game.load.image("gameOver", "assets/game-over.png");
     //Road
     game.load.image("road", "assets/road-tile.png");
@@ -22,9 +22,14 @@ var StateOver = {
     game.load.image("background", "assets/bg-color.png");
     game.load.image("try-again", "assets/try-again.png");
     game.load.image("post-score", "assets/post-score.png");
+    //Font
+    game.load.bitmapFont('pixelFont', 'assets/fonts/bitmapFonts/pixelFont.png', 'assets/fonts/bitmapFonts/pixelFont.xml');
   },
 
   create : function(){
+    scoreText = game.add.bitmapText(585, 5, 'pixelFont', score, 21);
+    scoreText.anchor.set(1.0 , 0);
+
     background = game.add.tileSprite(0, 0, 600, 432, "background");
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
     var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
@@ -37,17 +42,17 @@ var StateOver = {
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
     var gameOver = game.add.tileSprite(200, 80, 187, 101, "gameOver");
     sky.autoScroll(-5,0);
-    
+
     //Define and add game buttons
     this.tutorial = game.add.button(155, game.world.height-200, "try-again", this.startGame, this, 1, 0, 1);
     this.tutorial = game.add.button(335, game.world.height-200, "post-score", this.startGame, this, 1, 0, 1);
-    
+
     this.sprite = game.add.sprite(300, 289, character);
     this.sprite.anchor.set(0.5, 0.5);
     this.sprite.animations.add("crashed", [7,8,9,10], 9, true);
     this.sprite.animations.play("crashed");
   },
-  
+
   startGame: function (){
     game.state.start("StateChoice");
   },

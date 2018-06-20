@@ -68,9 +68,6 @@ var StateMain = {
     this.timer.add(this.delay, this.readyForAction, this);
     this.timer.start();
 
-    //VARS
-    score = 0;
-
     //Set top and bottom boundaries for Gopher
     this.top = game.height - 200 ;
     this.bottom = game.height - 80;
@@ -278,6 +275,8 @@ var StateMain = {
       heart.animations.add("drain", [0,1,2,3,4,5],12, false);
       heart.animations.play("drain");
       console.log(heart);
+      //DECREASE SPEED OF GOPHER UPON COLLISON
+      sprite.body.velocity.x = 0;
       setTimeout(function(){
         heart.kill();
       }, 1000);
@@ -301,6 +300,8 @@ var StateMain = {
     },
 
   update: function (){
+    this.sprite.body.maxVelocity.x= 500;
+    this.sprite.body.maxVelocity.y= 500;
     //Allows for correct "z-index" of gopher
     this.npcRacers.sort('y', Phaser.Group.SORT_ASCENDING);
 
@@ -312,29 +313,29 @@ var StateMain = {
 
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown) {
-        this.sprite.body.velocity.x = 150;
-         this.driveSound();
+        this.driveSound();
+        this.sprite.body.acceleration.x = 150;
     }
 
     if(cursors.right.isUp) {
-        this.sprite.body.velocity.x = -150;
+        this.sprite.body.acceleration.x = -150;
     }
 
     if(cursors.up.isDown) {
-        this.sprite.body.velocity.y = -80;
+        this.sprite.body.acceleration.y = -80;
     }
 
     if(cursors.up.isUp) {
-        this.sprite.body.velocity.y = 0;
+        this.sprite.body.acceleration.y = 0;
     }
 
     if(cursors.down.isDown) {
-      this.sprite.body.velocity.y = 80;
+      this.sprite.body.acceleration.y = 80;
     }
 
     if(cursors.left.isDown) {
       if(this.sprite){
-        this.sprite.body.velocity.x = -250;
+        this.sprite.body.acceleration.x = -250;
       }
     }
 

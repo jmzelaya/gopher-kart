@@ -14,7 +14,7 @@ var availNpcGophers =
     [16, 17],
     [18, 19],
   ];
-var score;
+var score = 0;
 var cursors;
 var scoreText;
 var lives = 3;
