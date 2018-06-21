@@ -1,14 +1,16 @@
 var StateMain = {
 
   preload: function () {
+    //Music
     game.load.audio("title", "assets/music/racingMain-compressed.m4a");
-
+    //Sound FX
     game.load.audio("coinBeep", "assets/music/sfx/coin.wav");
     game.load.audio("npc_explosion", "assets/music/sfx/npc_explosion.wav");
     game.load.audio("drive", "assets/music/sfx/drive.wav");
 
     game.stage.backgroundColor = 0xe9fffe;
 
+    //Gopher sprites
     game.load.spritesheet("blue", "assets/gopher-blue-updated.png", 64, 60, 15);
     game.load.spritesheet("pink", "assets/gopher-pink.png", 64, 60, 15);
     game.load.spritesheet("purple", "assets/gopher-purple.png", 64, 60, 15);
@@ -36,7 +38,7 @@ var StateMain = {
     game.load.spritesheet("explosion", "assets/explosion.png", 64, 60, 4);
     //Add hearts
     game.load.spritesheet("heart", "assets/heart-17x16.png", 17, 16, 6);
-    //Countdown Spritesheet
+    //Countdown Sprites
     game.load.image("countDown3", "assets/three.png");
     game.load.image("countDown2", "assets/two.png");
     game.load.image("countDown1", "assets/one.png");
@@ -49,8 +51,6 @@ var StateMain = {
   },
 
   create: function () {
-    background = game.add.tileSprite(0, 0, 600, 432, "background");
-
     //MUSIC
     this.titleSong = game.add.audio("title");
     this.titleSong.play('', 0, 1, true);
@@ -58,6 +58,20 @@ var StateMain = {
 
     //SFX
     this.drivingSound = game.add.audio("drive");
+
+    var background = game.add.tileSprite(0, 0, 600, 432, "background");
+
+
+    //VARS
+    // var npcSpawnRate = 3;
+    // var coinSpawnRate = 2;
+
+    console.log(coinSpawnRate);
+
+    setInterval(function(){
+      score += 100;
+      npcSpawnRate += 1;
+    },5000);
 
     //Start Physics Engine
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -84,6 +98,7 @@ var StateMain = {
 
     // console.log("NEW NPC ADDED: " + this.lane() + " , " + this.pickNPC());
 
+    //BACKGROUND IMAGE TILES
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
     var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
     var city = game.add.tileSprite(0, 107, 600, 90, "city");
@@ -93,6 +108,7 @@ var StateMain = {
     var posts = game.add.tileSprite(0, 15, 3000, 182, "posts");
     var extras = game.add.tileSprite(0, 120, 3000, 84, "extras");
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
+
 
     //EMPTY LIVES
     this.emptyHeart1 = game.add.sprite(game.world.centerX-285, game.world.centerY-205, "heart");
@@ -138,6 +154,8 @@ var StateMain = {
     this.sprite.body.height = 30;
     this.sprite.body.offset.setTo(3, 30);
 
+    //Add chosen racer to npcRacer group
+    //to allow for sorting and proper z-index effect
     this.npcRacers.add(this.sprite);
 
     // console.log("You chose the " + character + " racer!");
@@ -153,7 +171,7 @@ var StateMain = {
     posts.autoScroll(-330, 0);
     extras.autoScroll(-330, 0);
 
-    //COUNTDOWN
+    //COUNTDOWN SPRITES
     this.countDown1 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown1');
     this.countDown1.anchor.setTo(0.5, 0.5);
     this.countDown1.alpha = 0;
@@ -177,7 +195,7 @@ var StateMain = {
     this.countGroup.add(this.countDown3);
     this.countGroup.add(this.countDownGo);
 
-    //TWEENS
+    //TWEENS for 3..2..1..GO!
     var tween1 = game.add.tween(this.countDown1).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false,
       0).to({alpha: 0}, 500, Phaser.Easing.Linear.None, false, 0);
     var tween2 = game.add.tween(this.countDown2).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false,
@@ -214,10 +232,11 @@ var StateMain = {
 
     setListeners: function(){
       //Spawn coins and NPCs
-      game.time.events.loop(Phaser.Timer.SECOND * 1.5, this.loadCoin, this);
-      game.time.events.loop(Phaser.Timer.SECOND * 3.0, this.loadNPC, this);
+      game.time.events.loop(Phaser.Timer.SECOND * coinSpawnRate, this.loadCoin, this);
+      game.time.events.loop(Phaser.Timer.SECOND * npcSpawnRate, this.loadNPC, this);
     },
 
+    //NPC SPAWN
     loadNPC: function (){
       var newNpc = this.npcRacers.getFirstDead();
       var xx = game.width;
@@ -237,6 +256,7 @@ var StateMain = {
       newNpc.body.offset.setTo(3, 30);
     },
 
+    //COIN SPAWN
     loadCoin: function (){
       var coin = this.coins.getFirstDead();
       //y position
@@ -251,6 +271,7 @@ var StateMain = {
       coin.animations.play("spin");
     },
 
+    //COIN PICK UP
     onPickUp: function (sprite, coin){
       coin.kill();
       score += 100;
@@ -260,6 +281,7 @@ var StateMain = {
       this.coinBeep.volume = 0.6;
     },
 
+    //COLLISION HANDLER
     onCrash: function (sprite, npc){
       sprite.animations.play("crash");
       this.npc_explosion = game.add.audio("npc_explosion");
@@ -281,6 +303,7 @@ var StateMain = {
         heart.kill();
       }, 1000);
 
+      //EXPLOSION
       explosion = this.game.add.sprite(npc.body.x,npc.body.y,"explosion");
       explosion.anchor.setTo(0.1,0.5);
       explosion.animations.add("explosion", [0, 1, 2, 3], 12, false);
@@ -305,7 +328,7 @@ var StateMain = {
     //Allows for correct "z-index" of gopher
     this.npcRacers.sort('y', Phaser.Group.SORT_ASCENDING);
 
-    //Collisions
+    //Collision checks
     game.physics.arcade.collide(this.sprite, this.coins, null, this.onPickUp, this);
     game.physics.arcade.collide(this.sprite, this.npcRacers, null, this.onCrash, this);
     timeText.text = '' + Math.round(game.time.now);
@@ -313,29 +336,29 @@ var StateMain = {
 
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown) {
-        this.driveSound();
-        this.sprite.body.acceleration.x = 150;
+        // this.driveSound();
+        this.sprite.body.velocity.x = 150;
     }
 
     if(cursors.right.isUp) {
-        this.sprite.body.acceleration.x = -150;
+        this.sprite.body.velocity.x = -150;
     }
 
     if(cursors.up.isDown) {
-        this.sprite.body.acceleration.y = -80;
+        this.sprite.body.velocity.y = -80;
     }
 
     if(cursors.up.isUp) {
-        this.sprite.body.acceleration.y = 0;
+        this.sprite.body.velocity.y = 0;
     }
 
     if(cursors.down.isDown) {
-      this.sprite.body.acceleration.y = 80;
+      this.sprite.body.velocity.y = 80;
     }
 
     if(cursors.left.isDown) {
       if(this.sprite){
-        this.sprite.body.acceleration.x = -250;
+        this.sprite.body.velocity.x = -250;
       }
     }
 
