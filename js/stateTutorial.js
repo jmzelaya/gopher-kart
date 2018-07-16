@@ -34,14 +34,14 @@ var StateTutorial = {
   },
 
   startGame: function (){
-    game.state.start("StateChoice");
     this.tutorialSong.stop();
+    game.state.start("StateChoice");
 
   },
 
   startMain: function (){
-    game.state.start("StateTitle");
     this.tutorialSong.stop();
+    game.state.start("StateTitle");
 
   },
 

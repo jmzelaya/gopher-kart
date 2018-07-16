@@ -27,8 +27,10 @@ var StateOver = {
   },
 
   create : function(){
+    //SCORE TEXT
     scoreText = game.add.bitmapText(585, 5, 'pixelFont', score, 21);
     scoreText.anchor.set(1.0 , 0);
+    scoreText.text = score;
 
     background = game.add.tileSprite(0, 0, 600, 432, "background");
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
@@ -54,6 +56,12 @@ var StateOver = {
   },
 
   startGame: function (){
+
+    //Turn off previous song (stateMain) and turn off stateChoice music
+    // this.titleSong.stop();
+
+    //Reset score and character values for "restart"
+    character = undefined;
     game.state.start("StateChoice");
   },
 

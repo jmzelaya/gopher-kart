@@ -312,7 +312,9 @@ var StateMain = {
       console.log("You have " + lives + "lives left!");
 
       if(lives === 0){
+        this.titleSong.stop();
         game.state.start("StateOver");
+
       }
     },
 
