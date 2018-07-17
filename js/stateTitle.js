@@ -21,6 +21,11 @@ var StateTitle = {
   },
 
   create: function (){
+    // game.scale.pageAlignHorizontally = true;
+    // game.scale.pageAlignVertically = true;
+    // game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    // game.stage.disableVisibilityChange = true;
+
      background = game.add.tileSprite(0, 0, 600, 432, "background");
      this.titleSong = game.add.audio("title");
      this.titleSong.play('', 0, 1, true);
@@ -28,7 +33,7 @@ var StateTitle = {
      this.sky = game.add.tileSprite(0, 10, 600, 78, "sky");
      this.mtn = game.add.tileSprite(0, 295, 600, 131, "mtn");
      this.city = game.add.tileSprite(0, 342, 600, 90, "city");
-    
+
      this.logo = game.add.sprite(game.world.centerX, game.world.height-250, "logo");
      this.logo.anchor.set(0.5, 0.5);
      this.logo.animations.add("menu", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,

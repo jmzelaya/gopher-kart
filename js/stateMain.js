@@ -281,6 +281,15 @@ var StateMain = {
       this.coinBeep.volume = 0.6;
     },
 
+    NpcPickUp: function (npc, coin){
+      coin.kill();
+      // score += 100;
+      // console.log("Your score is --> " + score);
+      // this.coinBeep = game.add.audio("coinBeep");
+      // this.coinBeep.play('', 0, 1, false);
+      // this.coinBeep.volume = 0.6;
+    },
+
     //COLLISION HANDLER
     onCrash: function (sprite, npc){
       sprite.animations.play("crash");
@@ -296,9 +305,9 @@ var StateMain = {
 
       heart.animations.add("drain", [0,1,2,3,4,5],12, false);
       heart.animations.play("drain");
-      console.log(heart);
-      //DECREASE SPEED OF GOPHER UPON COLLISON
-      sprite.body.velocity.x = 0;
+      // console.log(heart);
+      //DECREASE SPEED OF GOPHER UPON COLLISON ... not working ?? /
+      sprite.body.velocity.x = -500;
       setTimeout(function(){
         heart.kill();
       }, 1000);
@@ -314,13 +323,11 @@ var StateMain = {
       if(lives === 0){
         this.titleSong.stop();
         game.state.start("StateOver");
-
       }
     },
 
     driveSound: function(){
       this.drivingSound.play('', 0, 1, false);
-
       this.drivingSound.volume = 0.2;
     },
 
@@ -332,6 +339,7 @@ var StateMain = {
 
     //Collision checks
     game.physics.arcade.collide(this.sprite, this.coins, null, this.onPickUp, this);
+    game.physics.arcade.collide(this.npcRacers, this.coins, null, this.NpcPickUp, this);
     game.physics.arcade.collide(this.sprite, this.npcRacers, null, this.onCrash, this);
     timeText.text = '' + Math.round(game.time.now);
     scoreText.text = score;
