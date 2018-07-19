@@ -73,7 +73,6 @@ canvas{
   margin: 50px auto 0;
 }
 #phaser-wrapper {
-  width: 100%;
   position: relative;
   height: 432px;
   width: 100%;
@@ -218,4 +217,99 @@ body.leaderboard-page h1 {
 }
 .leaderboard-list dl dd:last-child{
   text-align: right;
+}
+
+/* ----------- iPhone 4 and 4S ----------- */
+@media only screen
+  and (min-width: 320px)
+  and (max-width: 480px) {
+    .wrapper {
+      min-height: 100%;
+      margin-bottom: 0;
+      padding-top: 0;
+    }
+    #phaser-wrapper canvas {
+      position: relative;
+      top: 0;
+      left: 0;
+      margin-left: 0;
+      border-radius: 0;
+      margin-top: 0px;
+    }
+}
+
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+@media only screen
+  and (min-width: 320px)
+  and (max-width: 568px) {
+    .wrapper {
+      min-height: 100%;
+      margin-bottom: 0;
+      padding-top: 0;
+    }
+    #phaser-wrapper canvas {
+      position: relative;
+      top: 0;
+      left: 0;
+      margin-left: 0;
+      border-radius: 0;
+      margin-top: 0px;
+    }
+}
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+@media only screen
+  and (min-width: 375px)
+  and (max-width: 667px) {
+    .wrapper {
+      min-height: 100%;
+      margin-bottom: 0;
+      padding-top: 0;
+    }
+    #phaser-wrapper canvas {
+      position: relative;
+      top: 0;
+      left: 0;
+      margin-left: 0;
+      border-radius: 0;
+      margin-top: 0px;
+    }
+}
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
+@media only screen
+  and (min-width: 414px)
+  and (max-width: 736px) {
+    .wrapper {
+      min-height: 100%;
+      margin-bottom: 0;
+      padding-top: 0;
+    }
+    #phaser-wrapper canvas {
+      position: relative;
+      top: 0;
+      left: 0;
+      margin-left: 0;
+      border-radius: 0;
+      margin-top: 0px;
+    }
+}
+
+/* ----------- iPhone X ----------- */
+@media only screen
+  and (min-width: 375px)
+  and (max-width: 812px) {
+    .wrapper {
+      min-height: 100%;
+      margin-bottom: 0;
+      padding-top: 0;
+    }
+    #phaser-wrapper canvas {
+      position: relative;
+      top: 0;
+      left: 0;
+      margin-left: 0;
+      border-radius: 0;
+      margin-top: 0px;
+    }
 }
