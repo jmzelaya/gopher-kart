@@ -27,10 +27,7 @@ var StateOver = {
   },
 
   create : function(){
-    //SCORE TEXT
-    scoreText = game.add.bitmapText(585, 5, 'pixelFont', score, 21);
-    scoreText.anchor.set(1.0 , 0);
-    scoreText.text = score;
+    console.log("your final score is : " + score);
 
     background = game.add.tileSprite(0, 0, 600, 432, "background");
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
@@ -45,9 +42,14 @@ var StateOver = {
     var gameOver = game.add.tileSprite(200, 80, 187, 101, "gameOver");
     sky.autoScroll(-5,0);
 
+    //TEXT
+    scoreText = game.add.bitmapText(game.world.centerX, 245, 'pixelFont', '0', 21);
+    scoreText.anchor.set(0.5, 0.5);
+    scoreText.text = "Your score: " + score;
+
     //Define and add game buttons
-    this.tutorial = game.add.button(155, game.world.height-200, "try-again", this.startGame, this, 1, 0, 1);
-    this.tutorial = game.add.button(335, game.world.height-200, "post-score", this.startGame, this, 1, 0, 1);
+    this.tutorial = game.add.button(155, game.world.height-85, "try-again", this.startGame, this, 1, 0, 1);
+    this.tutorial = game.add.button(335, game.world.height-85, "post-score", this.startGame, this, 1, 0, 1);
 
     this.sprite = game.add.sprite(300, 289, character);
     this.sprite.anchor.set(0.5, 0.5);

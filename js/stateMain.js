@@ -61,6 +61,8 @@ var StateMain = {
 
     var background = game.add.tileSprite(0, 0, 600, 432, "background");
 
+    //Prevents pausing of game when use clicks out of the game
+    game.stage.disableVisibilityChange = true;
 
     //VARS
     // var npcSpawnRate = 3;
