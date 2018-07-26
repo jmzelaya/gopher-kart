@@ -102,7 +102,7 @@ var StateChoice = {
 
     //CONFIRMATION BUTTON
     this.startConfirm = game.add.button(game.world.centerX, game.world.height-46,
-     "neon", this.startConfirm, this, 12, 12, 12);
+     "neon", this.startGame, this, 12, 12, 12);
     this.startConfirm.frame = 12;
     this.startConfirm.anchor.set(0.5, 0.5);
     this.startConfirm.animations.add("neon", [],5, true);
@@ -110,16 +110,16 @@ var StateChoice = {
     // this.startConfirm.animations.play("neon");
   },
 
-  startConfirm: function () {
+  startGame: function () {
     if(character === undefined){
       this.sampleText = game.add.text(game.world.centerX, 30, "You must choose a gopher!");
       this.sampleText.fill = "ffffff";
       this.sampleText.fontSize = 32;
       this.sampleText.anchor.set(0.5, 0.5);
-      console.log("You must choose a gopher!");
+      // console.log("You must choose a gopher!");
     } else {
-    this.selectSong.stop();
-    game.state.start("StateMain");
+      this.selectSong.stop();
+      game.state.start("StateMain");
     }
   },
 
@@ -131,11 +131,14 @@ var StateChoice = {
 
     this.buttons[racer].frame = 1;
     character = racer;
+
+
+
+
     this.startConfirm.animations.play("neon");
     // character.animations.play("blue");
-    console.log(character);
+    // console.log(character);
   },
-
 
 
   update: function () {

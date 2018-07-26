@@ -58,11 +58,11 @@ var StateOver = {
   },
 
   startGame: function (){
-
     //Turn off previous song (stateMain) and turn off stateChoice music
     // this.titleSong.stop();
 
     //Reset score and character values for "restart"
+    score = 0;
     character = undefined;
     game.state.start("StateChoice");
   },
