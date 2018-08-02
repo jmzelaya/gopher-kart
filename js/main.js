@@ -1,5 +1,7 @@
 var game;
 var character;
+var npcSpawnRate = 3;
+var coinSpawnRate = 1;
 var availLanes = [233, 289, 345];
 var availNpcGophers =
   [
@@ -18,9 +20,6 @@ var score = 0;
 var cursors;
 var scoreText;
 var lives = 3;
-var npcSpawnRate = 3;
-var coinSpawnRate = 2;
-
 
 window.onload = function(){
   if(screen.width>900){

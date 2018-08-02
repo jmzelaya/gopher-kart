@@ -51,6 +51,9 @@ var StateMain = {
   },
 
   create: function () {
+
+    // game.world.setBounds(0,0, 1300, 432);
+
     //MUSIC
     this.titleSong = game.add.audio("title");
     this.titleSong.play('', 0, 1, true);
@@ -59,21 +62,26 @@ var StateMain = {
     //SFX
     this.drivingSound = game.add.audio("drive");
 
-    var background = game.add.tileSprite(0, 0, 600, 432, "background");
+    var background = game.add.tileSprite(0, 0, 3000, 432, "background");
 
     //Prevents pausing of game when use clicks out of the game
     game.stage.disableVisibilityChange = true;
 
-    //VARS
     // var npcSpawnRate = 3;
-    // var coinSpawnRate = 2;
+    // var coinSpawnRate = 1;
+    // console.log(coinSpawnRate);
 
-    console.log(coinSpawnRate);
+    // setInterval(function(){
+    //   score += 100;
+    //   npcSpawnRate -= 1.5;
+    //   coinSpawnRate += 1.5;
+    //   console.log("npc" + npcSpawnRate + " + " + "coin" + coinSpawnRate);
+    // },1000);
 
     setInterval(function(){
-      score += 100;
-      npcSpawnRate += 1;
-    },5000);
+      score += 20;
+    },1000);
+
 
     //Start Physics Engine
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -100,7 +108,7 @@ var StateMain = {
 
     // console.log("NEW NPC ADDED: " + this.lane() + " , " + this.pickNPC());
 
-    //BACKGROUND IMAGE TILES
+    // BACKGROUND IMAGE TILES
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
     var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
     var city = game.add.tileSprite(0, 107, 600, 90, "city");
@@ -110,6 +118,17 @@ var StateMain = {
     var posts = game.add.tileSprite(0, 15, 3000, 182, "posts");
     var extras = game.add.tileSprite(0, 120, 3000, 84, "extras");
     var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
+
+
+    // var sky = game.add.tileSprite(0, 6, 3000, 78, "sky");
+    // var mtn = game.add.tileSprite(0, 62, 3000, 133, "mtn");
+    // var city = game.add.tileSprite(0, 107, 3000, 90, "city");
+    // var truck = game.add.tileSprite(0, 84, 3000, 142, "truck");
+    // var road = game.add.tileSprite(0, 226, 3000, 159, "road");
+    // var bottomRail = game.add.tileSprite(0, 3000, 600, 47, "bottomRail");
+    // var posts = game.add.tileSprite(0, 15, 3000, 182, "posts");
+    // var extras = game.add.tileSprite(0, 120, 3000, 84, "extras");
+    // var topRail = game.add.tileSprite(0, 197, 3000, 29, "topRail");
 
 
     //EMPTY LIVES
@@ -163,9 +182,9 @@ var StateMain = {
     // console.log("You chose the " + character + " racer!");
 
     //Background image scroll speed
-    road.autoScroll(-330, 0);
-    topRail.autoScroll(-330, 0);
-    bottomRail.autoScroll(-330, 0);
+    road.autoScroll(-390, 0);
+    topRail.autoScroll(-370, 0);
+    bottomRail.autoScroll(-380, 0);
     sky.autoScroll(-5,0);
     city.autoScroll(-30,0);
     mtn.autoScroll(-15,0);
@@ -349,7 +368,7 @@ var StateMain = {
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown) {
         // this.driveSound();
-        this.sprite.body.velocity.x = 150;
+        this.sprite.body.velocity.x = 180;
     }
 
     if(cursors.right.isUp) {
@@ -357,7 +376,7 @@ var StateMain = {
     }
 
     if(cursors.up.isDown) {
-        this.sprite.body.velocity.y = -80;
+        this.sprite.body.velocity.y = -90;
     }
 
     if(cursors.up.isUp) {
@@ -365,13 +384,11 @@ var StateMain = {
     }
 
     if(cursors.down.isDown) {
-      this.sprite.body.velocity.y = 80;
+      this.sprite.body.velocity.y = 90;
     }
 
     if(cursors.left.isDown) {
-      if(this.sprite){
         this.sprite.body.velocity.x = -250;
-      }
     }
 
     if(this.sprite.y<this.top) {

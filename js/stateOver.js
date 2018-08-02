@@ -63,6 +63,9 @@ var StateOver = {
 
     //Reset score and character values for "restart"
     score = 0;
+    lives = 3;
+    npcSpawnRate = 3;
+    coinSpawnRate = 1;
     character = undefined;
     game.state.start("StateChoice");
   },
