@@ -52,7 +52,7 @@ var StateMain = {
 
   create: function () {
 
-    game.world.setBounds(0,-20, this.game.width + 100, 432 + 20);
+    game.world.setBounds(0, 0, 3000, this.game.height);
 
     //MUSIC
     this.titleSong = game.add.audio("title");
@@ -113,15 +113,15 @@ var StateMain = {
     // console.log("NEW NPC ADDED: " + this.lane() + " , " + this.pickNPC());
 
     // BACKGROUND IMAGE TILES
-    sky = game.add.tileSprite(0, 6, 800, 78, "sky");
-    mtn = game.add.tileSprite(0, 62, 800, 133, "mtn");
-    city = game.add.tileSprite(0, 107, 800, 90, "city");
-    truck = game.add.tileSprite(0, 84, 3000, 142, "truck");
-    road = game.add.tileSprite(0, 226, 800, 159, "road");
-    bottomRail = game.add.tileSprite(0, 800, 800, 47, "bottomRail");
-    posts = game.add.tileSprite(0, 15, 3000, 182, "posts");
-    extras = game.add.tileSprite(0, 120, 3000, 84, "extras");
-    topRail = game.add.tileSprite(0, 197, 800, 29, "topRail");
+    sky = game.add.tileSprite(0, 6, this.world.width, 78, "sky");
+    mtn = game.add.tileSprite(0, 62, this.world.width, 133, "mtn");
+    city = game.add.tileSprite(0, 107, this.world.width, 90, "city");
+    truck = game.add.tileSprite(0, 84, this.world.width, 142, "truck");
+    road = game.add.tileSprite(0, 226, this.world.width, 159, "road");
+    posts = game.add.tileSprite(0, 15, this.world.width, 182, "posts");
+    extras = game.add.tileSprite(0, 120, this.world.width, 84, "extras");
+    topRail = game.add.tileSprite(0, 197, this.world.width, 29, "topRail");
+    bottomRail = game.add.tileSprite(0, 800, this.world.width, 47, "bottomRail");
 
 
     // var sky = game.add.tileSprite(0, 6, 3000, 78, "sky");
@@ -368,10 +368,10 @@ var StateMain = {
     if(cursors.right.isDown) {
         // this.driveSound();
         this.sprite.body.velocity.x = 100;
-        sky.tilePosition.x -=8;
-        mtn.tilePosition.x -=8;
-        city.tilePosition.x -=8;
-        truck.tilePosition.x -=8;
+        sky.tilePosition.x -=0.5;
+        mtn.tilePosition.x -=0.7;
+        city.tilePosition.x -=0.9;
+        truck.tilePosition.x -=9;
         road.tilePosition.x -=2;
         bottomRail.tilePosition.x -= 2;
         posts.tilePosition.x -=8;
