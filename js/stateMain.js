@@ -52,7 +52,7 @@ var StateMain = {
 
   create: function () {
 
-    // game.world.setBounds(0,0, 1300, 432);
+    game.world.setBounds(0,-20, this.game.width + 100, 432 + 20);
 
     //MUSIC
     this.titleSong = game.add.audio("title");
@@ -96,6 +96,10 @@ var StateMain = {
     this.top = game.height - 200 ;
     this.bottom = game.height - 80;
 
+
+    //Want to keep gopher from hitting left and right of screen
+    this.left = game.width - 50;
+
     //Random lane logic for NPC spawn
     this.lane = function () {
       return availLanes[Math.floor(Math.random()*availLanes.length)];
@@ -109,15 +113,15 @@ var StateMain = {
     // console.log("NEW NPC ADDED: " + this.lane() + " , " + this.pickNPC());
 
     // BACKGROUND IMAGE TILES
-    var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
-    var mtn = game.add.tileSprite(0, 62, 600, 133, "mtn");
-    var city = game.add.tileSprite(0, 107, 600, 90, "city");
-    var truck = game.add.tileSprite(0, 84, 3000, 142, "truck");
-    var road = game.add.tileSprite(0, 226, 600, 159, "road");
-    var bottomRail = game.add.tileSprite(0, 385, 600, 47, "bottomRail");
-    var posts = game.add.tileSprite(0, 15, 3000, 182, "posts");
-    var extras = game.add.tileSprite(0, 120, 3000, 84, "extras");
-    var topRail = game.add.tileSprite(0, 197, 600, 29, "topRail");
+    sky = game.add.tileSprite(0, 6, 800, 78, "sky");
+    mtn = game.add.tileSprite(0, 62, 800, 133, "mtn");
+    city = game.add.tileSprite(0, 107, 800, 90, "city");
+    truck = game.add.tileSprite(0, 84, 3000, 142, "truck");
+    road = game.add.tileSprite(0, 226, 800, 159, "road");
+    bottomRail = game.add.tileSprite(0, 800, 800, 47, "bottomRail");
+    posts = game.add.tileSprite(0, 15, 3000, 182, "posts");
+    extras = game.add.tileSprite(0, 120, 3000, 84, "extras");
+    topRail = game.add.tileSprite(0, 197, 800, 29, "topRail");
 
 
     // var sky = game.add.tileSprite(0, 6, 3000, 78, "sky");
@@ -304,11 +308,6 @@ var StateMain = {
 
     NpcPickUp: function (npc, coin){
       coin.kill();
-      // score += 100;
-      // console.log("Your score is --> " + score);
-      // this.coinBeep = game.add.audio("coinBeep");
-      // this.coinBeep.play('', 0, 1, false);
-      // this.coinBeep.volume = 0.6;
     },
 
     //COLLISION HANDLER
@@ -368,7 +367,17 @@ var StateMain = {
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown) {
         // this.driveSound();
-        this.sprite.body.velocity.x = 180;
+        this.sprite.body.velocity.x = 100;
+        sky.tilePosition.x -=8;
+        mtn.tilePosition.x -=8;
+        city.tilePosition.x -=8;
+        truck.tilePosition.x -=8;
+        road.tilePosition.x -=2;
+        bottomRail.tilePosition.x -= 2;
+        posts.tilePosition.x -=8;
+        extras.tilePosition.x -=8;
+        topRail.tilePosition.x -=2;
+
     }
 
     if(cursors.right.isUp) {
