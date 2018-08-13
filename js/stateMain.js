@@ -121,7 +121,7 @@ var StateMain = {
     posts = game.add.tileSprite(0, 15, this.world.width, 182, "posts");
     extras = game.add.tileSprite(0, 120, this.world.width, 84, "extras");
     topRail = game.add.tileSprite(0, 197, this.world.width, 29, "topRail");
-    bottomRail = game.add.tileSprite(0, 800, this.world.width, 47, "bottomRail");
+    bottomRail = game.add.tileSprite(0, 385, this.world.width, 47, "bottomRail");
 
 
     // var sky = game.add.tileSprite(0, 6, 3000, 78, "sky");
@@ -250,6 +250,14 @@ var StateMain = {
     timeLabel = game.add.bitmapText(275, 7, 'pixelFont', 'TIME', 21);
     timeText = game.add.bitmapText(280, 27, 'pixelFont', '300', 21);
 
+    //Fix game status elements (w/e you want to call these :D) to the camera
+    this.timer.fixedToCamera = scoreText.fixedToCamera = timeLabel.fixedToCamera =
+    timeText.fixedToCamera = true;
+
+
+    // = this.heart1.fixedToCamera = this.heart2.fixedToCamera =
+    // this.heart2.fixedToCamera = this.emptyHeart1.fixedToCamera = this.emptyHeart2.fixedToCamera =
+    // this.emptyHeart3.fixedToCamera
 
     // game.debug.bodyInfo(this.npcRacers);
     this.setListeners();
@@ -367,15 +375,15 @@ var StateMain = {
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown) {
         // this.driveSound();
-        this.sprite.body.velocity.x = 100;
+        this.sprite.body.velocity.x = 80;
         sky.tilePosition.x -=0.5;
         mtn.tilePosition.x -=0.7;
         city.tilePosition.x -=0.9;
-        truck.tilePosition.x -=9;
+        truck.tilePosition.x -=2;
         road.tilePosition.x -=2;
         bottomRail.tilePosition.x -= 2;
-        posts.tilePosition.x -=8;
-        extras.tilePosition.x -=8;
+        posts.tilePosition.x -=5;
+        extras.tilePosition.x -=5;
         topRail.tilePosition.x -=2;
 
     }
