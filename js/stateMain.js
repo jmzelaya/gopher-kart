@@ -48,6 +48,9 @@ var StateMain = {
     //Font
     game.load.bitmapFont('pixelFont', 'assets/fonts/bitmapFonts/pixelFont.png', 'assets/fonts/bitmapFonts/pixelFont.xml');
     var timeText;
+
+    game.load.spritesheet("devButtons", "assets/main-menu-buttons.png", 217, 40, 2);
+
   },
 
   create: function () {
@@ -143,6 +146,8 @@ var StateMain = {
     this.emptyHeart3 = game.add.sprite(game.world.centerX-245, game.world.centerY-205, "heart");
     this.emptyHeart3.frame = 5;
 
+
+
     //LIVES
     this.heart1 = game.add.sprite(game.world.centerX-285, game.world.centerY-205, "heart");
     this.heart2 = game.add.sprite(game.world.centerX-265, game.world.centerY-205, "heart");
@@ -219,6 +224,7 @@ var StateMain = {
     this.countGroup.add(this.countDown2);
     this.countGroup.add(this.countDown3);
     this.countGroup.add(this.countDownGo);
+    this.countGroup.fixedToCamera = true;
 
     //TWEENS for 3..2..1..GO!
     var tween1 = game.add.tween(this.countDown1).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false,
@@ -260,6 +266,10 @@ var StateMain = {
     // this.emptyHeart3.fixedToCamera
 
     // game.debug.bodyInfo(this.npcRacers);
+
+    this.instantDeathButton = game.add.button(285, game.world.height-60, "devButtons", this.instantDeath, this, 1, 0, 1);
+
+
     this.setListeners();
   },
 
@@ -269,10 +279,15 @@ var StateMain = {
       game.time.events.loop(Phaser.Timer.SECOND * npcSpawnRate, this.loadNPC, this);
     },
 
+    instantDeath: function(){
+      this.titleSong.stop();
+      game.state.start("StateOver");
+    },
+
     //NPC SPAWN
     loadNPC: function (){
       var newNpc = this.npcRacers.getFirstDead();
-      var xx = game.width;
+      var xx = this.world.width;
       var yy = this.lane();
       // newNpc.key = this.pickNPC();
       newNpc.anchor.set(0.5 , 0.5);
@@ -295,7 +310,7 @@ var StateMain = {
       //y position
       var yy = game.rnd.integerInRange(240, game.height-70);
       //x position
-      var xx = game.width;
+      var xx = this.world.width;
 
       coin.reset(xx, yy);
       coin.enabled = true;

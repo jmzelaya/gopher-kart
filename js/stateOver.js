@@ -24,10 +24,16 @@ var StateOver = {
     game.load.image("post-score", "assets/post-score.png");
     //Font
     game.load.bitmapFont('pixelFont', 'assets/fonts/bitmapFonts/pixelFont.png', 'assets/fonts/bitmapFonts/pixelFont.xml');
+    game.load.audio("gameOver", "assets/music/goverrr.wav");
+
   },
 
   create : function(){
     console.log("your final score is : " + score);
+
+    this.gameOverSong = game.add.audio("gameOver");
+    this.gameOverSong.play('', 0, 1, true);
+    this.gameOverSong.volume = 0.5;
 
     background = game.add.tileSprite(0, 0, 600, 432, "background");
     var sky = game.add.tileSprite(0, 6, 600, 78, "sky");
@@ -67,6 +73,8 @@ var StateOver = {
     npcSpawnRate = 3;
     coinSpawnRate = 1;
     character = undefined;
+    this.gameOverSong.stop();
+    this.camera.reset();
     game.state.start("StateChoice");
   },
 

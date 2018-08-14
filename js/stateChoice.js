@@ -26,6 +26,8 @@ var StateChoice = {
   },
 
   create: function () {
+    this.camera.reset();
+
     //MUSIC
     this.selectSong = game.add.audio("select");
     //Watched youtube video, need to check docs for .play params
@@ -41,33 +43,33 @@ var StateChoice = {
 
     //MARQUEE
     //Blue
-    this.blueMarquee = game.add.sprite(game.world.centerX-150, game.world.centerY-16, "blueMarquee");
+    this.blueMarquee = game.add.sprite(game.world.bounds.height - 282, game.world.centerY-16, "blueMarquee");
     this.blueMarquee.anchor.set(0.5, 0.5);
     this.blueMarquee.animations.add("blueCrawl", [],15, true);
     this.blueMarquee.animations.play("blueCrawl");
     //Pink
-    this.pinkMarquee = game.add.sprite(game.world.centerX, game.world.centerY-16, "pinkMarquee");
+    this.pinkMarquee = game.add.sprite(game.world.bounds.height - 132, game.world.centerY-16, "pinkMarquee");
     this.pinkMarquee.anchor.set(0.5, 0.5);
     this.pinkMarquee.animations.add("pinkCrawl", [],13, true);
     this.pinkMarquee.animations.play("pinkCrawl");
     //Purple
-    this.purpleMarquee = game.add.sprite(game.world.centerX+150, game.world.centerY-16, "purpleMarquee");
+    this.purpleMarquee = game.add.sprite(game.world.bounds.height + 18, game.world.centerY-16, "purpleMarquee");
     this.purpleMarquee.anchor.set(0.5, 0.5);
     this.purpleMarquee.animations.add("purpleCrawl", [],10, true);
     this.purpleMarquee.animations.play("purpleCrawl");
 
     //Choose Racer1
-    this.pickRacer1 = game.add.button(game.world.centerX-150, game.world.centerY+105,
+    this.pickRacer1 = game.add.button(game.world.bounds.height - 282, game.world.centerY+105,
       "buttons", this.racerStart.bind(this, "blue"), this);
     this.pickRacer1.anchor.set(0.5, 0.5);
 
     //Choose Racer2
-    this.pickRacer2 = game.add.button(game.world.centerX, game.world.centerY+105,
+    this.pickRacer2 = game.add.button(game.world.bounds.height - 132, game.world.centerY+105,
       "buttons", this.racerStart.bind(this, "pink"), this);
     this.pickRacer2.anchor.set(0.5, 0.5);
 
     //Choose Racer3
-    this.pickRacer3 = game.add.button(game.world.centerX+150, game.world.centerY+105,
+    this.pickRacer3 = game.add.button(game.world.bounds.height + 18, game.world.centerY+105,
       "buttons", this.racerStart.bind(this, "purple"), this);
     this.pickRacer3.anchor.set(0.5, 0.5);
 
@@ -79,21 +81,21 @@ var StateChoice = {
 
     //BLACK AND WHITE GOPHERS
     //Blue
-    this.blue = game.add.sprite(game.world.centerX-150, game.world.centerY+40, "racer");
+    this.blue = game.add.sprite(game.world.bounds.height - 282, game.world.centerY+40, "racer");
     this.blue.frame = 1;
     this.blue.animations.add("blue", [1, 2],9, true);
     this.blue.anchor.set(0.5, 0.5);
     this.blue.animations.play("blue");
 
     //Pink
-    this.PinkGopher = game.add.sprite(game.world.centerX, game.world.centerY+40, "racer");
+    this.PinkGopher = game.add.sprite(game.world.bounds.height - 132, game.world.centerY+40, "racer");
     this.PinkGopher.frame = 3;
     this.PinkGopher.animations.add("pink", [3, 4],9, true);
     this.PinkGopher.anchor.set(0.5, 0.5);
     this.PinkGopher.animations.play("pink");
 
     //Purple
-    this.PurpleGopher = game.add.sprite(game.world.centerX+150, game.world.centerY+40, "racer");
+    this.PurpleGopher = game.add.sprite(game.world.bounds.height + 18, game.world.centerY+40, "racer");
     this.PurpleGopher.frame = 5;
     this.PurpleGopher.animations.add("purple", [5, 6],9, true);
     this.PurpleGopher.anchor.set(0.5, 0.5);
@@ -101,7 +103,7 @@ var StateChoice = {
 
 
     //CONFIRMATION BUTTON
-    this.startConfirm = game.add.button(game.world.centerX, game.world.height-46,
+    this.startConfirm = game.add.button(game.world.bounds.height - 132, game.world.height-46,
      "neon", this.startGame, this, 12, 12, 12);
     this.startConfirm.frame = 12;
     this.startConfirm.anchor.set(0.5, 0.5);
