@@ -345,7 +345,7 @@ var StateMain = {
         sprite.animations.play("idle");
       }, this);
       lives -= 1;
-      var heart = this.heartGroup.getLastAlive();
+      var heart = this.heartGroup.getFirstAlive();
 
       heart.animations.add("drain", [0,1,2,3,4,5],12, false);
       heart.animations.play("drain");
