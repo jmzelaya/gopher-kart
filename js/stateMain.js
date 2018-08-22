@@ -138,20 +138,26 @@ var StateMain = {
     // var topRail = game.add.tileSprite(0, 197, 3000, 29, "topRail");
 
 
-    //EMPTY LIVES
-    this.emptyHeart1 = game.add.sprite(game.world.centerX-285, game.world.centerY-205, "heart");
+   //EMPTY LIVES
+    this.emptyHeart1 = game.add.sprite(10, game.world.centerY-205, "heart");
+    this.emptyHeart1.fixedToCamera = true;
     this.emptyHeart1.frame = 5;
-    this.emptyHeart2 = game.add.sprite(game.world.centerX-265, game.world.centerY-205, "heart");
+    this.emptyHeart2 = game.add.sprite(30, game.world.centerY-205, "heart");
+    this.emptyHeart2.fixedToCamera = true;
     this.emptyHeart2.frame = 5;
-    this.emptyHeart3 = game.add.sprite(game.world.centerX-245, game.world.centerY-205, "heart");
+    this.emptyHeart3 = game.add.sprite(50, game.world.centerY-205, "heart");
+    this.emptyHeart3.fixedToCamera = true;
     this.emptyHeart3.frame = 5;
 
 
 
     //LIVES
-    this.heart1 = game.add.sprite(game.world.centerX-285, game.world.centerY-205, "heart");
-    this.heart2 = game.add.sprite(game.world.centerX-265, game.world.centerY-205, "heart");
-    this.heart3 = game.add.sprite(game.world.centerX-245, game.world.centerY-205, "heart");
+    this.heart1 = game.add.sprite(10, game.world.centerY-205, "heart");
+    this.heart1.fixedToCamera = true;
+    this.heart2 = game.add.sprite(30, game.world.centerY-205, "heart");
+    this.heart2.fixedToCamera = true;
+    this.heart3 = game.add.sprite(50, game.world.centerY-205, "heart");
+    this.heart3.fixedToCamera = true;
 
     this.heartGroup = game.add.group();
     this.heartGroup.add(this.heart1);
@@ -259,11 +265,6 @@ var StateMain = {
     //Fix game status elements (w/e you want to call these :D) to the camera
     this.timer.fixedToCamera = scoreText.fixedToCamera = timeLabel.fixedToCamera =
     timeText.fixedToCamera = true;
-
-
-    // = this.heart1.fixedToCamera = this.heart2.fixedToCamera =
-    // this.heart2.fixedToCamera = this.emptyHeart1.fixedToCamera = this.emptyHeart2.fixedToCamera =
-    // this.emptyHeart3.fixedToCamera
 
     // game.debug.bodyInfo(this.npcRacers);
 
