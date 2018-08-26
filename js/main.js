@@ -20,6 +20,9 @@ var score = 0;
 var cursors;
 var scoreText;
 var lives = 3;
+var count = 0;
+var timeElapsed = 0;
+
 
 var sky;
 var mtn;

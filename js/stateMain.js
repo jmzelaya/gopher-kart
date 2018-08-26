@@ -79,7 +79,7 @@ var StateMain = {
     // },1000);
 
     setInterval(function(){
-      score += 1;
+      score += 3;
     },1000);
 
 
@@ -88,6 +88,17 @@ var StateMain = {
 
     //TIMER
     //Not sure how this works, going to do some more reasearch
+    setInterval(function(){
+      count += 1;
+      count.toString();
+      if(count < 10){
+        timeElapsed = "0" + count;
+      } else {
+        timeElapsed = count;
+      }
+    }, 1000);
+
+
     this.timer = this.game.time.create(this.game);
     this.timer.add(this.delay, this.readyForAction, this);
     this.timer.start();
@@ -250,13 +261,13 @@ var StateMain = {
     },3000);
 
     //TEXT
-    var scoreLabel = game.add.bitmapText(565, 7, 'pixelFont', 'SCORE', 21);
+    var scoreLabel = game.add.bitmapText(585, 7, 'pixelFont', 'SCORE', 21);
     scoreLabel.anchor.set(1.0 , 0);
-    scoreText = game.add.bitmapText(565, 27, 'pixelFont', '0', 21);
+    scoreText = game.add.bitmapText(570, 27, 'pixelFont', '0', 21);
     scoreText.anchor.set(1.0 , 0);
     var timeLabel;
     timeLabel = game.add.bitmapText(275, 7, 'pixelFont', 'TIME', 21);
-    timeText = game.add.bitmapText(280, 27, 'pixelFont', '300', 21);
+    timeText = game.add.bitmapText(290, 27, 'pixelFont', timeElapsed, 21);
 
     //Fix game status elements (w/e you want to call these :D) to the camera
     this.timer.fixedToCamera = scoreText.fixedToCamera = timeLabel.fixedToCamera =
@@ -375,7 +386,8 @@ var StateMain = {
     game.physics.arcade.collide(this.sprite, this.coins, null, this.onPickUp, this);
     game.physics.arcade.collide(this.npcRacers, this.coins, null, this.NpcPickUp, this);
     game.physics.arcade.collide(this.sprite, this.npcRacers, null, this.onCrash, this);
-    timeText.text = '' + Math.round(game.time.now);
+    // timeText.text = '' + Math.round(game.time.now);
+    timeText.text = timeElapsed;
     scoreText.text = score;
 
     //Cursors - Keyboard key check ⌨️
