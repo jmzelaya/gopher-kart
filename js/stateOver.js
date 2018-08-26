@@ -54,8 +54,8 @@ var StateOver = {
     scoreText.text = "Your score: " + score;
 
     //Define and add game buttons
-    this.tutorial = game.add.button(155, game.world.height-85, "try-again", this.startGame, this, 1, 0, 1);
-    this.tutorial = game.add.button(335, game.world.height-85, "post-score", this.startGame, this, 1, 0, 1);
+    this.tutorial = game.add.button(232, game.world.height-85, "try-again", this.startGame, this, 1, 0, 1);
+    // this.tutorial = game.add.button(335, game.world.height-85, "post-score", this.startGame, this, 1, 0, 1);
 
     this.sprite = game.add.sprite(300, 289, character);
     this.sprite.anchor.set(0.5, 0.5);

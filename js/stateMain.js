@@ -133,16 +133,6 @@ var StateMain = {
     topRail.fixedToCamera = true;
     bottomRail.fixedToCamera = true;
 
-    // var sky = game.add.tileSprite(0, 6, 3000, 78, "sky");
-    // var mtn = game.add.tileSprite(0, 62, 3000, 133, "mtn");
-    // var city = game.add.tileSprite(0, 107, 3000, 90, "city");
-    // var truck = game.add.tileSprite(0, 84, 3000, 142, "truck");
-    // var road = game.add.tileSprite(0, 226, 3000, 159, "road");
-    // var bottomRail = game.add.tileSprite(0, 3000, 600, 47, "bottomRail");
-    // var posts = game.add.tileSprite(0, 15, 3000, 182, "posts");
-    // var extras = game.add.tileSprite(0, 120, 3000, 84, "extras");
-    // var topRail = game.add.tileSprite(0, 197, 3000, 29, "topRail");
-
 
    //EMPTY LIVES
     this.emptyHeart1 = game.add.sprite(10, game.world.centerY-205, "heart");
@@ -154,7 +144,6 @@ var StateMain = {
     this.emptyHeart3 = game.add.sprite(50, game.world.centerY-205, "heart");
     this.emptyHeart3.fixedToCamera = true;
     this.emptyHeart3.frame = 5;
-
 
 
     //LIVES
@@ -197,7 +186,7 @@ var StateMain = {
     this.sprite.body.offset.setTo(3, 30);
 
     //Add chosen racer to npcRacer group
-    //to allow for sorting and proper z-index effect
+    //to allow for sorting and proper "z-index" effect
     this.npcRacers.add(this.sprite);
 
     // console.log("You chose the " + character + " racer!");
@@ -264,6 +253,7 @@ var StateMain = {
     },3000);
 
     //TEXT
+    //🚨🚨🚨🚨SHOULD ADD SCORE LABEL
     scoreText = game.add.bitmapText(585, 5, 'pixelFont', '0', 21);
     scoreText.anchor.set(1.0 , 0);
     var timeLabel;
@@ -289,7 +279,7 @@ var StateMain = {
     //NPC SPAWN
     loadNPC: function (){
       var newNpc = this.npcRacers.getFirstDead();
-      // var xx = this.world.width;
+      //maintains that npc spawns just to right of screen
       var xx = this.camera.view.right + 20;
       var yy = this.lane();
       // newNpc.key = this.pickNPC();
@@ -312,8 +302,7 @@ var StateMain = {
       var coin = this.coins.getFirstDead();
       //y position
       var yy = game.rnd.integerInRange(240, game.height-70);
-      //x position
-      // var xx = this.world.width;
+      //x position - maintains that coin spawns just to right of screen
       var xx = this.camera.view.right + 20;
 
 
@@ -328,15 +317,12 @@ var StateMain = {
     onPickUp: function (sprite, coin){
       coin.kill();
       score += 100;
-      console.log("Your score is --> " + score);
+      // console.log("Your score is --> " + score);
       this.coinBeep = game.add.audio("coinBeep");
       this.coinBeep.play('', 0, 1, false);
       this.coinBeep.volume = 0.6;
     },
 
-    // NpcPickUp: function (npc, coin){
-    //   coin.kill();
-    // },
 
     //COLLISION HANDLER
     onCrash: function (sprite, npc){
@@ -345,7 +331,7 @@ var StateMain = {
       this.npc_explosion.play('', 0, 1, false);
       this.npc_explosion.volume = 0.3;
       sprite.events.onAnimationComplete.add(function(){
-        console.log("Crash animation complete");
+        // console.log("Crash animation complete");
         sprite.animations.play("idle");
       }, this);
       lives -= 1;
@@ -353,7 +339,8 @@ var StateMain = {
 
       heart.animations.add("drain", [0,1,2,3,4,5],12, false);
       heart.animations.play("drain");
-      // console.log(heart);
+
+
       //DECREASE SPEED OF GOPHER UPON COLLISON ... not working ?? /
       sprite.body.velocity.x = -500;
       setTimeout(function(){
