@@ -71,12 +71,12 @@ var StateMain = {
     // var coinSpawnRate = 1;
     // console.log(coinSpawnRate);
 
-    // setInterval(function(){
-    //   score += 100;
-    //   npcSpawnRate -= 1.5;
-    //   coinSpawnRate += 1.5;
-    //   console.log("npc" + npcSpawnRate + " + " + "coin" + coinSpawnRate);
-    // },1000);
+    setInterval(function(){
+      score += 100;
+      npcSpawnRate -= 0.5;
+      coinSpawnRate += 0.1;
+      console.log("npc" + npcSpawnRate + " + " + "coin" + coinSpawnRate);
+    },1000);
 
     setInterval(function(){
       score += 1;
@@ -260,7 +260,7 @@ var StateMain = {
 
     //Fix game status elements (w/e you want to call these :D) to the camera
     this.timer.fixedToCamera = scoreText.fixedToCamera = timeLabel.fixedToCamera =
-    timeText.fixedToCamera = this.scoreLabel.fixedToCamera = true;
+    timeText.fixedToCamera = scoreLabel.fixedToCamera = true;
 
     // game.debug.bodyInfo(this.npcRacers);
 
