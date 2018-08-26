@@ -1,6 +1,7 @@
 /*-- GLOBAL STYLES --*/
 body.game-page {
-  font-family: 'Patua One', cursive;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
   background: url("../assets/web/full-bg.jpg") #000 50% 0px;
   background-size: 2958px 1310px;
   background-repeat: no-repeat;
@@ -219,97 +220,64 @@ body.leaderboard-page h1 {
   text-align: right;
 }
 
-/* ----------- iPhone 4 and 4S ----------- */
-@media only screen
-  and (min-width: 320px)
-  and (max-width: 480px) {
-    .wrapper {
-      min-height: 100%;
-      margin-bottom: 0;
-      padding-top: 0;
-    }
-    #phaser-wrapper canvas {
-      position: relative;
-      top: 0;
-      left: 0;
-      margin-left: 0;
-      border-radius: 0;
-      margin-top: 0px;
-    }
+.mobile-wrapper {
+  background: url("../assets/mobile-bg.png") #000 50% 0px;
+  border-radius: 10px;
+  height: 432px;
+  width: 600px;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -300px;
+  border-radius: 10px;
+  margin-top: 0px;
+  z-index: 300;
+  color: #000;
+}
+.mobile-wrapper h1 {
+  display: block;
+}
+.mobile-wrapper img.mobile-gopher {
+  bottom: 10px !important;
+  display: block !important;
+  position: absolute !important;
+  left: 50% !important;
+  margin-left: -68.5px !important;
+  image-rendering: pixelated !important;
+
+}
+.mobile-wrapper img.mobile-title {
+  position: absolute !important;
+  top: 30px !important;
+  left: 50% !important;
+  margin-left: -150px !important;
+  image-rendering: pixelated !important;
+}
+.mobile-wrapper img.mobile-info {
+  position: absolute !important;
+  top: 110px !important;
+  left: 50% !important;
+  margin-left: -150px !important;
+  image-rendering: pixelated !important;
 }
 
-/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
-@media only screen
-  and (min-width: 320px)
-  and (max-width: 568px) {
-    .wrapper {
-      min-height: 100%;
-      margin-bottom: 0;
-      padding-top: 0;
-    }
-    #phaser-wrapper canvas {
-      position: relative;
-      top: 0;
-      left: 0;
-      margin-left: 0;
-      border-radius: 0;
-      margin-top: 0px;
-    }
+@media(max-width:767px){
+  body{
+    overflow-x: hidden;
+  }
+  .mobile-wrapper {
+    display: block;
+  }
+  canvas {
+    display: none;
+  }
 }
-
-/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
-@media only screen
-  and (min-width: 375px)
-  and (max-width: 667px) {
-    .wrapper {
-      min-height: 100%;
-      margin-bottom: 0;
-      padding-top: 0;
-    }
-    #phaser-wrapper canvas {
-      position: relative;
-      top: 0;
-      left: 0;
-      margin-left: 0;
-      border-radius: 0;
-      margin-top: 0px;
-    }
-}
-
-/* ----------- iPhone 6+, 7+ and 8+ ----------- */
-@media only screen
-  and (min-width: 414px)
-  and (max-width: 736px) {
-    .wrapper {
-      min-height: 100%;
-      margin-bottom: 0;
-      padding-top: 0;
-    }
-    #phaser-wrapper canvas {
-      position: relative;
-      top: 0;
-      left: 0;
-      margin-left: 0;
-      border-radius: 0;
-      margin-top: 0px;
-    }
-}
-
-/* ----------- iPhone X ----------- */
-@media only screen
-  and (min-width: 375px)
-  and (max-width: 812px) {
-    .wrapper {
-      min-height: 100%;
-      margin-bottom: 0;
-      padding-top: 0;
-    }
-    #phaser-wrapper canvas {
-      position: relative;
-      top: 0;
-      left: 0;
-      margin-left: 0;
-      border-radius: 0;
-      margin-top: 0px;
-    }
+@media(max-width:576px){
+  .mobile-wrapper {
+    border-radius: 0;
+    margin: 0;
+    left: 0;
+    width: 100%;
+  }
 }
