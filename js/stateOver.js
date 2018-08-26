@@ -49,7 +49,7 @@ var StateOver = {
     sky.autoScroll(-5,0);
 
     //TEXT
-    scoreText = game.add.bitmapText(game.world.centerX, 245, 'pixelFont', '0', 21);
+    scoreText = game.add.bitmapText(game.world.bounds.height - 130, 240, 'pixelFont', '0', 21);
     scoreText.anchor.set(0.5, 0.5);
     scoreText.text = "Your score: " + score;
 
@@ -70,8 +70,8 @@ var StateOver = {
     //Reset score and character values for "restart"
     score = 0;
     lives = 3;
-    npcSpawnRate = 3;
-    coinSpawnRate = 1;
+    // npcSpawnRate = 3;
+    // coinSpawnRate = 1;
     character = undefined;
     this.gameOverSong.stop();
     this.camera.reset();

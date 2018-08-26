@@ -48,9 +48,6 @@ var StateMain = {
     //Font
     game.load.bitmapFont('pixelFont', 'assets/fonts/bitmapFonts/pixelFont.png', 'assets/fonts/bitmapFonts/pixelFont.xml');
     var timeText;
-
-    game.load.spritesheet("devButtons", "assets/main-menu-buttons.png", 217, 40, 2);
-
   },
 
   create: function () {
@@ -208,21 +205,24 @@ var StateMain = {
     extras.autoScroll(-330, 0);
 
     //COUNTDOWN SPRITES
-    this.countDown1 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown1');
+    this.countDown1 = game.add.sprite(game.world.bounds.height - 135, game.world.centerY, 'countDown1');
     this.countDown1.anchor.setTo(0.5, 0.5);
     this.countDown1.alpha = 0;
 
-    this.countDown2 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown2');
+    this.countDown2 = game.add.sprite(game.world.bounds.height - 135, game.world.centerY, 'countDown2');
     this.countDown2.anchor.setTo(0.5, 0.5);
     this.countDown2.alpha = 0;
 
-    this.countDown3 = game.add.sprite(game.world.centerX, game.world.centerY, 'countDown3');
+
+    this.countDown3 = game.add.sprite(game.world.bounds.height - 135, game.world.centerY, 'countDown3');
     this.countDown3.anchor.setTo(0.5, 0.5);
     this.countDown3.alpha = 0;
 
-    this.countDownGo = game.add.sprite(game.world.centerX, game.world.centerY, 'countDownGo');
+
+    this.countDownGo = game.add.sprite(game.world.bounds.height - 80, game.world.centerY, 'countDownGo');
     this.countDownGo.anchor.setTo(0.5, 0.5);
     this.countDownGo.alpha = 0;
+    this.countDownGo.fixedToCamera = true;
 
     //COUNTDOWN GROUP
     this.countGroup = game.add.group();
@@ -230,7 +230,6 @@ var StateMain = {
     this.countGroup.add(this.countDown2);
     this.countGroup.add(this.countDown3);
     this.countGroup.add(this.countDownGo);
-    this.countGroup.fixedToCamera = true;
 
     //TWEENS for 3..2..1..GO!
     var tween1 = game.add.tween(this.countDown1).to({alpha: 1}, 500, Phaser.Easing.Linear.None, false,
@@ -268,9 +267,6 @@ var StateMain = {
 
     // game.debug.bodyInfo(this.npcRacers);
 
-    this.instantDeathButton = game.add.button(285, game.world.height-60, "devButtons", this.instantDeath, this, 1, 0, 1);
-
-
     this.setListeners();
   },
 
@@ -280,10 +276,6 @@ var StateMain = {
       game.time.events.loop(Phaser.Timer.SECOND * npcSpawnRate, this.loadNPC, this);
     },
 
-    instantDeath: function(){
-      this.titleSong.stop();
-      game.state.start("StateOver");
-    },
 
     //NPC SPAWN
     loadNPC: function (){
