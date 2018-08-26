@@ -123,6 +123,15 @@ var StateMain = {
     topRail = game.add.tileSprite(0, 197, this.world.width, 29, "topRail");
     bottomRail = game.add.tileSprite(0, 385, this.world.width, 47, "bottomRail");
 
+    sky.fixedToCamera = true;
+    mtn.fixedToCamera = true;
+    city.fixedToCamera = true;
+    truck.fixedToCamera = true;
+    road.fixedToCamera = true;
+    posts.fixedToCamera = true;
+    extras.fixedToCamera = true;
+    topRail.fixedToCamera = true;
+    bottomRail.fixedToCamera = true;
 
     // var sky = game.add.tileSprite(0, 6, 3000, 78, "sky");
     // var mtn = game.add.tileSprite(0, 62, 3000, 133, "mtn");
@@ -280,7 +289,8 @@ var StateMain = {
     //NPC SPAWN
     loadNPC: function (){
       var newNpc = this.npcRacers.getFirstDead();
-      var xx = this.world.width;
+      // var xx = this.world.width;
+      var xx = this.camera.view.right + 20;
       var yy = this.lane();
       // newNpc.key = this.pickNPC();
       newNpc.anchor.set(0.5 , 0.5);
@@ -303,7 +313,9 @@ var StateMain = {
       //y position
       var yy = game.rnd.integerInRange(240, game.height-70);
       //x position
-      var xx = this.world.width;
+      // var xx = this.world.width;
+      var xx = this.camera.view.right + 20;
+
 
       coin.reset(xx, yy);
       coin.enabled = true;
@@ -322,9 +334,9 @@ var StateMain = {
       this.coinBeep.volume = 0.6;
     },
 
-    NpcPickUp: function (npc, coin){
-      coin.kill();
-    },
+    // NpcPickUp: function (npc, coin){
+    //   coin.kill();
+    // },
 
     //COLLISION HANDLER
     onCrash: function (sprite, npc){
