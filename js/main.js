@@ -21,7 +21,6 @@ var cursors;
 var scoreText;
 var lives = 3;
 
-
 var sky;
 var mtn;
 var city;

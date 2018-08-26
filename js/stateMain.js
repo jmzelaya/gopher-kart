@@ -79,7 +79,7 @@ var StateMain = {
     // },1000);
 
     setInterval(function(){
-      score += 20;
+      score += 1;
     },1000);
 
 
@@ -93,12 +93,9 @@ var StateMain = {
     this.timer.start();
 
     //Set top and bottom boundaries for Gopher
-    this.top = game.height - 200 ;
+    this.top = game.height - 200;
     this.bottom = game.height - 80;
 
-
-    //Want to keep gopher from hitting left and right of screen
-    this.left = game.width - 50;
 
     //Random lane logic for NPC spawn
     this.lane = function () {
@@ -253,8 +250,9 @@ var StateMain = {
     },3000);
 
     //TEXT
-    //🚨🚨🚨🚨SHOULD ADD SCORE LABEL
-    scoreText = game.add.bitmapText(585, 5, 'pixelFont', '0', 21);
+    var scoreLabel = game.add.bitmapText(565, 7, 'pixelFont', 'SCORE', 21);
+    scoreLabel.anchor.set(1.0 , 0);
+    scoreText = game.add.bitmapText(565, 27, 'pixelFont', '0', 21);
     scoreText.anchor.set(1.0 , 0);
     var timeLabel;
     timeLabel = game.add.bitmapText(275, 7, 'pixelFont', 'TIME', 21);
@@ -262,7 +260,7 @@ var StateMain = {
 
     //Fix game status elements (w/e you want to call these :D) to the camera
     this.timer.fixedToCamera = scoreText.fixedToCamera = timeLabel.fixedToCamera =
-    timeText.fixedToCamera = true;
+    timeText.fixedToCamera = this.scoreLabel.fixedToCamera = true;
 
     // game.debug.bodyInfo(this.npcRacers);
 
@@ -316,7 +314,7 @@ var StateMain = {
     //COIN PICK UP
     onPickUp: function (sprite, coin){
       coin.kill();
-      score += 100;
+      score += 10;
       // console.log("Your score is --> " + score);
       this.coinBeep = game.add.audio("coinBeep");
       this.coinBeep.play('', 0, 1, false);
@@ -372,6 +370,7 @@ var StateMain = {
     //Allows for correct "z-index" of gopher
     this.npcRacers.sort('y', Phaser.Group.SORT_ASCENDING);
 
+
     //Collision checks
     game.physics.arcade.collide(this.sprite, this.coins, null, this.onPickUp, this);
     game.physics.arcade.collide(this.npcRacers, this.coins, null, this.NpcPickUp, this);
@@ -382,6 +381,22 @@ var StateMain = {
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown) {
         // this.driveSound();
+
+
+
+
+        // this.sprite.body.velocity.x = 80;
+        // sky.tilePosition.x = sky.tilePosition.x -= this.sprite.body.velocity.x -=0.5;
+        // mtn.tilePosition.x = mtn.tilePosition.x -= this.sprite.body.velocity.x -=0.7;
+        // city.tilePosition.x = city.tilePosition.x -= this.sprite.body.velocity.x -=0.9;
+        // truck.tilePosition.x = truck.tilePosition.x -= this.sprite.body.velocity.x -=2;
+        // road.tilePosition.x = road.tilePosition.x -= this.sprite.body.velocity.x -=2;
+        // bottomRail.tilePosition.x = bottomRail.tilePosition.x -= this.sprite.body.velocity.x -=2;
+        // posts.tilePosition.x = posts.tilePosition.x -= this.sprite.body.velocity.x -=5;
+        // extras.tilePosition.x = extras.tilePosition.x -= this.sprite.body.velocity.x -=5;
+        // topRail.tilePosition.x = topRail.tilePosition.x -= this.sprite.body.velocity.x -=2;
+
+
         this.sprite.body.velocity.x = 80;
         sky.tilePosition.x -=0.5;
         mtn.tilePosition.x -=0.7;
