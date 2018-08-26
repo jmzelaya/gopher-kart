@@ -1,6 +1,6 @@
 var game;
 var character;
-var npcSpawnRate = 3;
+var npcSpawnRate = 1.8;
 var coinSpawnRate = 1;
 var availLanes = [233, 289, 345];
 var availNpcGophers =

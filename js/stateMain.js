@@ -71,12 +71,12 @@ var StateMain = {
     // var coinSpawnRate = 1;
     // console.log(coinSpawnRate);
 
-    setInterval(function(){
-      score += 100;
-      npcSpawnRate -= 0.5;
-      coinSpawnRate += 0.1;
-      console.log("npc" + npcSpawnRate + " + " + "coin" + coinSpawnRate);
-    },1000);
+    // setInterval(function(){
+    //   score += 100;
+    //   npcSpawnRate -= 0.5;
+    //   coinSpawnRate += 0.1;
+    //   console.log("npc" + npcSpawnRate + " + " + "coin" + coinSpawnRate);
+    // },1000);
 
     setInterval(function(){
       score += 1;
