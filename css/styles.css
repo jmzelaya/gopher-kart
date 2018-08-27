@@ -270,7 +270,7 @@ body.leaderboard-page h1 {
     display: block;
   }
   canvas {
-    display: none;
+    display: none !important;
   }
 }
 @media(max-width:576px){
