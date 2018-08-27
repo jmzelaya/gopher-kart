@@ -70,27 +70,10 @@ var StateMain = {
     //Prevents pausing of game when use clicks out of the game
     game.stage.disableVisibilityChange = true;
 
-    // var npcSpawnRate = 3;
-    // var coinSpawnRate = 1;
-    // console.log(coinSpawnRate);
-
-    // setInterval(function(){
-    //   score += 100;
-    //   npcSpawnRate -= 0.5;
-    //   coinSpawnRate += 0.1;
-    //   console.log("npc" + npcSpawnRate + " + " + "coin" + coinSpawnRate);
-    // },1000);
-
-    setInterval(function(){
-      score += 3;
-    },1000);
-
-
     //Start Physics Engine
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     //TIMER
-    //Not sure how this works, going to do some more reasearch
     setInterval(function(){
       count += 1;
       count.toString();
@@ -101,12 +84,18 @@ var StateMain = {
       }
     }, 1000);
 
+    //Increase score every second
+    setInterval(function(){
+      score += 3;
+    },1000);
+
 
     this.timer = this.game.time.create(this.game);
     this.timer.add(this.delay, this.readyForAction, this);
     this.timer.start();
 
     //Set top and bottom boundaries for Gopher
+    //To prevent going past rails
     this.top = game.height - 200;
     this.bottom = game.height - 80;
 
@@ -120,7 +109,6 @@ var StateMain = {
       return availNpcGophers[Math.floor(Math.random()*availNpcGophers.length)];
     };
     // this.npc = game.add.sprite(game.width, this.lane, this.pickNPC);
-
     // console.log("NEW NPC ADDED: " + this.lane() + " , " + this.pickNPC());
 
     // BACKGROUND IMAGE TILES
@@ -259,7 +247,9 @@ var StateMain = {
 
     //Prevent user from moving until after "GO!"
     game.input.enabled = false;
+
     setTimeout(function(){
+      //Turn input back on
       game.input.enabled = true;
     },3000);
 
@@ -374,10 +364,11 @@ var StateMain = {
       }
     },
 
-    driveSound: function(){
-      this.drivingSound.play('', 0, 1, false);
-      this.drivingSound.volume = 0.2;
-    },
+    //Currently isn't working properly
+    // driveSound: function(){
+    //   this.drivingSound.play('', 0, 1, false);
+    //   this.drivingSound.volume = 0.2;
+    // },
 
   update: function (){
     this.sprite.body.maxVelocity.x= 500;
@@ -398,6 +389,7 @@ var StateMain = {
     if(cursors.right.isDown) {
 
         this.sprite.body.velocity.x = 80;
+
         sky.tilePosition.x -=0.5;
         mtn.tilePosition.x -=0.7;
         city.tilePosition.x -=0.9;
