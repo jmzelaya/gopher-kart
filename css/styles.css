@@ -280,4 +280,16 @@ body.leaderboard-page h1 {
     left: 0;
     width: 100%;
   }
+  canvas {
+    display: none !important;
+  }
+  body{
+    overflow-x: hidden;
+  }
+  .mobile-wrapper {
+    display: block;
+  }
+  canvas {
+    display: none !important;
+  }
 }
