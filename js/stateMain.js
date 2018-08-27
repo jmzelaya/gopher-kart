@@ -52,7 +52,7 @@ var StateMain = {
 
   create: function () {
 
-    game.world.setBounds(0, 0, 3000, this.game.height);
+    game.world.setBounds(0, 0, 12000, this.game.height);
 
     //MUSIC
     this.titleSong = game.add.audio("title");
@@ -62,7 +62,7 @@ var StateMain = {
     //SFX
     this.drivingSound = game.add.audio("drive");
 
-    var background = game.add.tileSprite(0, 0, 3000, 432, "background");
+    var background = game.add.tileSprite(0, 0, this.world.width, 432, "background");
 
     //Prevents pausing of game when use clicks out of the game
     game.stage.disableVisibilityChange = true;
