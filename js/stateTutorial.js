@@ -5,7 +5,7 @@ var StateTutorial = {
     game.load.spritesheet("controls", "assets/controls-animation.png", 600, 432, 24);
     game.load.spritesheet("back-button", "assets/back-button.png", 65, 32, 2);
     game.load.spritesheet("play-button", "assets/play-button.png", 65, 32, 2);
-    game.load.audio("tutorial", "assets/music/tutorialScreenJam.wav");
+    game.load.audio("tutorial", "assets/music/tutorialScreenJam-compressed.m4a");
 
   },
 
