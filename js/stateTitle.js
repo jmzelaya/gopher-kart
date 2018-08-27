@@ -1,7 +1,7 @@
 var StateTitle = {
   preload: function(){
     game.load.bitmapFont('pixelFont', 'assets/fonts/bitmapFonts/pixelFont.png', 'assets/fonts/bitmapFonts/pixelFont.xml');
-    game.load.audio("title", "assets/music/BeepBox-Song2.wav");
+    game.load.audio("title", "assets/music/BeepBox-Song2-compressed.m4a");
     game.load.image("city", "assets/city-re-colored.png");
     game.load.audio("select_button", "assets/music/sfx/select.wav");
     game.stage.backgroundColor = 0xe9fffe;

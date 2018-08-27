@@ -24,7 +24,7 @@ var StateOver = {
     game.load.image("post-score", "assets/post-score.png");
     //Font
     game.load.bitmapFont('pixelFont', 'assets/fonts/bitmapFonts/pixelFont.png', 'assets/fonts/bitmapFonts/pixelFont.xml');
-    game.load.audio("gameOver", "assets/music/goverrr.wav");
+    game.load.audio("gameOver", "assets/music/goverrr-compressed.m4a");
 
   },
 

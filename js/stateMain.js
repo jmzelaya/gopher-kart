@@ -329,7 +329,7 @@ var StateMain = {
       // console.log("Your score is --> " + score);
       this.coinBeep = game.add.audio("coinBeep");
       this.coinBeep.play('', 0, 1, false);
-      this.coinBeep.volume = 0.6;
+      this.coinBeep.volume = 0.3;
     },
 
 
