@@ -7,6 +7,7 @@ var StateMain = {
     game.load.audio("coinBeep", "assets/music/sfx/coin.wav");
     game.load.audio("npc_explosion", "assets/music/sfx/npc_explosion.wav");
     game.load.audio("drive", "assets/music/sfx/drive.wav");
+    game.load.audio("countdownBeep", "assets/music/sfx/countdown.wav");
 
     game.stage.backgroundColor = 0xe9fffe;
 
@@ -56,11 +57,13 @@ var StateMain = {
 
     //MUSIC
     this.titleSong = game.add.audio("title");
-    this.titleSong.play('', 0, 1, true);
     this.titleSong.volume = 0.5;
+    this.titleSong.play('', 0, 1, true);
 
     //SFX
     this.drivingSound = game.add.audio("drive");
+    this.countdownSound = game.add.audio("countdownBeep");
+    this.countdownSound.play('', 0, 1, false);
 
     var background = game.add.tileSprite(0, 0, this.world.width, 432, "background");
 
@@ -282,6 +285,7 @@ var StateMain = {
       //Spawn coins and NPCs
       game.time.events.loop(Phaser.Timer.SECOND * coinSpawnRate, this.loadCoin, this);
       game.time.events.loop(Phaser.Timer.SECOND * npcSpawnRate, this.loadNPC, this);
+
     },
 
 
@@ -392,8 +396,6 @@ var StateMain = {
 
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown) {
-        // this.driveSound();
-
 
         this.sprite.body.velocity.x = 80;
         sky.tilePosition.x -=0.5;
