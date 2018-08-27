@@ -52,7 +52,7 @@ var StateMain = {
 
   create: function () {
 
-    game.world.setBounds(0, 0, 12000, this.game.height);
+    game.world.setBounds(0, 0, 35000, this.game.height);
 
     //MUSIC
     this.titleSong = game.add.audio("title");
@@ -393,20 +393,6 @@ var StateMain = {
     //Cursors - Keyboard key check ⌨️
     if(cursors.right.isDown) {
         // this.driveSound();
-
-
-
-
-        // this.sprite.body.velocity.x = 80;
-        // sky.tilePosition.x = sky.tilePosition.x -= this.sprite.body.velocity.x -=0.5;
-        // mtn.tilePosition.x = mtn.tilePosition.x -= this.sprite.body.velocity.x -=0.7;
-        // city.tilePosition.x = city.tilePosition.x -= this.sprite.body.velocity.x -=0.9;
-        // truck.tilePosition.x = truck.tilePosition.x -= this.sprite.body.velocity.x -=2;
-        // road.tilePosition.x = road.tilePosition.x -= this.sprite.body.velocity.x -=2;
-        // bottomRail.tilePosition.x = bottomRail.tilePosition.x -= this.sprite.body.velocity.x -=2;
-        // posts.tilePosition.x = posts.tilePosition.x -= this.sprite.body.velocity.x -=5;
-        // extras.tilePosition.x = extras.tilePosition.x -= this.sprite.body.velocity.x -=5;
-        // topRail.tilePosition.x = topRail.tilePosition.x -= this.sprite.body.velocity.x -=2;
 
 
         this.sprite.body.velocity.x = 80;
