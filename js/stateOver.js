@@ -29,7 +29,7 @@ var StateOver = {
   },
 
   create : function(){
-    console.log("your final score is : " + score);
+    // console.log("your final score is : " + score);
 
     this.gameOverSong = game.add.audio("gameOver");
     this.gameOverSong.play('', 0, 1, true);
@@ -64,16 +64,15 @@ var StateOver = {
   },
 
   startGame: function (){
-    //Turn off previous song (stateMain) and turn off stateChoice music
-    // this.titleSong.stop();
 
-    //Reset score and character values for "restart"
+    //Reset game values
     score = 0;
     lives = 3;
     timeElapsed = 0;
     // npcSpawnRate = 3;
     // coinSpawnRate = 1;
     character = undefined;
+    //Turn off previous song (stateMain)
     this.gameOverSong.stop();
     this.camera.reset();
     game.state.start("StateChoice");

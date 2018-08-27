@@ -135,8 +135,6 @@ var StateChoice = {
     character = racer;
 
 
-
-
     this.startConfirm.animations.play("neon");
     // character.animations.play("blue");
     // console.log(character);

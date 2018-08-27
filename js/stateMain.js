@@ -344,7 +344,7 @@ var StateMain = {
       heart.animations.play("drain");
 
 
-      //DECREASE SPEED OF GOPHER UPON COLLISON ... not working ?? /
+      //DECREASE SPEED OF GOPHER UPON COLLISON ... not working ??
       sprite.body.velocity.x = -500;
       setTimeout(function(){
         heart.kill();
