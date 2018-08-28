@@ -7,6 +7,7 @@ var StateMain = {
     game.load.audio("coinBeep", "assets/music/sfx/coin.wav");
     game.load.audio("npc_explosion", "assets/music/sfx/npc_explosion.wav");
     game.load.audio("drive", "assets/music/sfx/drive.wav");
+    game.load.audio("accelerate", "assets/music/sfx/accelerate.wav");
     game.load.audio("countdownBeep", "assets/music/sfx/countdown.wav");
 
     game.stage.backgroundColor = 0xe9fffe;
@@ -57,13 +58,15 @@ var StateMain = {
 
     //MUSIC
     this.titleSong = game.add.audio("title");
-    this.titleSong.volume = 0.5;
+    this.titleSong.volume = 0.4;
     this.titleSong.play('', 0, 1, true);
 
     //SFX
     this.drivingSound = game.add.audio("drive");
+    this.accelerateSound = game.add.audio("accelerate");
     this.countdownSound = game.add.audio("countdownBeep");
     this.countdownSound.play('', 0, 1, false);
+    this.drivingSound.loopFull(1.3);
 
     var background = game.add.tileSprite(0, 0, this.world.width, 432, "background");
 
@@ -364,12 +367,6 @@ var StateMain = {
       }
     },
 
-    //Currently isn't working properly
-    // driveSound: function(){
-    //   this.drivingSound.play('', 0, 1, false);
-    //   this.drivingSound.volume = 0.2;
-    // },
-
   update: function (){
     this.sprite.body.maxVelocity.x= 500;
     this.sprite.body.maxVelocity.y= 500;
@@ -386,8 +383,13 @@ var StateMain = {
     scoreText.text = score;
 
     //Cursors - Keyboard key check ⌨️
-    if(cursors.right.isDown) {
+    if (game.input.keyboard.downDuration(Phaser.Keyboard.RIGHT)) {
+        this.accelerateSound.play('', 0, 1.4, false, true);
+        this.drivingSound.volume = 1.7;
+        this.drivingSound._sound.playbackRate.value = 1.3
+    }
 
+    if(cursors.right.isDown) {
         this.sprite.body.velocity.x = 80;
 
         sky.tilePosition.x -=0.5;
@@ -404,6 +406,8 @@ var StateMain = {
 
     if(cursors.right.isUp) {
         this.sprite.body.velocity.x = -150;
+        this.drivingSound.volume = 1.3;
+        this.drivingSound._sound.playbackRate.value = 1.0
     }
 
     if(cursors.up.isDown) {
