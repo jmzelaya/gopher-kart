@@ -386,10 +386,10 @@ var StateMain = {
     //Cursors - Keyboard key check ⌨️
     if (game.input.keyboard.downDuration(Phaser.Keyboard.RIGHT)) {
         this.accelerateSound.play('', 0, 1.4, false, true);
-        this.drivingSound.volume = 1.9;
+        this.drivingSound.volume = 1.6;
 
         if(this.drivingSound._sound) {
-          this.drivingSound._sound.playbackRate.value = 1.4
+          this.drivingSound._sound.playbackRate.value = 1.4;
         }
     }
 
@@ -413,7 +413,7 @@ var StateMain = {
         this.drivingSound.volume = 1.3;
 
         if(this.drivingSound._sound) {
-          this.drivingSound._sound.playbackRate.value = 1.0
+          this.drivingSound._sound.playbackRate.value = 1.0;
         }
     }
 
