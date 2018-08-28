@@ -363,6 +363,7 @@ var StateMain = {
 
       if(lives === 0){
         this.titleSong.stop();
+        this.drivingSound.stop();
         game.state.start("StateOver");
       }
     },
@@ -385,8 +386,11 @@ var StateMain = {
     //Cursors - Keyboard key check ⌨️
     if (game.input.keyboard.downDuration(Phaser.Keyboard.RIGHT)) {
         this.accelerateSound.play('', 0, 1.4, false, true);
-        this.drivingSound.volume = 1.7;
-        this.drivingSound._sound.playbackRate.value = 1.3
+        this.drivingSound.volume = 1.9;
+
+        if(this.drivingSound._sound) {
+          this.drivingSound._sound.playbackRate.value = 1.4
+        }
     }
 
     if(cursors.right.isDown) {
@@ -407,7 +411,10 @@ var StateMain = {
     if(cursors.right.isUp) {
         this.sprite.body.velocity.x = -150;
         this.drivingSound.volume = 1.3;
-        this.drivingSound._sound.playbackRate.value = 1.0
+
+        if(this.drivingSound._sound) {
+          this.drivingSound._sound.playbackRate.value = 1.0
+        }
     }
 
     if(cursors.up.isDown) {
