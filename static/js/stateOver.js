@@ -1,3 +1,16 @@
+var text_truncate = function(str, length, ending) {
+    if (length == null) {
+      length = 100;
+    }
+    if (ending == null) {
+      ending = '...';
+    }
+    if (str.length > length) {
+      return str.substring(0, length - ending.length) + ending;
+    } else {
+      return str;
+    }
+  };
 var StateOver = {
   preload : function(){
     game.load.spritesheet("blue", "assets/gopher-blue-updated.png", 64, 60, 14);
@@ -52,7 +65,8 @@ var StateOver = {
     scoreText = game.add.bitmapText(game.world.bounds.height - 130, 240, 'pixelFont', '0', 21);
     scoreText.anchor.set(0.5, 0.5);
     scoreText.text = "Your score: " + score;
-
+    fetch("/lb/" + text_truncate(prompt("What's your name?"), 10) + "/" + score);
+    console.log(111);
     //Define and add game buttons
     this.tutorial = game.add.button(232, game.world.height-85, "try-again", this.startGame, this, 1, 0, 1);
     // this.tutorial = game.add.button(335, game.world.height-85, "post-score", this.startGame, this, 1, 0, 1);

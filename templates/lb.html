@@ -20,57 +20,13 @@
             <dd>SCORE</dd>
             <dd>NAME</dd>
           </dl>
+          {% for member in members: %}
           <dl>
-            <dd>1ST</dd>
-            <dd>300000</dd>
-            <dd>BOB</dd>
+            <dd>{{ loop.index }}</dd>
+            <dd>{{ member[0] }}</dd>
+            <dd>{{ member[1] }}</dd>
           </dl>
-          <dl>
-            <dd>2ND</dd>
-            <dd>200000</dd>
-            <dd>JOE</dd>
-          </dl>
-          <dl>
-            <dd>3RD</dd>
-            <dd>100000</dd>
-            <dd>MAC</dd>
-          </dl>
-          
-          <dl>
-            <dd>4TH</dd>
-            <dd>100000</dd>
-            <dd>SAL</dd>
-          </dl>
-          <dl>
-            <dd>5TH</dd>
-            <dd>100000</dd>
-            <dd>PAM</dd>
-          </dl>
-          <dl>
-            <dd>6TH</dd>
-            <dd>100000</dd>
-            <dd>JIM</dd>
-          </dl>
-          <dl>
-            <dd>7TH</dd>
-            <dd>100000</dd>
-            <dd>RAY</dd>
-          </dl>
-          <dl>
-            <dd>8TH</dd>
-            <dd>100000</dd>
-            <dd>EMI</dd>
-          </dl>
-          <dl>
-            <dd>9TH</dd>
-            <dd>100000</dd>
-            <dd>JON</dd>
-          </dl>
-          <dl>
-            <dd>10TH</dd>
-            <dd>100000</dd>
-            <dd>COL</dd>
-          </dl>
+          {% endfor %}
         </div><!-- column -->
       </div><!-- row -->
     </div><!-- container -->

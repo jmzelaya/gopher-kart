@@ -43,7 +43,7 @@
     }, r.o = function(e, t) {
         return Object.prototype.hasOwnProperty.call(e, t)
     }, r.p = "", r(r.s = 100)
-}({
+}{
     100: function(e, t, r) {
         "use strict";
         r.r(t);
