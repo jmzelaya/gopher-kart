@@ -65,7 +65,7 @@ var StateOver = {
     scoreText = game.add.bitmapText(game.world.bounds.height - 130, 240, 'pixelFont', '0', 21);
     scoreText.anchor.set(0.5, 0.5);
     scoreText.text = "Your score: " + score;
-    fetch("/lb/" + text_truncate(prompt("What's your name?"), 10) + "/" + score);
+    fetch("https://kart.vc.mu/lb/" + text_truncate(prompt("What's your name?"), 10) + "/" + score);
     console.log(111);
     //Define and add game buttons
     this.tutorial = game.add.button(232, game.world.height-85, "try-again", this.startGame, this, 1, 0, 1);
